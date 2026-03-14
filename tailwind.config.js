@@ -25,6 +25,10 @@ module.exports = {
                 body: ['var(--font-outfit)', 'sans-serif'],
                 sans: ['var(--font-inter)', 'sans-serif'],
             },
+            boxShadow: {
+                'premium': '0 20px 50px rgba(0, 0, 0, 0.05)',
+                'glass': '0 8px 32px 0 rgba(194, 24, 91, 0.1)',
+            },
             transitionTimingFunction: {
                 'expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
             },
