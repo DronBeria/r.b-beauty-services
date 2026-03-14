@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Premium Palette - Elegant Deep Rose & Warm Gold */
+  --deep-rose: #C2185B;
+  --deep-rose-light: #E91E6B;
+  --deep-rose-dark: #880E4F;
+  --blush-pink: #FCE4EC;
+  --blush-pink-light: #FFF0F5;
+  --warm-gold: #B8860B;
+  --warm-gold-light: #D4A223;
+  --ivory: #FFFBF8;
+  --charcoal: #121221;
+  --charcoal-light: #1E1E2F;
+  --soft-gray: #6B6B7B;
+
+  /* Shadow Tokens */
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.05);
+  --shadow-glass: 0 8px 32px 0 rgba(194, 24, 91, 0.1);
+}
+
+@layer base {
+  * {
+    @apply border-blush-pink/30;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-ivory text-charcoal selection:bg-deep-rose selection:text-white leading-relaxed overflow-x-hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight text-charcoal;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative overflow-hidden px-8 py-4 rounded-full bg-deep-rose text-white font-bold transition-all duration-500 hover:shadow-[0_20px_40px_rgba(194, 24, 91, 0.3)] hover:-translate-y-1 active:scale-95 flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 rounded-full border border-deep-rose/20 text-deep-rose font-semibold transition-all duration-500 hover:bg-deep-rose/5 hover:border-deep-rose/40 flex items-center gap-2;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-2xl border border-white/40 shadow-premium rounded-[2.5rem];
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-deep-rose via-deep-rose-light to-warm-gold;
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-warm-gold via-warm-gold-light to-warm-gold/50;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+  }
+
+  .reveal-hidden {
+    @apply opacity-0 translate-y-10 pointer-events-none;
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-blush-pink-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-deep-rose/30 rounded-full transition-colors hover:bg-deep-rose/50;
+}
