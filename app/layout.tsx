@@ -1,13 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Outfit, Cormorant_Garamond } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-cormorant"
+  variable: "--font-plus-jakarta",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +41,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#C2185B",
+  themeColor: "#A0134D",
 };
 
 export default function RootLayout({
@@ -44,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${plusJakarta.variable}`}>
       <body className="antialiased font-body bg-ivory text-charcoal min-h-screen selection:bg-deep-rose selection:text-white">
         {children}
       </body>
