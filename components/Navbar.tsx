@@ -1,29 +1,21 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, ShoppingCart, MessageCircle, Sparkle } from 'lucide-react';
+import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 import { cn } from '../lib/utils';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const { getTotalItems } = useCartStore();
     const cartCount = getTotalItems();
 
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 40);
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
     const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'Our Story', href: '#story' },
         { name: 'Treatments', href: '#services' },
-        { name: 'Portfolio', href: '#gallery' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Shop', href: '#services' },
+        { name: 'Offers', href: '#services' },
+        { name: 'About us', href: '#story' },
     ];
 
     const toggleCart = () => {
@@ -33,87 +25,55 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className={cn(
-                'fixed top-0 left-0 w-full z-[80] px-6 md:px-12',
-                scrolled ? 'py-4' : 'py-8'
-            )}>
-                <div className={cn(
-                    "max-w-7xl mx-auto flex items-center justify-between backdrop-blur-xl",
-                    scrolled
-                        ? "glass-card !rounded-[2rem] px-6 md:px-8 py-3 shadow-lg border-white/20 bg-charcoal/80"
-                        : "bg-charcoal/50 py-3 rounded-2xl px-6 md:px-8"
-                )}>
-                    {/* Logo */}
-                    <Link href="#home" className="flex flex-col group relative">
-                        <div className="flex items-center gap-1">
-                            <span className={cn(
-                                "font-display text-2xl md:text-3xl font-bold tracking-tighter transition-colors duration-500",
-                                scrolled ? "text-ivory" : "text-white"
-                            )}>
-                                R.B <span className="italic font-light text-gradient">BEAUTY</span>
-                            </span>
-                        </div>
-                        <span className={cn(
-                            "text-[8px] uppercase tracking-[0.5em] font-black -mt-0.5 transition-all duration-500",
-                            scrolled ? "text-soft-gray opacity-70" : "text-white/60"
-                        )}>
-                            Esthetics & Laser
-                        </span>
-                    </Link>
-
-                    {/* Desktop Nav */}
-                    <div className={cn(
-                        "hidden md:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-sans font-black",
-                        scrolled ? "text-ivory" : "text-white"
-                    )}>
+            <nav className="fixed top-0 left-0 w-full z-[80] h-[72px] flex items-center bg-white/95 backdrop-blur-sm border-b border-black/[0.06]">
+                <div className="w-full max-w-[1400px] mx-auto px-8 lg:px-12 flex items-center justify-between h-full">
+                    {/* Left: 4 nav links — evenly spaced, medium gray */}
+                    <div className="hidden md:flex items-center gap-10 flex-1">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="py-2 hover:text-deep-rose transition-colors duration-200"
+                                className="text-[15px] font-medium text-[#5a5a5a] hover:text-charcoal transition-colors"
                             >
                                 {link.name}
                             </Link>
                         ))}
                     </div>
 
-                    {/* Actions */}
-                    <div className="flex items-center gap-4 md:gap-6">
+                    {/* Center: Logo — condensed uppercase, darker */}
+                    <Link
+                        href="#home"
+                        className="absolute left-1/2 -translate-x-1/2 font-sans text-[22px] font-semibold tracking-tight text-charcoal uppercase"
+                    >
+                        R.B Beauty
+                    </Link>
+
+                    {/* Right: 3 icons — search, cart, user */}
+                    <div className="flex items-center justify-end gap-6 flex-1">
+                        <button type="button" className="p-2 text-[#5a5a5a] hover:text-charcoal transition-colors" aria-label="Search">
+                            <Search className="w-5 h-5" />
+                        </button>
                         <button
-                            className={cn(
-                                "group relative p-2.5 rounded-full transition-all duration-500",
-                                scrolled ? "bg-charcoal/60 hover:bg-deep-rose/10 border border-white/10" : "hover:bg-white/10 border border-white/10"
-                            )}
+                            type="button"
                             onClick={toggleCart}
+                            className="relative p-2 text-[#5a5a5a] hover:text-charcoal transition-colors"
+                            aria-label="Cart"
                         >
-                            <ShoppingCart className={cn("w-5 h-5", scrolled ? "text-ivory" : "text-white")} />
+                            <ShoppingCart className="w-5 h-5" />
                             {cartCount > 0 && (
-                                <span className="cart-badge absolute -top-1 -right-1 w-5 h-5 bg-deep-rose text-white text-[9px] flex items-center justify-center rounded-full font-bold shadow-lg border-2 border-ivory">
+                                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-charcoal text-white text-[10px] flex items-center justify-center rounded-full font-medium">
                                     {cartCount}
                                 </span>
                             )}
                         </button>
-
-                        <Link
-                            href="https://wa.me/1234567890"
-                            className={cn(
-                                "hidden sm:flex items-center gap-2.5 px-7 py-3 rounded-full text-[10px] font-black tracking-widest transition-colors duration-200",
-                                scrolled
-                                    ? "bg-deep-rose text-white hover:bg-deep-rose-dark"
-                                    : "bg-white text-charcoal hover:bg-ivory"
-                            )}
-                        >
-                            <MessageCircle className="w-4 h-4" />
-                            <span>RESERVE</span>
+                        <Link href="#contact" className="p-2 text-[#5a5a5a] hover:text-charcoal transition-colors" aria-label="Profile">
+                            <User className="w-5 h-5" />
                         </Link>
-
-                        {/* Mobile Toggle */}
                         <button
-                            className={cn(
-                                "md:hidden p-2.5 rounded-full transition-all duration-500",
-                                scrolled ? "text-ivory hover:bg-deep-rose/10" : "text-white hover:bg-white/10"
-                            )}
+                            type="button"
+                            className="md:hidden p-2 text-[#5a5a5a]"
                             onClick={() => setIsOpen(!isOpen)}
+                            aria-label="Menu"
                         >
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
@@ -121,57 +81,22 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile menu */}
             <div className={cn(
-                'fixed inset-0 z-[100] transition-all duration-700 flex flex-col items-center justify-center',
-                isOpen ? 'visible opacity-100' : 'invisible opacity-0'
+                'fixed inset-0 z-[100] bg-white md:hidden transition-opacity duration-300',
+                isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
             )}>
-                {/* Backdrop Blur */}
-                <div
-                    className="absolute inset-0 bg-gradient-to-b from-charcoal/95 via-charcoal/90 to-charcoal/80 backdrop-blur-3xl"
-                    onClick={() => setIsOpen(false)}
-                />
-
-                {/* Close Button */}
-                <button
-                    className="absolute top-10 right-10 p-4 text-white hover:text-deep-rose transition-colors z-20"
-                    onClick={() => setIsOpen(false)}
-                >
-                    <X className="w-10 h-10" />
-                </button>
-
-                {/* Content */}
-                <div className="relative z-10 flex flex-col items-center gap-8 w-full px-10">
-                    <div className="flex flex-col items-center mb-8">
-                        <Sparkle className="w-10 h-10 text-warm-gold mb-4" />
-                        <span className="font-display text-3xl md:text-5xl font-bold text-white tracking-tighter">
-                            R.B <span className="italic font-light text-gradient">BEAUTY</span>
-                        </span>
-                    </div>
-
-                    <div className="flex flex-col items-center gap-6 w-full max-w-sm">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                onClick={() => setIsOpen(false)}
-                                className="font-display text-4xl hover:text-deep-rose transition-colors text-white/90"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                    </div>
-
-                    <div className="mt-12 flex flex-col items-center">
+                <div className="pt-24 px-8 flex flex-col gap-6">
+                    {navLinks.map((link) => (
                         <Link
-                            href="https://wa.me/1234567890"
-                            className="btn-primary"
+                            key={link.name}
+                            href={link.href}
                             onClick={() => setIsOpen(false)}
+                            className="text-lg font-medium text-charcoal"
                         >
-                            <MessageCircle className="w-5 h-5" />
-                            <span>Request Appointment</span>
+                            {link.name}
                         </Link>
-                    </div>
+                    ))}
                 </div>
             </div>
         </>
