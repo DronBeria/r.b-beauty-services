@@ -142,6 +142,74 @@ export default function Home() {
       </section>
 
 
+      {/* Signature Treatments Spotlight */}
+      <section className="py-32 bg-white relative">
+        <div className="container-custom">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-2xl">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-deep-rose mb-6">The Clinical Edit</h3>
+              <h2 className="font-display text-5xl md:text-7xl text-charcoal leading-tight">
+                Signature <br /><span className="italic font-light text-gradient">Treatments</span>
+              </h2>
+            </div>
+            <p className="text-soft-gray font-medium text-lg max-w-sm border-l-2 border-warm-gold/20 pl-8 pb-2">
+              Our most-requested rituals, blending medical precision with uncompromising luxury.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            {[
+              {
+                title: "Diode Laser",
+                category: "Permanent Hair Removal",
+                img: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800&auto=format&fit=crop",
+                tag: "Pain-Free",
+                price: "$120"
+              },
+              {
+                title: "HydraFacial",
+                category: "Advanced Skin Resurfacing",
+                img: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=800&auto=format&fit=crop",
+                tag: "Bestseller",
+                price: "$160"
+              },
+              {
+                title: "Microneedling",
+                category: "Collagen Induction",
+                img: "https://images.unsplash.com/photo-1616391182219-e080b4d1043a?q=80&w=800&auto=format&fit=crop",
+                tag: "Anti-Aging",
+                price: "$175"
+              }
+            ].map((item, i) => (
+              <div key={i} className="group cursor-pointer">
+                <div className="relative h-[500px] rounded-[3rem] overflow-hidden mb-8 border border-black/5 shadow-premium">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute top-8 left-8">
+                    <span className="px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-white border border-white/20">
+                      {item.tag}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-10 left-10 right-10 flex justify-between items-end">
+                    <div className="text-white">
+                      <p className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-2">{item.category}</p>
+                      <h4 className="text-3xl font-display">{item.title}</h4>
+                    </div>
+                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center group-hover:bg-deep-rose group-hover:text-white transition-all duration-500 transform group-hover:-rotate-45">
+                      <ArrowRight className="w-5 h-5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Narrative Containers */}
       <div className="space-y-0">
         <OurStory />

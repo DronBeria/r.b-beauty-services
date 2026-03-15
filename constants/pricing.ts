@@ -12,6 +12,7 @@ export interface PricingCategory {
     id: string;
     title: string;
     icon: string; // Emoji or Lucide icon name
+    image: string; // Relief/lifestyle image for context
     sections: PricingSection[];
 }
 
@@ -26,6 +27,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'laser-hair-removal',
         title: 'Laser Hair Removal',
         icon: '✨',
+        image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 items: [
@@ -58,6 +60,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'laser-combos',
         title: 'Laser Combo Packages',
         icon: '🎁',
+        image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 items: [
@@ -82,6 +85,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'threading',
         title: 'Threading',
         icon: '🪡',
+        image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Threading Services',
@@ -100,6 +104,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'waxing',
         title: 'Waxing',
         icon: '🌸',
+        image: 'https://images.unsplash.com/photo-1590439471364-192aa70c0b53?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Regular Wax',
@@ -145,6 +150,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'facial-body',
         title: 'Facial & Body Treatments',
         icon: '🧴',
+        image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Face & Body',
@@ -165,6 +171,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'hair-services',
         title: 'Hair Services',
         icon: '💇',
+        image: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Hair Services',
@@ -181,6 +188,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'massage',
         title: 'Massage',
         icon: '🤲',
+        image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Massage Services',
@@ -196,6 +204,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'microneedling',
         title: 'Micro-Needling',
         icon: '💉',
+        image: 'https://images.unsplash.com/photo-1616391182219-e080b4d1043a?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Micro-Needling',
@@ -210,6 +219,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'mens-services',
         title: 'Men\'s Services',
         icon: '👔',
+        image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Men\'s Services',
@@ -231,6 +241,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'addons',
         title: 'Add-Ons',
         icon: '⭐',
+        image: 'https://images.unsplash.com/photo-1512496011951-a6994413c2ae?q=80&w=1200&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Treatment Add-Ons',
