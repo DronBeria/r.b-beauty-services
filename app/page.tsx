@@ -7,6 +7,7 @@ import ServicesSection from '../components/ServicesSection';
 import OurStory from '../components/OurStory';
 import LaserEducation from '../components/LaserEducation';
 import Gallery from '../components/Gallery';
+import PricingSection from '../components/PricingSection';
 import Footer from '../components/Footer';
 import CartPanel from '../components/CartPanel';
 import { gsap } from 'gsap';
@@ -105,6 +106,7 @@ export default function Home() {
         <ServicesSection />
         <LaserEducation />
         <Gallery />
+        <PricingSection />
 
         {/* Global Testimonials */}
         <section className="section-padding bg-white relative overflow-hidden">
