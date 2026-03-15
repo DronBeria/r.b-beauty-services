@@ -1,15 +1,28 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X, ShoppingBag, Search, User } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 import { cn } from '../lib/utils';
+import gsap from 'gsap';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { getTotalItems } = useCartStore();
     const cartCount = getTotalItems();
+    const navRef = useRef(null);
+
+    useEffect(() => {
+        // Entrance animation
+        gsap.from(navRef.current, {
+            y: -100,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            delay: 0.2
+        });
+    }, []);
 
     const navLinks = [
         { name: 'Products', href: '#products' },
@@ -25,7 +38,10 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 w-full z-[80] h-[80px] flex items-center bg-white/95 backdrop-blur-sm border-b border-black/[0.04]">
+            <nav
+                ref={navRef}
+                className="fixed top-0 left-0 w-full z-[80] h-[80px] flex items-center bg-white/95 backdrop-blur-sm border-b border-black/[0.04]"
+            >
                 <div className="w-full max-w-[1400px] mx-auto px-8 lg:px-12 flex items-center justify-between h-full">
                     {/* Left: Nav links */}
                     <div className="hidden md:flex items-center gap-10 flex-1">
@@ -104,4 +120,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
