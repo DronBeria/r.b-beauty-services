@@ -10,7 +10,7 @@ export const SERVICES: Service[] = [
         price: 'From $120',
         duration: '60 min',
         benefits: ['Smooth skin', 'No ingrowns', 'Long-lasting'],
-        image: '/images/services/laser-legs.jpg',
+        image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800&auto=format&fit=crop',
         isPopular: true
     },
     {
@@ -21,7 +21,7 @@ export const SERVICES: Service[] = [
         price: 'From $80',
         duration: '30 min',
         benefits: ['Precision target', 'Cooling tech', 'Hygienic'],
-        image: '/images/services/laser-brazilian.jpg'
+        image: 'https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=800&auto=format&fit=crop'
     },
     {
         id: 'laser-full-body',
@@ -31,7 +31,7 @@ export const SERVICES: Service[] = [
         price: 'From $350',
         duration: '3 hrs',
         benefits: ['Head-to-toe', 'Maximum value', 'Complete transformation'],
-        image: '/images/services/laser-body.jpg'
+        image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=800&auto=format&fit=crop'
     },
     {
         id: 'ipl-photofacial',
@@ -41,7 +41,7 @@ export const SERVICES: Service[] = [
         price: 'From $150',
         duration: '45 min',
         benefits: ['Even tone', 'Sun repair', 'Collagen boost'],
-        image: '/images/services/ipl.jpg'
+        image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop'
     },
     {
         id: 'laser-resurfacing',
@@ -51,7 +51,7 @@ export const SERVICES: Service[] = [
         price: 'From $200',
         duration: '60 min',
         benefits: ['Anti-aging', 'Texture improvement', 'Glow'],
-        image: '/images/services/resurfacing.jpg'
+        image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop'
     },
     {
         id: 'tattoo-removal',
@@ -61,7 +61,7 @@ export const SERVICES: Service[] = [
         price: 'From $75',
         duration: '15-30 min',
         benefits: ['Safe removal', 'All ink colors', 'Scar-free focus'],
-        image: '/images/services/tattoo.jpg'
+        image: 'https://images.unsplash.com/photo-1598331668826-20cecc596b86?q=80&w=800&auto=format&fit=crop'
     },
 
     // Facial Treatments
@@ -73,7 +73,7 @@ export const SERVICES: Service[] = [
         price: 'From $160',
         duration: '50 min',
         benefits: ['Instant glow', 'Zero downtime', 'Deep cleanse'],
-        image: '/images/services/hydrafacial.jpg',
+        image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=800&auto=format&fit=crop',
         isPopular: true
     },
     {
@@ -84,7 +84,7 @@ export const SERVICES: Service[] = [
         price: 'From $90',
         duration: '30 min',
         benefits: ['Brightening', 'Exfoliation', 'Youthful skin'],
-        image: '/images/services/peel.jpg'
+        image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop'
     },
     {
         id: 'microneedling',
@@ -94,7 +94,7 @@ export const SERVICES: Service[] = [
         price: 'From $180',
         duration: '60 min',
         benefits: ['Scar reduction', 'Fine line repair', 'Firming'],
-        image: '/images/services/microneedling.jpg'
+        image: 'https://images.unsplash.com/photo-1616391182219-e080b4d1043a?q=80&w=800&auto=format&fit=crop'
     },
     {
         id: 'anti-aging-facial',
@@ -104,7 +104,7 @@ export const SERVICES: Service[] = [
         price: 'From $110',
         duration: '60 min',
         benefits: ['Firming', 'Hydration', 'Wrinkle reduction'],
-        image: '/images/services/anti-aging.jpg'
+        image: 'https://images.unsplash.com/photo-1532413992378-f169ac26fff0?q=80&w=800&auto=format&fit=crop'
     },
     {
         id: 'brightening',
@@ -114,7 +114,7 @@ export const SERVICES: Service[] = [
         price: 'From $95',
         duration: '45 min',
         benefits: ['Glow boost', 'Dark spot fade', 'Radiance'],
-        image: '/images/services/brightening.jpg'
+        image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop'
     },
 
     // Waxing
@@ -126,8 +126,9 @@ export const SERVICES: Service[] = [
         price: 'From $150',
         duration: '90 min',
         benefits: ['Silky smooth', 'Slow regrowth', 'Exfoliating'],
-        image: '/images/services/waxing.jpg'
+        image: 'https://images.unsplash.com/photo-1590439471364-192aa70c0b53?q=80&w=800&auto=format&fit=crop'
     }
+
 ];
 
 export const WHATSAPP_NUMBER = '1234567890'; // Placeholder - user should update

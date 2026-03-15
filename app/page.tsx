@@ -12,6 +12,7 @@ import Footer from '../components/Footer';
 import CartPanel from '../components/CartPanel';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { cn } from '../lib/utils';
 import { MessageCircle, Sparkles, Star, ChevronUp, CheckCircle2, Award, ShieldCheck, Zap, ArrowRight, Quote } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -74,31 +75,72 @@ export default function Home() {
 
       <Hero />
 
-      {/* Trust Synthesis Section */}
-      <section className="trust-section relative -mt-20 md:-mt-28 z-30 pb-24">
+      {/* Excellence & Trust Section */}
+      <section className="trust-section relative -mt-32 md:-mt-40 z-30 pb-32">
         <div className="container-custom">
-          <div className="glass-card !bg-white/70 !backdrop-blur-3xl p-12 md:p-20 shadow-[0_50px_100px_rgba(0,0,0,0.06)] border-white/50">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">
+          <div className="bg-white/80 backdrop-blur-3xl p-12 md:p-16 rounded-[4rem] shadow-[0_40px_100px_rgba(0,0,0,0.05)] border border-white/50 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-deep-rose/20 to-transparent" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 items-center">
               {[
-                { icon: Award, label: "Certified Precision", sub: "Canadian Dermal Standards" },
-                { icon: Zap, label: "Quantum Technology", sub: "FDA & Health Canada Validated" },
-                { icon: ShieldCheck, label: "Clinical Safety", sub: "Superior Hygiene Protocols" },
-                { icon: Star, label: "Legacy of Care", sub: "200+ Verified 5-Star Outcomes" }
+                {
+                  icon: Award,
+                  value: "10+",
+                  label: "Years Excellence",
+                  sub: "Clinical experience in Toronto & Lahore",
+                  color: "text-amber-600"
+                },
+                {
+                  icon: Zap,
+                  value: "FDA",
+                  label: "Approved Tech",
+                  sub: "Latest diode laser & medical grade tech",
+                  color: "text-blue-600"
+                },
+                {
+                  icon: ShieldCheck,
+                  value: "100%",
+                  label: "Sanitized Clinic",
+                  sub: "Strict hospital-grade hygiene protocols",
+                  color: "text-emerald-600"
+                },
+                {
+                  icon: Star,
+                  value: "5.0",
+                  label: "Client Rating",
+                  sub: "Based on 300+ verified clinic reviews",
+                  color: "text-rose-600"
+                }
               ].map((item, i) => (
-                <div key={i} className="trust-reveal reveal-hidden flex flex-col items-center md:items-start text-center md:text-left gap-5 group">
-                  <div className="w-14 h-14 bg-ivory rounded-2xl flex items-center justify-center text-deep-rose shadow-inner group-hover:bg-charcoal group-hover:text-warm-gold transition-all duration-700 transform group-hover:-translate-y-2 group-hover:rotate-6">
-                    <item.icon className="w-6 h-6" />
+                <div key={i} className="trust-reveal reveal-hidden flex flex-col items-center text-center px-4 group">
+                  <div className={cn(
+                    "w-16 h-16 rounded-3xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3",
+                    "bg-[#fafafa] shadow-inner border border-black/[0.03]"
+                  )}>
+                    <item.icon className={cn("w-7 h-7", item.color)} />
                   </div>
-                  <div className="space-y-1">
-                    <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-charcoal font-sans">{item.label}</h4>
-                    <p className="text-xs text-soft-gray font-sans font-medium leading-relaxed opacity-70">{item.sub}</p>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-center gap-1">
+                      <span className="text-3xl font-display font-black text-charcoal">{item.value}</span>
+                      {i === 3 && <Star className="w-5 h-5 fill-amber-400 stroke-amber-400" />}
+                    </div>
+                    <h4 className="text-[12px] font-black uppercase tracking-[0.2em] text-charcoal/80 font-sans">{item.label}</h4>
+                    <p className="text-[11px] text-soft-gray font-sans font-medium leading-relaxed max-w-[160px] mx-auto opacity-70 italic">{item.sub}</p>
                   </div>
                 </div>
               ))}
             </div>
+
+            <div className="mt-16 pt-10 border-t border-black/[0.03] flex justify-center">
+              <div className="flex items-center gap-3 bg-black/[0.02] px-6 py-2 rounded-full border border-black/5">
+                <CheckCircle2 className="w-4 h-4 text-[#1a9d82]" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-charcoal/60">Certified Dermal Practice • 2024</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* Narrative Containers */}
       <div className="space-y-0">
