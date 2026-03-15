@@ -11,7 +11,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { getTotalItems } = useCartStore();
     const cartCount = getTotalItems();
-    const navRef = useRef(null);
+    const navRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         // Entrance animation
@@ -40,16 +40,16 @@ const Navbar = () => {
         <>
             <nav
                 ref={navRef}
-                className="fixed top-0 left-0 w-full z-[80] h-[80px] flex items-center bg-white/95 backdrop-blur-sm border-b border-black/[0.04]"
+                className="fixed top-0 left-0 w-full z-[80] h-[80px] flex items-center bg-white border-b border-[#eee]"
             >
-                <div className="w-full max-w-[1400px] mx-auto px-8 lg:px-12 flex items-center justify-between h-full">
+                <div className="w-full max-w-[1400px] mx-auto px-16 flex items-center justify-between h-full relative">
                     {/* Left: Nav links */}
-                    <div className="hidden md:flex items-center gap-10 flex-1">
+                    <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-[14px] font-semibold text-charcoal/80 hover:text-charcoal transition-colors tracking-wide"
+                                className="text-[14px] font-medium text-[#333] hover:text-black transition-colors"
                             >
                                 {link.name}
                             </Link>
@@ -59,35 +59,35 @@ const Navbar = () => {
                     {/* Center: Logo */}
                     <Link
                         href="#home"
-                        className="absolute left-1/2 -translate-x-1/2 font-sans text-[26px] font-bold tracking-[-0.02em] text-charcoal uppercase"
+                        className="absolute left-1/2 -translate-x-1/2 font-sans text-xl font-bold tracking-tight text-black uppercase"
                     >
                         CAREON
                     </Link>
 
                     {/* Right: Icons */}
-                    <div className="flex items-center justify-end gap-5 flex-1">
-                        <button type="button" className="p-2 text-charcoal/80 hover:text-charcoal transition-colors" aria-label="Search">
-                            <Search className="w-5 h-5 stroke-[2.5px]" />
+                    <div className="flex items-center gap-5">
+                        <button type="button" className="p-1 text-[#333] hover:text-black transition-colors" aria-label="Search">
+                            <Search className="w-5 h-5" />
                         </button>
                         <button
                             type="button"
                             onClick={toggleCart}
-                            className="relative p-2 text-charcoal/80 hover:text-charcoal transition-colors"
+                            className="relative p-1 text-[#333] hover:text-black transition-colors"
                             aria-label="Cart"
                         >
-                            <ShoppingBag className="w-5 h-5 stroke-[2.5px]" />
+                            <ShoppingBag className="w-5 h-5" />
                             {cartCount > 0 && (
-                                <span className="absolute top-1 right-1 w-4 h-4 bg-charcoal text-white text-[10px] flex items-center justify-center rounded-full font-bold">
+                                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-black text-white text-[9px] flex items-center justify-center rounded-full font-bold">
                                     {cartCount}
                                 </span>
                             )}
                         </button>
-                        <Link href="#contact" className="p-2 text-charcoal/80 hover:text-charcoal transition-colors" aria-label="Profile">
-                            <User className="w-5 h-5 stroke-[2.5px]" />
+                        <Link href="#contact" className="p-1 text-[#333] hover:text-black transition-colors" aria-label="Profile">
+                            <User className="w-5 h-5" />
                         </Link>
                         <button
                             type="button"
-                            className="md:hidden p-2 text-charcoal"
+                            className="md:hidden p-1 text-black"
                             onClick={() => setIsOpen(!isOpen)}
                             aria-label="Menu"
                         >
