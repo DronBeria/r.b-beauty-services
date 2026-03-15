@@ -10,14 +10,22 @@ import { gsap } from 'gsap';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
     const { getTotalItems } = useCartStore();
     const cartCount = getTotalItems();
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 40);
+            const y = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (y / docHeight) * 100 : 0;
+
+            setScrolled(y > 40);
+            setScrollProgress(progress);
         };
-        window.addEventListener('scroll', handleScroll);
+
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -45,25 +53,30 @@ const Navbar = () => {
         <>
             <nav className={cn(
                 'fixed top-0 left-0 w-full z-[80] transition-all duration-700 px-6 md:px-12',
-                scrolled ? 'translate-y-4' : 'py-8'
+                scrolled ? 'translate-y-3 md:translate-y-4' : 'py-8'
             )}>
                 <div className={cn(
-                    "max-w-7xl mx-auto flex items-center justify-between transition-all duration-500",
-                    scrolled ? "glass-card !rounded-[2rem] px-8 py-3 shadow-2xl border-white/20" : "bg-transparent py-2"
+                    "max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 backdrop-blur-xl",
+                    scrolled
+                        ? "glass-card !rounded-[2rem] px-6 md:px-8 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] border-white/30 bg-charcoal/70"
+                        : "bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-transparent py-3"
                 )}>
+                    {/* Scroll progress glow */}
+                    <div className="absolute inset-x-6 md:inset-x-10 -bottom-0.5 h-px rounded-full bg-gradient-to-r from-deep-rose/0 via-deep-rose/60 to-warm-gold/0 opacity-70" />
+
                     {/* Logo */}
                     <Link href="#home" className="flex flex-col group relative">
                         <div className="flex items-center gap-1">
                             <span className={cn(
                                 "font-display text-2xl md:text-3xl font-bold tracking-tighter transition-colors duration-500",
-                                scrolled ? "text-charcoal" : "text-white"
+                                scrolled ? "text-ivory" : "text-white"
                             )}>
                                 R.B <span className="italic font-light text-gradient">BEAUTY</span>
                             </span>
                         </div>
                         <span className={cn(
                             "text-[8px] uppercase tracking-[0.5em] font-black -mt-0.5 transition-all duration-500",
-                            scrolled ? "text-soft-gray opacity-60" : "text-white/40"
+                            scrolled ? "text-soft-gray opacity-70" : "text-white/60"
                         )}>
                             Esthetics & Laser
                         </span>
@@ -72,7 +85,7 @@ const Navbar = () => {
                     {/* Desktop Nav */}
                     <div className={cn(
                         "hidden md:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-sans font-black",
-                        scrolled ? "text-charcoal" : "text-white"
+                        scrolled ? "text-ivory" : "text-white"
                     )}>
                         {navLinks.map((link) => (
                             <Link
@@ -80,8 +93,10 @@ const Navbar = () => {
                                 href={link.href}
                                 className="relative py-2 group overflow-hidden"
                             >
-                                <span className="relative z-10 hover:text-deep-rose transition-colors duration-300">{link.name}</span>
-                                <span className="absolute bottom-0 left-0 w-0 h-px bg-deep-rose transition-all duration-500 group-hover:w-full" />
+                                <span className="relative z-10 transition-colors duration-300 group-hover:text-deep-rose">
+                                    {link.name}
+                                </span>
+                                <span className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-deep-rose to-transparent scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100" />
                             </Link>
                         ))}
                     </div>
@@ -91,7 +106,7 @@ const Navbar = () => {
                         <button
                             className={cn(
                                 "group relative p-2.5 rounded-full transition-all duration-500",
-                                scrolled ? "hover:bg-deep-rose/5" : "hover:bg-white/10"
+                                scrolled ? "bg-charcoal/60 hover:bg-deep-rose/10 border border-white/10" : "hover:bg-white/10 border border-white/10"
                             )}
                             onClick={toggleCart}
                         >
@@ -106,12 +121,13 @@ const Navbar = () => {
                         <Link
                             href="https://wa.me/1234567890"
                             className={cn(
-                                "hidden sm:flex items-center gap-2.5 px-6 py-3 rounded-full text-[10px] font-black tracking-widest transition-all duration-500 shadow-xl",
+                                "hidden sm:flex items-center gap-2.5 px-7 py-3 rounded-full text-[10px] font-black tracking-widest transition-all duration-500 shadow-xl relative overflow-hidden",
                                 scrolled
-                                    ? "bg-deep-rose text-white hover:bg-deep-rose-dark shadow-deep-rose/20"
-                                    : "bg-white text-charcoal hover:bg-ivory shadow-black/10"
+                                    ? "bg-deep-rose text-white hover:bg-deep-rose-dark shadow-deep-rose/30"
+                                    : "bg-white/95 text-charcoal hover:bg-ivory shadow-black/20"
                             )}
                         >
+                            <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                             <MessageCircle className="w-4 h-4" />
                             <span>RESERVE</span>
                         </Link>
@@ -120,7 +136,7 @@ const Navbar = () => {
                         <button
                             className={cn(
                                 "md:hidden p-2.5 rounded-full transition-all duration-500",
-                                scrolled ? "text-charcoal hover:bg-deep-rose/5" : "text-white hover:bg-white/10"
+                                scrolled ? "text-ivory hover:bg-deep-rose/10" : "text-white hover:bg-white/10"
                             )}
                             onClick={() => setIsOpen(!isOpen)}
                         >
@@ -137,7 +153,7 @@ const Navbar = () => {
             )}>
                 {/* Backdrop Blur */}
                 <div
-                    className="absolute inset-0 bg-charcoal/90 backdrop-blur-3xl"
+                    className="absolute inset-0 bg-gradient-to-b from-charcoal/95 via-charcoal/90 to-charcoal/80 backdrop-blur-3xl"
                     onClick={() => setIsOpen(false)}
                 />
 
