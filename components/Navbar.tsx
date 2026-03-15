@@ -5,36 +5,18 @@ import Link from 'next/link';
 import { Menu, X, ShoppingCart, MessageCircle, Sparkle } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 import { cn } from '../lib/utils';
-import { gsap } from 'gsap';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [scrollProgress, setScrollProgress] = useState(0);
     const { getTotalItems } = useCartStore();
     const cartCount = getTotalItems();
 
     useEffect(() => {
-        const handleScroll = () => {
-            const y = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = docHeight > 0 ? (y / docHeight) * 100 : 0;
-
-            setScrolled(y > 40);
-            setScrollProgress(progress);
-        };
-
-        handleScroll();
+        const handleScroll = () => setScrolled(window.scrollY > 40);
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    useEffect(() => {
-        if (cartCount > 0) {
-            const tl = gsap.timeline();
-            tl.to('.cart-badge', { scale: 1.4, duration: 0.2, yoyo: true, repeat: 1 });
-        }
-    }, [cartCount]);
 
     const navLinks = [
         { name: 'Home', href: '#home' },
@@ -52,18 +34,15 @@ const Navbar = () => {
     return (
         <>
             <nav className={cn(
-                'fixed top-0 left-0 w-full z-[80] transition-all duration-700 px-6 md:px-12',
-                scrolled ? 'translate-y-3 md:translate-y-4' : 'py-8'
+                'fixed top-0 left-0 w-full z-[80] px-6 md:px-12',
+                scrolled ? 'py-4' : 'py-8'
             )}>
                 <div className={cn(
-                    "max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 backdrop-blur-xl",
+                    "max-w-7xl mx-auto flex items-center justify-between backdrop-blur-xl",
                     scrolled
-                        ? "glass-card !rounded-[2rem] px-6 md:px-8 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] border-white/30 bg-charcoal/70"
-                        : "bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-transparent py-3"
+                        ? "glass-card !rounded-[2rem] px-6 md:px-8 py-3 shadow-lg border-white/20 bg-charcoal/80"
+                        : "bg-charcoal/50 py-3 rounded-2xl px-6 md:px-8"
                 )}>
-                    {/* Scroll progress glow */}
-                    <div className="absolute inset-x-6 md:inset-x-10 -bottom-0.5 h-px rounded-full bg-gradient-to-r from-deep-rose/0 via-deep-rose/60 to-warm-gold/0 opacity-70" />
-
                     {/* Logo */}
                     <Link href="#home" className="flex flex-col group relative">
                         <div className="flex items-center gap-1">
@@ -91,12 +70,9 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="relative py-2 group overflow-hidden"
+                                className="py-2 hover:text-deep-rose transition-colors duration-200"
                             >
-                                <span className="relative z-10 transition-colors duration-300 group-hover:text-deep-rose">
-                                    {link.name}
-                                </span>
-                                <span className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-deep-rose to-transparent scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100" />
+                                {link.name}
                             </Link>
                         ))}
                     </div>
@@ -110,7 +86,7 @@ const Navbar = () => {
                             )}
                             onClick={toggleCart}
                         >
-                            <ShoppingCart className={cn("w-5 h-5 transition-colors", scrolled ? "text-charcoal" : "text-white")} />
+                            <ShoppingCart className={cn("w-5 h-5", scrolled ? "text-ivory" : "text-white")} />
                             {cartCount > 0 && (
                                 <span className="cart-badge absolute -top-1 -right-1 w-5 h-5 bg-deep-rose text-white text-[9px] flex items-center justify-center rounded-full font-bold shadow-lg border-2 border-ivory">
                                     {cartCount}
@@ -121,13 +97,12 @@ const Navbar = () => {
                         <Link
                             href="https://wa.me/1234567890"
                             className={cn(
-                                "hidden sm:flex items-center gap-2.5 px-7 py-3 rounded-full text-[10px] font-black tracking-widest transition-all duration-500 shadow-xl relative overflow-hidden",
+                                "hidden sm:flex items-center gap-2.5 px-7 py-3 rounded-full text-[10px] font-black tracking-widest transition-colors duration-200",
                                 scrolled
-                                    ? "bg-deep-rose text-white hover:bg-deep-rose-dark shadow-deep-rose/30"
-                                    : "bg-white/95 text-charcoal hover:bg-ivory shadow-black/20"
+                                    ? "bg-deep-rose text-white hover:bg-deep-rose-dark"
+                                    : "bg-white text-charcoal hover:bg-ivory"
                             )}
                         >
-                            <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                             <MessageCircle className="w-4 h-4" />
                             <span>RESERVE</span>
                         </Link>
@@ -168,33 +143,26 @@ const Navbar = () => {
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center gap-8 w-full px-10">
                     <div className="flex flex-col items-center mb-8">
-                        <Sparkle className="w-10 h-10 text-warm-gold mb-4 animate-spin-slow" />
+                        <Sparkle className="w-10 h-10 text-warm-gold mb-4" />
                         <span className="font-display text-3xl md:text-5xl font-bold text-white tracking-tighter">
                             R.B <span className="italic font-light text-gradient">BEAUTY</span>
                         </span>
                     </div>
 
                     <div className="flex flex-col items-center gap-6 w-full max-w-sm">
-                        {navLinks.map((link, i) => (
+                        {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setIsOpen(false)}
-                                className={cn(
-                                    "font-display text-4xl hover:text-deep-rose transition-all text-white/90 transform hover:scale-110",
-                                    isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                )}
-                                style={{ transitionDelay: `${i * 100}ms` }}
+                                className="font-display text-4xl hover:text-deep-rose transition-colors text-white/90"
                             >
                                 {link.name}
                             </Link>
                         ))}
                     </div>
 
-                    <div className={cn(
-                        "mt-12 flex flex-col items-center transition-all duration-700 delay-500",
-                        isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                    )}>
+                    <div className="mt-12 flex flex-col items-center">
                         <Link
                             href="https://wa.me/1234567890"
                             className="btn-primary"
