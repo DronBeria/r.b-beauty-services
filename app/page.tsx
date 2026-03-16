@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import ServicesSection from '../components/ServicesSection';
@@ -11,6 +11,9 @@ import PricingSection from '../components/PricingSection';
 import Footer from '../components/Footer';
 import CartPanel from '../components/CartPanel';
 import Preloader from '../components/Preloader';
+import MarqueeStrip from '../components/MarqueeStrip';
+import FAQSection from '../components/FAQSection';
+import CartToast from '../components/CartToast';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
@@ -20,6 +23,16 @@ import { WHATSAPP_NUMBER } from '../constants/services';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+    const [scrollProgress, setScrollProgress] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            setScrollProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -78,11 +91,19 @@ export default function Home() {
 
     return (
         <main className="relative min-h-screen bg-ivory selection:bg-deep-rose selection:text-white overflow-hidden">
+            {/* Scroll progress bar */}
+            <div
+                className="fixed top-0 left-0 z-[500] h-[2px] transition-all duration-75 pointer-events-none"
+                style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #A0134D, #C2185B, #9A7B4F)' }}
+            />
+
             <Preloader />
             <Navbar />
             <CartPanel />
+            <CartToast />
 
             <Hero />
+            <MarqueeStrip />
 
             {/* Trust / Stats Strip */}
             <section className="trust-section relative z-30 py-16 md:py-24">
@@ -184,6 +205,7 @@ export default function Home() {
                 </div>
             </section>
 
+            <FAQSection />
             <Footer />
 
             {/* Floating action buttons */}
