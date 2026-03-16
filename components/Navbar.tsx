@@ -122,8 +122,8 @@ const Navbar = () => {
                 className={cn(
                     'fixed top-0 left-0 w-full z-[150] transition-all duration-500',
                     scrolled
-                        ? 'h-[66px] bg-white/98 backdrop-blur-2xl shadow-sm border-b border-black/[0.06]'
-                        : 'h-[80px] bg-white/95 backdrop-blur-2xl border-b border-black/[0.05] shadow-[0_2px_20px_rgba(0,0,0,0.04)]'
+                        ? 'h-[66px] bg-white shadow-sm border-b border-black/[0.06]'
+                        : 'h-[80px] bg-white border-b border-black/[0.05] shadow-[0_2px_20px_rgba(0,0,0,0.04)]'
                 )}
                 onMouseLeave={scheduleClose}
             >
@@ -178,7 +178,7 @@ const Navbar = () => {
                                         onMouseEnter={cancelClose}
                                         onMouseLeave={scheduleClose}
                                     >
-                                        <div className="w-52 bg-white/98 backdrop-blur-2xl rounded-2xl shadow-[0_16px_60px_rgba(0,0,0,0.12)] border border-black/[0.06] overflow-hidden p-1.5">
+                                        <div className="w-52 bg-white rounded-2xl shadow-[0_16px_60px_rgba(0,0,0,0.18)] border border-black/[0.07] overflow-hidden p-1.5">
                                             <div className="h-px w-full bg-gradient-to-r from-transparent via-deep-rose/20 to-transparent mb-1.5" />
                                             {PRICING_LINKS.map((item) => (
                                                 <Link
@@ -247,7 +247,7 @@ const Navbar = () => {
                     onMouseLeave={scheduleClose}
                 >
                     <div className="max-w-[1400px] mx-auto px-4 pb-3">
-                        <div className="bg-white/98 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_32px_100px_rgba(0,0,0,0.16)] border border-black/[0.08] overflow-hidden">
+                        <div className="bg-white rounded-[2.5rem] shadow-[0_24px_80px_rgba(0,0,0,0.18)] border border-black/[0.07] overflow-hidden">
                             <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-deep-rose/40 to-transparent" />
 
                             <div className="p-8 grid grid-cols-4 gap-8">
