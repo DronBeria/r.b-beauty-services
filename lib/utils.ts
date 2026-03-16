@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatWhatsAppMessage(items: any[]) {
     const serviceList = items
-        .map((item) => `• ${item.name} — ${item.duration}`)
+        .map((item) => `  • *${item.name}*\n    Price: ${item.price}  |  Duration: ${item.duration}`)
         .join('\n');
 
     const totalTime = items.reduce((acc, item) => {
@@ -17,13 +17,22 @@ export function formatWhatsAppMessage(items: any[]) {
 
     const hours = Math.floor(totalTime / 60);
     const coreMins = totalTime % 60;
-    const timeStr = hours > 0 ? `${hours}h ${coreMins}m` : `${coreMins} min`;
+    const timeStr = hours > 0 ? `${hours}h ${coreMins > 0 ? ` ${coreMins}m` : ''}` : `${coreMins} min`;
 
-    const totalItems = items.length;
+    const totalPrice = items.reduce((acc, item) => {
+        const price = parseInt(item.price.replace(/[^0-9]/g, '')) || 0;
+        return acc + price;
+    }, 0);
 
     return encodeURIComponent(
-        `Hi R.B Beauty! 🌸 I'd like to book the following services:\n\n${serviceList}\n\n` +
-        `Estimated Total: ~${timeStr} | ${totalItems} Service(s)\n\n` +
+        `Hi R.B Beauty! 🌸\n\nI'd like to book the following services:\n\n` +
+        `${serviceList}\n\n` +
+        `━━━━━━━━━━━━━━━━\n` +
+        `📋 *Booking Summary*\n` +
+        `• Services: ${items.length}\n` +
+        `• Est. Duration: ~${timeStr}\n` +
+        `• Est. Total: From $${totalPrice}\n` +
+        `━━━━━━━━━━━━━━━━\n\n` +
         `Please let me know your available dates and times. Thank you! 😊`
     );
 }

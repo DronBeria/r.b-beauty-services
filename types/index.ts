@@ -3,7 +3,7 @@ export type Category =
   | 'Laser Treatments'
   | 'Facial Rituals'
   | 'Clinical Care'
-  | 'Consultations'
+  | 'Waxing'
   | 'Packages';
 
 export interface Service {
@@ -16,6 +16,7 @@ export interface Service {
   benefits: string[];
   image: string;
   isPopular?: boolean;
+  badge?: string;
 }
 
 export interface CartItem extends Service {

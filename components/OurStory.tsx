@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkles, Heart, Globe, Star, ArrowRight } from 'lucide-react';
@@ -66,11 +65,10 @@ const OurStory = () => {
                     {/* Visual Side */}
                     <div className="relative group">
                         <div className="relative aspect-[4/5] overflow-hidden rounded-[4rem] shadow-premium z-10 group-hover:shadow-2xl transition-all duration-700">
-                            <Image
-                                src="/hero-main.png"
+                            <img
+                                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=85&auto=format&fit=crop"
                                 alt="Clinic Story"
-                                fill
-                                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 absolute inset-0"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent" />
                         </div>

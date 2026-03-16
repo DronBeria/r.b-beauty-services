@@ -159,7 +159,7 @@ const Hero = () => {
                             <div className="p-[20px] pt-[12px] flex items-center gap-[10px]">
                                 <div className="w-[44px] h-[54px] bg-[#F8F8FF] rounded-[12px] overflow-hidden flex-shrink-0 border border-black/5">
                                     <img
-                                        src="/products-demo.png"
+                                        src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=100&q=80&auto=format&fit=crop"
                                         alt="Product"
                                         className="w-full h-full object-cover"
                                     />
@@ -196,7 +196,7 @@ const Hero = () => {
                     <div ref={heroImgRef} className="relative group self-center lg:self-end">
                         <div className="w-[300px] h-[340px] sm:w-[400px] sm:h-[440px] rounded-[40px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.1)] border-[8px] border-white ring-1 ring-black/5">
                             <img
-                                src="/hero-main.png"
+                                src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85&auto=format&fit=crop"
                                 alt="R.B Beauty Clinic Ritual"
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             />

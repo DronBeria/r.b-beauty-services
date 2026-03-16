@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeftRight, Sparkles, Star, ChevronRight, CheckCircle2, Waves } from 'lucide-react';
@@ -21,24 +20,24 @@ const Gallery = () => {
             title: "Advanced Laser Transformation",
             sessions: 6,
             skinType: "Fitzpatrick IV",
-            before: "/laser-demo.png",
-            after: "/hero-main.png",
+            before: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80&auto=format&fit=crop",
+            after: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format&fit=crop",
             tags: ['Laser Treatments']
         },
         {
             title: "Hydra-Luminous Ritual",
             sessions: 1,
             skinType: "Fitzpatrick II",
-            before: "/facial-demo.png",
-            after: "/hero-main.png",
+            before: "https://images.unsplash.com/photo-1556228720-da8e3810ee7f?w=600&q=80&auto=format&fit=crop",
+            after: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600&q=80&auto=format&fit=crop",
             tags: ['Facial Rituals']
         },
         {
             title: "Dermal Repair Journey",
             sessions: 4,
             skinType: "Fitzpatrick VI",
-            before: "/products-demo.png",
-            after: "/hero-main.png",
+            before: "https://images.unsplash.com/photo-1576426863848-c21f53c60b19?w=600&q=80&auto=format&fit=crop",
+            after: "https://images.unsplash.com/photo-1616391182219-e080b4d1043a?w=600&q=80&auto=format&fit=crop",
             tags: ['Clinical Care']
         }
     ];
@@ -142,7 +141,7 @@ const Gallery = () => {
                                 onTouchMove={handleMouseMove}
                             >
                                 {/* After State (Base) */}
-                                <Image src={item.after} alt="After" fill className="object-cover" />
+                                <img src={item.after} alt="After" className="absolute inset-0 w-full h-full object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-60" />
 
                                 {/* Before State (Layered) */}
@@ -150,7 +149,7 @@ const Gallery = () => {
                                     className="absolute inset-0 z-10 overflow-hidden"
                                     style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
                                 >
-                                    <Image src={item.before} alt="Before" fill className="object-cover" />
+                                    <img src={item.before} alt="Before" className="absolute inset-0 w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-40" />
                                 </div>
 

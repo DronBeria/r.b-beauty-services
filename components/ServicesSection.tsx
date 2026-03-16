@@ -7,64 +7,85 @@ import ServiceCard from './ServiceCard';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
-import { Sparkles, ArrowRight, LayoutGrid } from 'lucide-react';
+import { Sparkles, ArrowRight, LayoutGrid, ChevronDown, ShoppingBag } from 'lucide-react';
+import { useCartStore } from '../store/useCartStore';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const CATEGORIES: Category[] = [
     'All Services',
     'Laser Treatments',
-    'Facial Treatments',
-    'Skincare',
+    'Facial Rituals',
+    'Clinical Care',
     'Waxing',
-    'Add-ons',
-    'Packages'
+    'Packages',
 ];
+
+const INITIAL_VISIBLE = 6;
 
 const ServicesSection = () => {
     const [activeCategory, setActiveCategory] = useState<Category>('All Services');
+    const [showAll, setShowAll] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
+    const { getTotalItems } = useCartStore();
+    const cartCount = getTotalItems();
 
     const filteredServices = useMemo(() => {
         if (activeCategory === 'All Services') return SERVICES;
-        return SERVICES.filter((service) => service.category === activeCategory);
+        return SERVICES.filter((s) => s.category === activeCategory);
+    }, [activeCategory]);
+
+    const visibleServices = useMemo(() => {
+        if (showAll) return filteredServices;
+        return filteredServices.slice(0, INITIAL_VISIBLE);
+    }, [filteredServices, showAll]);
+
+    // Reset showAll when category changes
+    useEffect(() => {
+        setShowAll(false);
     }, [activeCategory]);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.to('.services-header-reveal', {
-                y: 0,
-                opacity: 1,
-                stagger: 0.15,
-                duration: 1.2,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 85%",
+            gsap.fromTo('.services-header-reveal',
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1,
+                    stagger: 0.12,
+                    duration: 1.1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 85%',
+                    }
                 }
-            });
+            );
         }, sectionRef);
-
         return () => ctx.revert();
     }, []);
 
     useEffect(() => {
         const cards = gridRef.current?.children;
         if (cards) {
-            gsap.fromTo(cards,
-                { opacity: 0, y: 40, scale: 0.95 },
+            gsap.fromTo(Array.from(cards),
+                { opacity: 0, y: 32, scale: 0.96 },
                 {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 0.8,
-                    stagger: 0.08,
-                    ease: "power2.out",
+                    opacity: 1, y: 0, scale: 1,
+                    duration: 0.65,
+                    stagger: 0.07,
+                    ease: 'power2.out',
                     overwrite: true,
-                    clearProps: "all"
+                    clearProps: 'all',
                 }
             );
         }
-    }, [activeCategory]);
+    }, [visibleServices]);
+
+    const toggleCart = () => {
+        const panel = document.getElementById('cart-panel');
+        if (panel) panel.classList.toggle('translate-x-full');
+    };
 
     return (
         <section
@@ -72,94 +93,118 @@ const ServicesSection = () => {
             ref={sectionRef}
             className="section-padding bg-white relative overflow-hidden"
         >
-            {/* Background Noise & Glows */}
+            {/* Background */}
             <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
             <div className="absolute -top-[10%] -left-[5%] w-[600px] h-[600px] bg-warm-gold/5 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-deep-rose/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="container-custom relative z-10">
-                {/* Header Container */}
-                <div className="max-w-4xl mx-auto text-center mb-20 md:mb-32">
-                    <div className="services-header-reveal reveal-hidden inline-flex items-center gap-3 mb-6">
+                {/* Header */}
+                <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+                    <div className="services-header-reveal opacity-0 translate-y-10 inline-flex items-center gap-3 mb-6">
                         <div className="w-10 h-px bg-deep-rose/30" />
                         <span className="text-[10px] font-black uppercase tracking-[0.5em] text-deep-rose font-sans">Our Signature Menu</span>
                         <div className="w-10 h-px bg-deep-rose/30" />
                     </div>
-
-                    <h2 className="services-header-reveal reveal-hidden font-display text-6xl md:text-8xl lg:text-9xl text-charcoal mb-10 leading-[0.85]">
+                    <h2 className="services-header-reveal opacity-0 translate-y-10 font-display text-5xl md:text-7xl lg:text-8xl text-charcoal mb-8 leading-[0.9]">
                         Artistry In <br />
-                        <span className="italic font-light text-gradient drop-shadow-sm">Clinical</span> Precision
+                        <span className="italic font-light text-gradient">Clinical</span> Precision
                     </h2>
-
-                    <p className="services-header-reveal reveal-hidden max-w-2xl mx-auto text-soft-gray font-sans text-lg md:text-xl leading-relaxed">
-                        We don't just provide treatments; we curate experiences that celebrate your natural radiance.
-                        Select a category below to explore our world-class offerings.
+                    <p className="services-header-reveal opacity-0 translate-y-10 max-w-xl mx-auto text-soft-gray font-sans text-lg leading-relaxed">
+                        Select a service, add to your booking, then send directly to our team via WhatsApp to confirm your appointment.
                     </p>
                 </div>
 
-                {/* Filter Controls */}
-                <div className="mb-20">
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                        <div className="hidden md:flex items-center gap-2 text-charcoal/40 font-sans text-[10px] font-black uppercase tracking-widest mr-4">
+                {/* Category Filter */}
+                <div className="mb-14">
+                    <div className="flex flex-col items-center gap-4">
+                        <div className="hidden md:flex items-center gap-2 text-charcoal/40 font-sans text-[10px] font-black uppercase tracking-widest">
                             <LayoutGrid className="w-4 h-4" />
-                            <span>Filter by Chapter</span>
+                            <span>Filter by Category</span>
                         </div>
-
-                        <div className="flex bg-ivory/80 backdrop-blur-xl p-2.5 rounded-[2.5rem] border border-charcoal/5 shadow-premium overflow-x-auto max-w-full scrollbar-none gap-2">
-                            {CATEGORIES.map((category) => (
+                        <div className="flex flex-wrap justify-center bg-ivory/80 backdrop-blur-xl p-2 rounded-[2.5rem] border border-charcoal/5 shadow-premium gap-1.5 max-w-full">
+                            {CATEGORIES.map((cat) => (
                                 <button
-                                    key={category}
-                                    onClick={() => setActiveCategory(category)}
+                                    key={cat}
+                                    onClick={() => setActiveCategory(cat)}
                                     className={cn(
-                                        "whitespace-nowrap px-8 py-3.5 rounded-[2rem] text-[10px] uppercase tracking-[0.2em] font-black transition-all duration-500 relative group overflow-hidden",
-                                        activeCategory === category
-                                            ? "bg-charcoal text-white shadow-xl translate-y-[-2px]"
-                                            : "text-charcoal/60 hover:text-deep-rose hover:bg-white"
+                                        'whitespace-nowrap px-5 py-3 rounded-[2rem] text-[10px] uppercase tracking-[0.2em] font-black transition-all duration-400',
+                                        activeCategory === cat
+                                            ? 'bg-charcoal text-white shadow-lg -translate-y-0.5'
+                                            : 'text-charcoal/60 hover:text-deep-rose hover:bg-white'
                                     )}
                                 >
-                                    <span className="relative z-10">{category}</span>
-                                    {activeCategory === category && (
-                                        <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none" />
-                                    )}
+                                    {cat}
                                 </button>
                             ))}
                         </div>
                     </div>
                 </div>
 
+                {/* Count indicator */}
+                <div className="flex items-center justify-between mb-8 px-1">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-charcoal/30 font-sans">
+                        {filteredServices.length} {activeCategory === 'All Services' ? 'Services Available' : `${activeCategory} services`}
+                    </span>
+                    {cartCount > 0 && (
+                        <button
+                            onClick={toggleCart}
+                            className="flex items-center gap-2 bg-charcoal text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-deep-rose transition-all duration-300 shadow-lg"
+                        >
+                            <ShoppingBag className="w-3.5 h-3.5" />
+                            <span>View Booking ({cartCount})</span>
+                        </button>
+                    )}
+                </div>
+
                 {/* Services Grid */}
                 <div
                     ref={gridRef}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
-                    {filteredServices.map((service, index) => (
+                    {visibleServices.map((service, index) => (
                         <ServiceCard key={service.id} service={service} index={index} />
                     ))}
                 </div>
 
-                {/* Mobile Scroll Hint */}
-                <div className="md:hidden flex flex-col items-center gap-3 mt-16 text-charcoal/40 font-sans">
-                    <div className="w-16 h-px bg-charcoal/10" />
-                    <div className="flex items-center gap-3 text-[9px] font-black uppercase tracking-[0.4em]">
-                        <span>Swipe Categories</span>
-                        <ArrowRight className="w-3 h-3 animate-float horizontal" />
+                {/* Load More */}
+                {filteredServices.length > INITIAL_VISIBLE && (
+                    <div className="mt-12 flex justify-center">
+                        <button
+                            onClick={() => setShowAll(!showAll)}
+                            className={cn(
+                                'flex items-center gap-3 px-10 py-4 rounded-full border font-black text-[10px] uppercase tracking-[0.3em] transition-all duration-500',
+                                showAll
+                                    ? 'border-charcoal/20 text-charcoal/60 hover:bg-charcoal/5'
+                                    : 'border-deep-rose/30 text-deep-rose hover:bg-deep-rose hover:text-white hover:border-deep-rose shadow-sm'
+                            )}
+                        >
+                            <span>{showAll ? 'Show Less' : `Show All ${filteredServices.length} Services`}</span>
+                            <ChevronDown
+                                className={cn('w-4 h-4 transition-transform duration-500', showAll && 'rotate-180')}
+                            />
+                        </button>
                     </div>
-                </div>
+                )}
 
                 {/* Bottom CTA */}
-                <div className="mt-32 text-center p-20 glass-card border-deep-rose/10 bg-gradient-to-br from-white to-ivory relative overflow-hidden group">
+                <div className="mt-24 text-center p-14 md:p-20 glass-card border-deep-rose/10 bg-gradient-to-br from-white to-ivory relative overflow-hidden">
                     <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
                     <div className="relative z-10">
-                        <Sparkles className="w-10 h-10 text-warm-gold mx-auto mb-8 animate-pulse-soft" />
-                        <h3 className="font-display text-4xl md:text-5xl text-charcoal mb-6">Unsure where to begin?</h3>
-                        <p className="text-soft-gray font-sans text-lg mb-12 max-w-xl mx-auto">
-                            Our skin specialists are here to guide you through a private consultation
-                            to find the perfect treatment journey for your goals.
+                        <Sparkles className="w-9 h-9 text-warm-gold mx-auto mb-6 animate-pulse-soft" />
+                        <h3 className="font-display text-3xl md:text-4xl text-charcoal mb-4">Not sure where to start?</h3>
+                        <p className="text-soft-gray font-sans text-base mb-10 max-w-lg mx-auto">
+                            Our specialists will build a personalized treatment plan during a free consultation.
                         </p>
-                        <button className="btn-primary mx-auto group">
-                            <span>Book A Consultation</span>
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-4 transition-transform" />
-                        </button>
+                        <a
+                            href="https://wa.me/14160000000?text=Hi%20R.B%20Beauty!%20I%27d%20like%20to%20book%20a%20free%20consultation."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary mx-auto group inline-flex"
+                        >
+                            <span>Book a Free Consultation</span>
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
+                        </a>
                     </div>
                 </div>
             </div>
