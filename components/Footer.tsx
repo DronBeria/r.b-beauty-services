@@ -23,6 +23,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
+        <>
         <footer id="contact" className="relative bg-charcoal text-white pt-16 md:pt-32 pb-10 md:pb-16 overflow-hidden">
             {/* Visual Ambient Flourishes */}
             <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
@@ -157,6 +158,20 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
+
+        {/* Sub-footer — Arc WebWorks */}
+        <div className="bg-[#0A0A0C] border-t border-white/[0.04] py-3 px-6 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3">
+            <span className="text-[9px] font-sans text-white/20 uppercase tracking-[0.4em]">Developed & managed by</span>
+            <a
+                href="https://arcwebworks.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[9px] font-black uppercase tracking-[0.4em] text-white/40 hover:text-warm-gold transition-colors duration-300"
+            >
+                Arc WebWorks
+            </a>
+        </div>
+    </>
     );
 };
 

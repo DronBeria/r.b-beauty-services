@@ -35,10 +35,10 @@ export const useCartStore = create<CartStore>()(
             getTotalItems: () => get().items.length,
             getTotalPrice: () => {
                 const total = get().items.reduce((acc, item) => {
-                    const price = parseInt(item.price.replace(/[^0-9]/g, '')) || 0;
+                    const price = parseFloat(item.price.replace(/[^0-9.]/g, '')) || 0;
                     return acc + price;
                 }, 0);
-                return `From $${total}`;
+                return `$${total.toFixed(2)}`;
             },
         }),
         {
