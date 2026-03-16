@@ -2,118 +2,60 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Star, Sparkles, CalendarCheck, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Play, Star, CheckCircle2, Tag } from 'lucide-react';
 import gsap from 'gsap';
 import { WHATSAPP_NUMBER } from '../constants/services';
 
-const STATS = [
-    { value: '500+', label: 'Happy Clients' },
-    { value: '10+', label: 'Years Experience' },
-    { value: '5.0★', label: 'Client Rating' },
-    { value: 'FDA', label: 'Approved Tech' },
-];
-
 const Hero = () => {
     const sectionRef = useRef<HTMLElement>(null);
-    const eyebrowRef = useRef<HTMLDivElement>(null);
-    const line1Ref = useRef<HTMLDivElement>(null);
-    const line2Ref = useRef<HTMLDivElement>(null);
-    const line3Ref = useRef<HTMLDivElement>(null);
-    const subRef = useRef<HTMLParagraphElement>(null);
-    const ctaRef = useRef<HTMLDivElement>(null);
-    const statsRef = useRef<HTMLDivElement>(null);
     const imgRef = useRef<HTMLDivElement>(null);
     const badge1Ref = useRef<HTMLDivElement>(null);
     const badge2Ref = useRef<HTMLDivElement>(null);
-    const orbRef = useRef<HTMLDivElement>(null);
+    const promoRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 1.5 });
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 1.3 });
 
-            // Background orb
-            gsap.fromTo(orbRef.current,
-                { scale: 0.6, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 2.5, ease: 'power2.out', delay: 1.3 }
-            );
-
-            // Staggered headline lines
-            tl.fromTo(eyebrowRef.current,
+            tl.fromTo('.hero-eyebrow',
                 { y: 16, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.7 }
+                { y: 0, opacity: 1, duration: 0.6 }
             )
-            .fromTo(line1Ref.current,
-                { y: 60, opacity: 0, skewY: 4 },
-                { y: 0, opacity: 1, skewY: 0, duration: 1 },
-                '-=0.3'
+            .fromTo('.hero-line',
+                { y: 80, opacity: 0, skewY: 3 },
+                { y: 0, opacity: 1, skewY: 0, duration: 1.1, stagger: 0.1 },
+                '-=0.2'
             )
-            .fromTo(line2Ref.current,
-                { y: 60, opacity: 0, skewY: 4 },
-                { y: 0, opacity: 1, skewY: 0, duration: 1 },
-                '-=0.8'
-            )
-            .fromTo(line3Ref.current,
-                { y: 60, opacity: 0, skewY: 4 },
-                { y: 0, opacity: 1, skewY: 0, duration: 1 },
-                '-=0.8'
-            )
-            .fromTo(subRef.current,
+            .fromTo('.hero-sub',
                 { y: 20, opacity: 0 },
                 { y: 0, opacity: 1, duration: 0.8 },
                 '-=0.5'
             )
-            .fromTo(ctaRef.current,
+            .fromTo('.hero-cta',
                 { y: 20, opacity: 0 },
                 { y: 0, opacity: 1, duration: 0.8 },
                 '-=0.6'
             )
-            .fromTo(statsRef.current,
-                { y: 20, opacity: 0 },
+            .fromTo(promoRef.current,
+                { y: 24, opacity: 0 },
                 { y: 0, opacity: 1, duration: 0.8 },
                 '-=0.5'
             )
-            // Image entrance
             .fromTo(imgRef.current,
                 { x: 60, opacity: 0, scale: 1.04 },
-                { x: 0, opacity: 1, scale: 1, duration: 1.3, ease: 'expo.out' },
-                '-=1.6'
+                { x: 0, opacity: 1, scale: 1, duration: 1.4, ease: 'expo.out' },
+                '-=1.8'
             )
             .fromTo([badge1Ref.current, badge2Ref.current],
                 { scale: 0.7, opacity: 0, y: 20 },
-                { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.7)', stagger: 0.15 },
-                '-=0.8'
+                { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.7)', stagger: 0.18 },
+                '-=0.9'
             );
 
-            // Idle float for image
-            gsap.to(imgRef.current, {
-                y: '-=14',
-                duration: 4,
-                repeat: -1,
-                yoyo: true,
-                ease: 'sine.inOut',
-                delay: 3.5,
-            });
-
-            // Idle float for badges
-            gsap.to(badge1Ref.current, {
-                y: '-=8',
-                rotation: '+=1.5',
-                duration: 3.2,
-                repeat: -1,
-                yoyo: true,
-                ease: 'sine.inOut',
-                delay: 3.8,
-            });
-            gsap.to(badge2Ref.current, {
-                y: '-=6',
-                rotation: '-=1',
-                duration: 2.8,
-                repeat: -1,
-                yoyo: true,
-                ease: 'sine.inOut',
-                delay: 4.2,
-            });
-
+            // Idle floats
+            gsap.to(badge1Ref.current, { y: '-=8', duration: 3.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.2 });
+            gsap.to(badge2Ref.current, { y: '+=6', rotation: '+=0.8', duration: 3.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.8 });
+            gsap.to(promoRef.current, { y: '-=5', duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4 });
         }, sectionRef);
 
         return () => ctx.revert();
@@ -123,90 +65,76 @@ const Hero = () => {
         <section
             ref={sectionRef}
             id="home"
-            className="relative min-h-[100svh] w-full flex items-center overflow-hidden pt-[80px]"
-            style={{
-                background: 'linear-gradient(135deg, #FBF8F5 0%, #FDF6F8 40%, #F9F5FF 70%, #FBF8F5 100%)',
-            }}
+            className="relative min-h-[100svh] w-full overflow-hidden pt-[80px]"
+            style={{ background: 'linear-gradient(130deg, #FDFAF7 0%, #FBF6F8 45%, #F9F5FD 100%)' }}
         >
-            {/* Background orb */}
-            <div
-                ref={orbRef}
-                className="absolute inset-0 pointer-events-none"
-                style={{ opacity: 0 }}
-            >
-                <div className="absolute top-[-20%] right-[-10%] w-[700px] h-[700px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(160,19,77,0.08) 0%, transparent 70%)' }} />
-                <div className="absolute bottom-[-15%] left-[-8%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(154,123,79,0.07) 0%, transparent 70%)' }} />
-                <div className="absolute top-[30%] left-[40%] w-[400px] h-[400px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(160,19,77,0.04) 0%, transparent 70%)' }} />
-            </div>
+            <div className="w-full max-w-[1380px] mx-auto px-6 md:px-12 lg:px-16 min-h-[calc(100svh-80px)] grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-6 items-center py-12 lg:py-0">
 
-            <div className="relative z-10 w-full max-w-[1360px] mx-auto px-6 md:px-12 lg:px-16 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-
-                {/* ── LEFT: Text ─────────────────────────────────────────── */}
-                <div className="flex flex-col order-2 lg:order-1">
+                {/* ── LEFT: Text ──────────────────────────────────────────────── */}
+                <div className="flex flex-col justify-center order-2 lg:order-1 lg:pr-8 xl:pr-14">
 
                     {/* Eyebrow */}
-                    <div
-                        ref={eyebrowRef}
-                        className="inline-flex items-center gap-2.5 mb-8"
-                        style={{ opacity: 0 }}
-                    >
-                        <div className="flex items-center gap-1">
-                            {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="w-3 h-3 fill-amber-400 stroke-amber-400" />
-                            ))}
+                    <div className="hero-eyebrow opacity-0 flex items-center gap-3 mb-7">
+                        <div className="flex gap-0.5">
+                            {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-amber-400 stroke-amber-400" />)}
                         </div>
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-charcoal/50 font-sans">
-                            Toronto's #1 Laser Clinic
-                        </span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.45em] text-charcoal/45 font-sans">Toronto's #1 Rated Clinic</span>
                     </div>
 
-                    {/* Headline — 3 lines with overflow clip for smooth reveal */}
-                    <div className="mb-8 space-y-1">
+                    {/* Headline — 4 lines matching reference */}
+                    <div className="mb-8 space-y-0.5">
                         <div className="overflow-hidden">
-                            <div ref={line1Ref} style={{ opacity: 0 }}>
-                                <h1 className="font-display text-[3.2rem] sm:text-[4rem] md:text-[4.8rem] lg:text-[5.2rem] font-bold text-charcoal leading-[0.92] tracking-[-0.02em] uppercase">
-                                    The Art
-                                </h1>
-                            </div>
+                            <h1 className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-charcoal leading-[0.9] tracking-[-0.02em] uppercase">
+                                Care for
+                            </h1>
                         </div>
                         <div className="overflow-hidden">
-                            <div ref={line2Ref} style={{ opacity: 0 }}>
-                                <h1 className="font-display text-[3.2rem] sm:text-[4rem] md:text-[4.8rem] lg:text-[5.2rem] font-light italic text-charcoal leading-[0.92] tracking-[-0.02em]"
-                                    style={{ background: 'linear-gradient(135deg, #A0134D 0%, #C2185B 50%, #9A7B4F 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
-                                >
-                                    of Radiance
-                                </h1>
-                            </div>
+                            <h1
+                                className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] leading-[0.9] tracking-[-0.02em]"
+                                style={{
+                                    background: 'linear-gradient(135deg, #A0134D 0%, #C2185B 40%, #9A7B4F 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    fontWeight: 300,
+                                    fontStyle: 'italic',
+                                }}
+                            >
+                                your skin,
+                            </h1>
                         </div>
                         <div className="overflow-hidden">
-                            <div ref={line3Ref} style={{ opacity: 0 }}>
-                                <h1 className="font-display text-[3.2rem] sm:text-[4rem] md:text-[4.8rem] lg:text-[5.2rem] font-bold text-charcoal leading-[0.92] tracking-[-0.02em] uppercase">
-                                    Redefined.
-                                </h1>
-                            </div>
+                            <h1 className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-charcoal leading-[0.9] tracking-[-0.02em] uppercase">
+                                care for
+                            </h1>
+                        </div>
+                        <div className="overflow-hidden">
+                            <h1
+                                className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] leading-[0.9] tracking-[-0.02em]"
+                                style={{
+                                    background: 'linear-gradient(135deg, #A0134D 0%, #C2185B 40%, #9A7B4F 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    fontWeight: 300,
+                                    fontStyle: 'italic',
+                                }}
+                            >
+                                your beauty.
+                            </h1>
                         </div>
                     </div>
 
                     {/* Subtext */}
-                    <p
-                        ref={subRef}
-                        className="text-[15px] md:text-[16px] leading-relaxed text-charcoal/55 font-medium max-w-[400px] mb-10"
-                        style={{ opacity: 0 }}
-                    >
-                        Premium laser hair removal, HydraFacials & clinical skin treatments — combining <span className="text-charcoal font-bold">medical precision</span> with luxury care.
+                    <p className="hero-sub opacity-0 text-charcoal/50 text-[15px] md:text-[16px] leading-relaxed max-w-[390px] mb-9 font-medium">
+                        Our skin care clinic team connects you with premium laser treatments &amp; facials in Toronto —{' '}
+                        <span className="text-charcoal font-bold">medical precision</span> meets luxury care.
                     </p>
 
                     {/* CTAs */}
-                    <div
-                        ref={ctaRef}
-                        className="flex flex-wrap items-center gap-3 mb-12"
-                        style={{ opacity: 0 }}
-                    >
+                    <div className="hero-cta opacity-0 flex flex-wrap items-center gap-3 mb-10">
                         <Link
                             href="#services"
-                            className="inline-flex items-center gap-2.5 bg-charcoal text-white px-7 py-4 rounded-full text-[13px] font-bold hover:bg-deep-rose transition-all duration-300 shadow-lg shadow-charcoal/15 hover:shadow-deep-rose/25 group active:scale-95"
+                            className="inline-flex items-center gap-2.5 bg-charcoal text-white px-7 py-4 rounded-full text-[12px] font-black uppercase tracking-[0.15em] hover:bg-deep-rose transition-all duration-300 shadow-lg hover:shadow-deep-rose/25 group active:scale-95"
                         >
-                            <Sparkles className="w-4 h-4" />
                             <span>Explore Services</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
@@ -214,91 +142,112 @@ const Hero = () => {
                             href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.B%20Beauty!%20I'd%20like%20to%20book%20a%20consultation.`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2.5 border border-charcoal/20 text-charcoal px-7 py-4 rounded-full text-[13px] font-bold hover:bg-charcoal/5 transition-all duration-300 active:scale-95"
+                            className="inline-flex items-center gap-2.5 border border-charcoal/20 text-charcoal px-7 py-4 rounded-full text-[12px] font-black uppercase tracking-[0.15em] hover:bg-charcoal/5 transition-all duration-300 active:scale-95"
                         >
-                            <CalendarCheck className="w-4 h-4" />
-                            <span>Book Free Consult</span>
+                            <div className="w-7 h-7 rounded-full bg-charcoal/[0.07] flex items-center justify-center">
+                                <Play className="w-3 h-3 fill-charcoal ml-0.5" />
+                            </div>
+                            <span>Book Consult</span>
                         </a>
                     </div>
 
-                    {/* Stats strip */}
-                    <div
-                        ref={statsRef}
-                        className="flex flex-wrap gap-6 md:gap-8"
-                        style={{ opacity: 0 }}
-                    >
-                        {STATS.map((s, i) => (
-                            <div key={i} className="flex flex-col">
-                                <span className="font-display text-xl md:text-2xl font-bold text-charcoal leading-none">{s.value}</span>
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/40 font-sans mt-1">{s.label}</span>
+                    {/* Promo badge */}
+                    <div ref={promoRef} className="opacity-0 w-fit">
+                        <div
+                            className="flex items-center gap-4 rounded-[1.5rem] px-5 py-4 shadow-[0_12px_40px_rgba(0,0,0,0.14)]"
+                            style={{ background: '#1A1A1E' }}
+                        >
+                            <div
+                                className="w-11 h-11 rounded-[0.875rem] flex items-center justify-center flex-shrink-0"
+                                style={{ background: 'linear-gradient(135deg, #A0134D, #9A7B4F)' }}
+                            >
+                                <Tag className="w-5 h-5 text-white" />
                             </div>
-                        ))}
+                            <div>
+                                <p className="font-display text-[1.2rem] font-bold text-white leading-none">Up to 20% Off</p>
+                                <p className="text-[10px] text-white/45 mt-0.5 font-sans">
+                                    Save on holiday packages — code{' '}
+                                    <span className="font-black" style={{ color: '#D4A843' }}>GLOW2024</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                {/* ── RIGHT: Image ────────────────────────────────────────── */}
+                {/* ── RIGHT: Image ─────────────────────────────────────────────── */}
                 <div
                     ref={imgRef}
-                    className="relative order-1 lg:order-2 flex justify-center lg:justify-end"
-                    style={{ opacity: 0 }}
+                    className="relative order-1 lg:order-2 flex justify-center lg:justify-end opacity-0"
+                    style={{ height: 'clamp(440px, 72vw, 700px)' }}
                 >
-                    {/* Main image */}
-                    <div className="relative w-[300px] h-[380px] sm:w-[380px] sm:h-[480px] md:w-[420px] md:h-[530px]">
-                        <div className="w-full h-full rounded-[3rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.12)] border-[6px] border-white ring-1 ring-black/[0.06]">
+                    <div className="relative w-full max-w-[520px] lg:max-w-none h-full">
+
+                        {/* Main image */}
+                        <div className="w-full h-full rounded-[3rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.10)] border-[5px] border-white ring-1 ring-black/[0.05]">
                             <img
-                                src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=90&auto=format&fit=crop"
+                                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=90&auto=format&fit=crop&crop=faces,top"
                                 alt="R.B Beauty Clinic"
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover object-top"
                             />
-                            {/* Subtle overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#FDFAF7]/25 to-transparent pointer-events-none" />
                             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/15 to-transparent pointer-events-none" />
                         </div>
 
-                        {/* Floating badge 1 — offer */}
+                        {/* Floating badge 1 — review */}
                         <div
                             ref={badge1Ref}
-                            className="absolute -left-8 top-[18%] w-[170px] rounded-[22px] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.08)] border border-white/80"
-                            style={{
-                                background: 'linear-gradient(135deg, rgba(160,19,77,0.85), rgba(154,123,79,0.85))',
-                                backdropFilter: 'blur(20px)',
-                                opacity: 0,
-                            }}
+                            className="absolute top-[13%] -left-5 sm:-left-12 opacity-0 z-10"
                         >
-                            <p className="text-[9px] font-bold uppercase tracking-widest text-white/70 mb-1">Packages From</p>
-                            <p className="text-[28px] font-black text-white leading-none tracking-tight">$249</p>
-                            <div className="flex items-center gap-1.5 mt-2">
-                                <CheckCircle2 className="w-3 h-3 text-white/60" />
-                                <span className="text-[9px] font-medium text-white/60">Free first consultation</span>
+                            <div className="bg-white rounded-[1.25rem] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.10)] border border-black/[0.05] w-[170px]">
+                                <div className="flex items-center gap-2 mb-2.5">
+                                    <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-[#FDF6F8] flex-shrink-0">
+                                        <img src="https://i.pravatar.cc/60?u=rbbeauty1" alt="reviewer" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="flex gap-0.5">
+                                        {[...Array(5)].map((_, i) => <Star key={i} className="w-2.5 h-2.5 fill-amber-400 stroke-amber-400" />)}
+                                    </div>
+                                </div>
+                                <p className="text-[11px] font-bold text-charcoal leading-snug">"Skin has never looked better!"</p>
+                                <p className="text-[9px] text-charcoal/35 font-medium mt-1 font-sans">— Sarah J., Toronto</p>
                             </div>
                         </div>
 
-                        {/* Floating badge 2 — review */}
+                        {/* Floating badge 2 — service card */}
                         <div
                             ref={badge2Ref}
-                            className="absolute -right-6 bottom-[22%] w-[158px] bg-white rounded-[20px] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.10)] border border-black/5"
-                            style={{ opacity: 0 }}
+                            className="absolute bottom-[18%] -left-5 sm:-left-12 opacity-0 z-10"
                         >
-                            <div className="flex items-center gap-2 mb-2">
-                                <div className="w-7 h-7 rounded-full overflow-hidden border-2 border-ivory flex-shrink-0">
-                                    <img src="https://i.pravatar.cc/60?u=rbbeauty1" alt="reviewer" className="w-full h-full object-cover" />
+                            <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.10)] border border-black/[0.05] w-[185px]">
+                                <div className="h-[70px] overflow-hidden">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=80&auto=format&fit=crop"
+                                        alt="Brightening Facial"
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
-                                <div className="flex gap-0.5">
-                                    {[...Array(5)].map((_, i) => <Star key={i} className="w-2.5 h-2.5 fill-amber-400 stroke-amber-400" />)}
+                                <div className="p-3.5">
+                                    <p className="text-[9px] font-black uppercase tracking-widest text-charcoal/35 mb-0.5 font-sans">Most Popular</p>
+                                    <p className="font-display text-[14px] text-charcoal font-bold leading-tight">Brightening Facial</p>
+                                    <div className="flex items-center justify-between mt-1.5">
+                                        <span className="font-black text-[15px] text-deep-rose">$110</span>
+                                        <div className="flex items-center gap-1">
+                                            <CheckCircle2 className="w-3 h-3 text-[#1a9d82]" />
+                                            <span className="text-[9px] text-charcoal/40 font-semibold font-sans">Available</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <p className="text-[11px] font-bold text-charcoal leading-tight mb-1">"Pure clinical magic"</p>
-                            <p className="text-[9px] text-soft-gray font-medium">— Sarah J., Toronto</p>
                         </div>
 
-                        {/* Decorative ring */}
+                        {/* Decorative rings */}
                         <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full border-2 border-deep-rose/15 animate-spin-slow pointer-events-none" />
-                        <div className="absolute -bottom-3 -left-3 w-12 h-12 rounded-full border border-warm-gold/20 animate-pulse-soft pointer-events-none" />
+                        <div className="absolute bottom-8 -right-2 w-10 h-10 rounded-full border border-warm-gold/25 animate-pulse-soft pointer-events-none" />
                     </div>
                 </div>
             </div>
 
             {/* Bottom fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-ivory/60 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-ivory/40 to-transparent pointer-events-none" />
         </section>
     );
 };

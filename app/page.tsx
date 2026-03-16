@@ -85,7 +85,7 @@ export default function Home() {
             <Hero />
 
             {/* Trust / Stats Strip */}
-            <section className="trust-section relative -mt-24 md:-mt-32 z-30 pb-24 md:pb-32">
+            <section className="trust-section relative z-30 py-16 md:py-24">
                 <div className="container-custom">
                     <div className="bg-white/85 backdrop-blur-3xl px-10 md:px-16 py-12 md:py-14 rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.05)] border border-white/50 relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-deep-rose/20 to-transparent" />
