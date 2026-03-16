@@ -131,4 +131,4 @@ export const SERVICES: Service[] = [
 
 ];
 
-export const WHATSAPP_NUMBER = '1234567890'; // Placeholder - user should update
+export const WHATSAPP_NUMBER = '1234567890'; // Replace with client's actual WhatsApp number

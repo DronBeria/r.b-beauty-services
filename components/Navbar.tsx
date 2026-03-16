@@ -24,10 +24,10 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Products', href: '#products' },
-        { name: 'Shop', href: '#shop' },
-        { name: 'Offers', href: '#offers' },
-        { name: 'About us', href: '#about' },
+        { name: 'Services', href: '#services' },
+        { name: 'Our Story', href: '#story' },
+        { name: 'Pricing', href: '#pricing' },
+        { name: 'Gallery', href: '#gallery' },
     ];
 
     const toggleCart = () => {
@@ -61,14 +61,12 @@ const Navbar = () => {
                         href="#home"
                         className="absolute left-1/2 -translate-x-1/2 font-sans text-2xl font-black tracking-[0.2em] text-black uppercase"
                     >
-                        CAREON
+                        R.B BEAUTY
                     </Link>
+
 
                     {/* Right: Icons */}
                     <div className="flex items-center gap-6">
-                        <button type="button" className="p-1 text-charcoal/60 hover:text-black hover:scale-110 transition-all" aria-label="Search">
-                            <Search className="w-5 h-5" />
-                        </button>
                         <button
                             type="button"
                             onClick={toggleCart}
@@ -82,6 +80,7 @@ const Navbar = () => {
                                 </span>
                             )}
                         </button>
+
                         <Link href="#contact" className="hidden sm:block p-1 text-charcoal/60 hover:text-black hover:scale-110 transition-all" aria-label="Profile">
                             <User className="w-5 h-5" />
                         </Link>

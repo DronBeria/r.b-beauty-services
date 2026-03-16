@@ -83,23 +83,24 @@ const Footer = () => {
                                 </div>
                                 <div className="space-y-1">
                                     <p className="text-white/60 text-sm font-sans leading-relaxed">
-                                        123 Beauty Blvd, Suite 100 <br />
-                                        Toronto, ON M5V 2L7
+                                        Clinical Practice <br />
+                                        Toronto, Ontario, Canada
                                     </p>
                                     <span className="text-[9px] font-black uppercase tracking-widest text-deep-rose/40">The Flagship</span>
                                 </div>
                             </div>
 
                             <div className="flex flex-col gap-5">
-                                <a href="tel:+14165550199" className="flex items-center gap-4 text-white/40 hover:text-warm-gold transition-colors text-sm font-sans italic">
+                                <a href="tel:+14160000000" className="flex items-center gap-4 text-white/40 hover:text-warm-gold transition-colors text-sm font-sans italic">
                                     <PhoneCall className="w-4 h-4" />
-                                    <span>+1 (416) 555-0199</span>
+                                    <span>+1 (416) 000-0000</span>
                                 </a>
-                                <a href="mailto:hello@rbbeauty.ca" className="flex items-center gap-4 text-white/40 hover:text-warm-gold transition-colors text-sm font-sans italic">
+                                <a href="mailto:info@rbbeauty.ca" className="flex items-center gap-4 text-white/40 hover:text-warm-gold transition-colors text-sm font-sans italic">
                                     <Mail className="w-4 h-4" />
-                                    <span>hello@rbbeauty.ca</span>
+                                    <span>info@rbbeauty.ca</span>
                                 </a>
                             </div>
+
 
                             <Link
                                 href={`https://wa.me/${WHATSAPP_NUMBER}`}

@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Zap, HelpCircle, CheckCircle2, ChevronRight, Sparkles, ShieldCheck, Microscope, Info, ArrowUpRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 import Link from 'next/link';
+import { WHATSAPP_NUMBER } from '../constants/services';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -223,7 +224,7 @@ const LaserEducation = () => {
 
                                         <div className="flex flex-wrap gap-6 pt-4">
                                             <Link
-                                                href="https://wa.me/1234567890"
+                                                href={`https://wa.me/${WHATSAPP_NUMBER}`}
                                                 className="btn-primary group"
                                             >
                                                 <Zap className="w-5 h-5 fill-current" />

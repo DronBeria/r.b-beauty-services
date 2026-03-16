@@ -48,7 +48,7 @@ const PricingSection = () => {
 
     return (
         <section
-            id="offers"
+            id="pricing"
             ref={sectionRef}
             className="section-padding bg-[#fafafa] relative overflow-hidden"
         >

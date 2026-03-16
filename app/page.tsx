@@ -14,6 +14,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
 import { MessageCircle, Sparkles, Star, ChevronUp, CheckCircle2, Award, ShieldCheck, Zap, ArrowRight, Quote } from 'lucide-react';
+import { WHATSAPP_NUMBER } from '../constants/services';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -285,7 +286,7 @@ export default function Home() {
           <ChevronUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
         </button>
         <a
-          href="https://wa.me/1234567890"
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
           className="w-20 h-20 bg-charcoal text-white rounded-[2.5rem] shadow-2xl transition-all transform hover:scale-110 active:scale-95 group relative flex items-center justify-center overflow-hidden"
