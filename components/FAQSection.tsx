@@ -5,6 +5,7 @@ import { Plus, Minus } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
+import { WHATSAPP_NUMBER } from '../constants/services';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,7 +150,7 @@ export default function FAQSection() {
                     {/* Bottom CTA */}
                     <div className="mt-12 md:mt-16 text-center">
                         <a
-                            href="https://wa.me/14160000000?text=Hi%20R.B%20Beauty!%20I%20have%20a%20question."
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.B%20Beauty!%20I%20have%20a%20question.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-3 bg-charcoal text-white px-8 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.25em] hover:bg-deep-rose transition-all duration-300 shadow-lg group active:scale-95"

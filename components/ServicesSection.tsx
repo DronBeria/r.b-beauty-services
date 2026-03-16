@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { SERVICES } from '../constants/services';
+import { SERVICES, WHATSAPP_NUMBER } from '../constants/services';
 import { Category } from '../types';
 import ServiceCard from './ServiceCard';
 import { gsap } from 'gsap';
@@ -197,7 +197,7 @@ const ServicesSection = () => {
                             Our specialists will build a personalized treatment plan during a free consultation.
                         </p>
                         <a
-                            href="https://wa.me/14160000000?text=Hi%20R.B%20Beauty!%20I%27d%20like%20to%20book%20a%20free%20consultation."
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.B%20Beauty!%20I%27d%20like%20to%20book%20a%20free%20consultation.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn-primary mx-auto group inline-flex"

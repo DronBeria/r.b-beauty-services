@@ -206,4 +206,4 @@ export const SERVICES: Service[] = [
     },
 ];
 
-export const WHATSAPP_NUMBER = '14160000000'; // Replace with client's actual WhatsApp number
+export const WHATSAPP_NUMBER = '16478904871'; // Client's updated WhatsApp number
