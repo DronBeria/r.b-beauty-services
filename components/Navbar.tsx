@@ -122,9 +122,10 @@ const Navbar = () => {
                 className={cn(
                     'fixed top-0 left-0 w-full z-[150] transition-all duration-500',
                     scrolled
-                        ? 'h-[66px] bg-white/97 backdrop-blur-2xl shadow-sm border-b border-black/[0.06]'
+                        ? 'h-[66px] bg-white/98 backdrop-blur-2xl shadow-sm border-b border-black/[0.06]'
                         : 'h-[80px] bg-white/95 backdrop-blur-2xl border-b border-black/[0.05] shadow-[0_2px_20px_rgba(0,0,0,0.04)]'
                 )}
+                onMouseLeave={scheduleClose}
             >
                 <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
 
@@ -234,22 +235,22 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                {/* ── Services Mega Menu (full-width, child of nav) ── */}
+                {/* Services Mega Menu */}
                 <div
                     className={cn(
-                        'absolute left-0 top-full w-full transition-all duration-300 z-50',
+                        'absolute left-1/2 -translate-x-1/2 top-[90%] w-[95%] max-w-[1280px] transition-all duration-400 z-[160]',
                         activeMenu === 'services'
-                            ? 'opacity-100 translate-y-0 pointer-events-auto'
-                            : 'opacity-0 -translate-y-2 pointer-events-none'
+                            ? 'opacity-100 translate-y-3 pointer-events-auto'
+                            : 'opacity-0 translate-y-0 pointer-events-none'
                     )}
                     onMouseEnter={cancelClose}
                     onMouseLeave={scheduleClose}
                 >
                     <div className="max-w-[1400px] mx-auto px-4 pb-3">
-                        <div className="bg-white/98 backdrop-blur-2xl rounded-[2rem] shadow-[0_24px_80px_rgba(0,0,0,0.13)] border border-black/[0.05] overflow-hidden">
-                            <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-deep-rose/40 to-transparent" />
+                        <div className="bg-white/98 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_32px_100px_rgba(0,0,0,0.16)] border border-black/[0.08] overflow-hidden">
+                            <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-deep-rose/40 to-transparent" />
 
-                            <div className="p-6 grid grid-cols-4 gap-5">
+                            <div className="p-8 grid grid-cols-4 gap-8">
                                 {SERVICE_COLS.map((col) => (
                                     <div key={col.title}>
                                         <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-black/[0.05]">
@@ -297,7 +298,7 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* ── Mobile overlay ── */}
+            {/* Mobile overlay */}
             <div className={cn(
                 'fixed inset-0 z-[140] md:hidden transition-opacity duration-400',
                 mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'

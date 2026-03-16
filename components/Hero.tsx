@@ -21,36 +21,36 @@ const Hero = () => {
                 { y: 16, opacity: 0 },
                 { y: 0, opacity: 1, duration: 0.6 }
             )
-            .fromTo('.hero-line',
-                { y: 80, opacity: 0, skewY: 3 },
-                { y: 0, opacity: 1, skewY: 0, duration: 1.1, stagger: 0.1 },
-                '-=0.2'
-            )
-            .fromTo('.hero-sub',
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8 },
-                '-=0.5'
-            )
-            .fromTo('.hero-cta',
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8 },
-                '-=0.6'
-            )
-            .fromTo(promoRef.current,
-                { y: 24, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8 },
-                '-=0.5'
-            )
-            .fromTo(imgRef.current,
-                { x: 60, opacity: 0, scale: 1.04 },
-                { x: 0, opacity: 1, scale: 1, duration: 1.4, ease: 'expo.out' },
-                '-=1.8'
-            )
-            .fromTo([badge1Ref.current, badge2Ref.current],
-                { scale: 0.7, opacity: 0, y: 20 },
-                { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.7)', stagger: 0.18 },
-                '-=0.9'
-            );
+                .fromTo('.hero-line',
+                    { y: 80, opacity: 0, skewY: 3 },
+                    { y: 0, opacity: 1, skewY: 0, duration: 1.1, stagger: 0.1 },
+                    '-=0.2'
+                )
+                .fromTo('.hero-sub',
+                    { y: 20, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8 },
+                    '-=0.5'
+                )
+                .fromTo('.hero-cta',
+                    { y: 20, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8 },
+                    '-=0.6'
+                )
+                .fromTo(promoRef.current,
+                    { y: 24, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8 },
+                    '-=0.5'
+                )
+                .fromTo(imgRef.current,
+                    { x: 60, opacity: 0, scale: 1.04 },
+                    { x: 0, opacity: 1, scale: 1, duration: 1.4, ease: 'expo.out' },
+                    '-=1.8'
+                )
+                .fromTo([badge1Ref.current, badge2Ref.current],
+                    { scale: 0.7, opacity: 0, y: 20 },
+                    { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.7)', stagger: 0.18 },
+                    '-=0.9'
+                );
 
             // Idle floats
             gsap.to(badge1Ref.current, { y: '-=8', duration: 3.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.2 });
@@ -84,7 +84,7 @@ const Hero = () => {
                     {/* Headline — 4 lines matching reference */}
                     <div className="mb-8 space-y-0.5">
                         <div className="overflow-hidden">
-                            <h1 className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-charcoal leading-[0.9] tracking-[-0.02em] uppercase">
+                            <h1 className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-charcoal leading-[1.05] tracking-[-0.02em] uppercase">
                                 Care for
                             </h1>
                         </div>
