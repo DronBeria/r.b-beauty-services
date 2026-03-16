@@ -2,222 +2,305 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Star, Plus, Play } from 'lucide-react';
+import { ArrowRight, Star, Sparkles, CalendarCheck, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
+import { WHATSAPP_NUMBER } from '../constants/services';
+
+const STATS = [
+    { value: '500+', label: 'Happy Clients' },
+    { value: '10+', label: 'Years Experience' },
+    { value: '5.0★', label: 'Client Rating' },
+    { value: 'FDA', label: 'Approved Tech' },
+];
 
 const Hero = () => {
     const sectionRef = useRef<HTMLElement>(null);
-    const titleRef = useRef<HTMLDivElement>(null);
+    const eyebrowRef = useRef<HTMLDivElement>(null);
+    const line1Ref = useRef<HTMLDivElement>(null);
+    const line2Ref = useRef<HTMLDivElement>(null);
+    const line3Ref = useRef<HTMLDivElement>(null);
+    const subRef = useRef<HTMLParagraphElement>(null);
     const ctaRef = useRef<HTMLDivElement>(null);
-    const bodyTextRef = useRef<HTMLDivElement>(null);
-    const heroImgRef = useRef<HTMLDivElement>(null);
-    const arrowBadgeRef = useRef<HTMLDivElement>(null);
-    const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const statsRef = useRef<HTMLDivElement>(null);
+    const imgRef = useRef<HTMLDivElement>(null);
+    const badge1Ref = useRef<HTMLDivElement>(null);
+    const badge2Ref = useRef<HTMLDivElement>(null);
+    const orbRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.2 } });
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 1.5 });
 
-            // Entrance sequence
-            tl.from(titleRef.current, { y: 60, opacity: 0, delay: 0.8 })
-                .from(bodyTextRef.current, { y: 20, opacity: 0 }, '-=0.9')
-                .from(ctaRef.current, { y: 20, opacity: 0 }, '-=1')
-                .from(heroImgRef.current, {
-                    x: 60,
-                    opacity: 0,
-                    rotation: 5,
-                    scale: 1.05
-                }, '-=1.2')
-                .from(arrowBadgeRef.current, { scale: 0, opacity: 0, duration: 0.8, ease: 'back.out(1.7)' }, '-=0.5');
+            // Background orb
+            gsap.fromTo(orbRef.current,
+                { scale: 0.6, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 2.5, ease: 'power2.out', delay: 1.3 }
+            );
 
-            // Slightly tilting entrance for the cards
-            cardsRef.current.forEach((card, i) => {
-                if (card) {
-                    gsap.from(card, {
-                        y: 80,
-                        opacity: 0,
-                        rotation: -12,
-                        scale: 0.85,
-                        delay: 1.2 + i * 0.15,
-                        duration: 1.5,
-                        ease: 'back.out(1.4)'
-                    });
+            // Staggered headline lines
+            tl.fromTo(eyebrowRef.current,
+                { y: 16, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.7 }
+            )
+            .fromTo(line1Ref.current,
+                { y: 60, opacity: 0, skewY: 4 },
+                { y: 0, opacity: 1, skewY: 0, duration: 1 },
+                '-=0.3'
+            )
+            .fromTo(line2Ref.current,
+                { y: 60, opacity: 0, skewY: 4 },
+                { y: 0, opacity: 1, skewY: 0, duration: 1 },
+                '-=0.8'
+            )
+            .fromTo(line3Ref.current,
+                { y: 60, opacity: 0, skewY: 4 },
+                { y: 0, opacity: 1, skewY: 0, duration: 1 },
+                '-=0.8'
+            )
+            .fromTo(subRef.current,
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8 },
+                '-=0.5'
+            )
+            .fromTo(ctaRef.current,
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8 },
+                '-=0.6'
+            )
+            .fromTo(statsRef.current,
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8 },
+                '-=0.5'
+            )
+            // Image entrance
+            .fromTo(imgRef.current,
+                { x: 60, opacity: 0, scale: 1.04 },
+                { x: 0, opacity: 1, scale: 1, duration: 1.3, ease: 'expo.out' },
+                '-=1.6'
+            )
+            .fromTo([badge1Ref.current, badge2Ref.current],
+                { scale: 0.7, opacity: 0, y: 20 },
+                { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.7)', stagger: 0.15 },
+                '-=0.8'
+            );
 
-                    // Subtle floating/tilting idle animation
-                    gsap.to(card, {
-                        y: '-=10',
-                        rotation: '+=2',
-                        duration: 2 + i * 0.5,
-                        repeat: -1,
-                        yoyo: true,
-                        ease: 'sine.inOut'
-                    });
-                }
+            // Idle float for image
+            gsap.to(imgRef.current, {
+                y: '-=14',
+                duration: 4,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                delay: 3.5,
             });
+
+            // Idle float for badges
+            gsap.to(badge1Ref.current, {
+                y: '-=8',
+                rotation: '+=1.5',
+                duration: 3.2,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                delay: 3.8,
+            });
+            gsap.to(badge2Ref.current, {
+                y: '-=6',
+                rotation: '-=1',
+                duration: 2.8,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                delay: 4.2,
+            });
+
         }, sectionRef);
 
         return () => ctx.revert();
     }, []);
 
-    const addToCards = (el: HTMLDivElement | null) => {
-        if (el && !cardsRef.current.includes(el)) {
-            cardsRef.current.push(el);
-        }
-    };
-
     return (
         <section
             ref={sectionRef}
             id="home"
-            className="relative min-h-[100vh] w-full flex items-center pt-[80px] pb-[60px] px-8 lg:px-16 overflow-hidden"
+            className="relative min-h-[100svh] w-full flex items-center overflow-hidden pt-[80px]"
             style={{
-                background: `
-                    radial-gradient(circle at 10% 20%, #f9c5c5 0%, transparent 50%),
-                    radial-gradient(circle at 90% 10%, #d8c8f0 0%, transparent 50%),
-                    radial-gradient(circle at 50% 90%, #c8d8f0 0%, transparent 60%),
-                    #ffffff
-                `
+                background: 'linear-gradient(135deg, #FBF8F5 0%, #FDF6F8 40%, #F9F5FF 70%, #FBF8F5 100%)',
             }}
         >
-            <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[48px] items-start">
+            {/* Background orb */}
+            <div
+                ref={orbRef}
+                className="absolute inset-0 pointer-events-none"
+                style={{ opacity: 0 }}
+            >
+                <div className="absolute top-[-20%] right-[-10%] w-[700px] h-[700px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(160,19,77,0.08) 0%, transparent 70%)' }} />
+                <div className="absolute bottom-[-15%] left-[-8%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(154,123,79,0.07) 0%, transparent 70%)' }} />
+                <div className="absolute top-[30%] left-[40%] w-[400px] h-[400px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(160,19,77,0.04) 0%, transparent 70%)' }} />
+            </div>
 
-                {/* LEFT COLUMN */}
-                <div className="flex flex-col pt-[40px]">
-                    <div ref={titleRef} className="z-10">
-                        <h1 className="text-[3rem] md:text-[4rem] font-bold text-[#111] leading-[1.05] font-playfair uppercase tracking-tight">
-                            R.B BEAUTY <br />
-                            <span className="opacity-80 font-normal italic">THE ART OF RADIANCE</span>
-                        </h1>
+            <div className="relative z-10 w-full max-w-[1360px] mx-auto px-6 md:px-12 lg:px-16 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+                {/* ── LEFT: Text ─────────────────────────────────────────── */}
+                <div className="flex flex-col order-2 lg:order-1">
+
+                    {/* Eyebrow */}
+                    <div
+                        ref={eyebrowRef}
+                        className="inline-flex items-center gap-2.5 mb-8"
+                        style={{ opacity: 0 }}
+                    >
+                        <div className="flex items-center gap-1">
+                            {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="w-3 h-3 fill-amber-400 stroke-amber-400" />
+                            ))}
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-charcoal/50 font-sans">
+                            Toronto's #1 Laser Clinic
+                        </span>
                     </div>
 
-                    <div ref={ctaRef} className="flex flex-wrap items-center gap-[12px] mt-[32px] z-10">
+                    {/* Headline — 3 lines with overflow clip for smooth reveal */}
+                    <div className="mb-8 space-y-1">
+                        <div className="overflow-hidden">
+                            <div ref={line1Ref} style={{ opacity: 0 }}>
+                                <h1 className="font-display text-[3.2rem] sm:text-[4rem] md:text-[4.8rem] lg:text-[5.2rem] font-bold text-charcoal leading-[0.92] tracking-[-0.02em] uppercase">
+                                    The Art
+                                </h1>
+                            </div>
+                        </div>
+                        <div className="overflow-hidden">
+                            <div ref={line2Ref} style={{ opacity: 0 }}>
+                                <h1 className="font-display text-[3.2rem] sm:text-[4rem] md:text-[4.8rem] lg:text-[5.2rem] font-light italic text-charcoal leading-[0.92] tracking-[-0.02em]"
+                                    style={{ background: 'linear-gradient(135deg, #A0134D 0%, #C2185B 50%, #9A7B4F 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+                                >
+                                    of Radiance
+                                </h1>
+                            </div>
+                        </div>
+                        <div className="overflow-hidden">
+                            <div ref={line3Ref} style={{ opacity: 0 }}>
+                                <h1 className="font-display text-[3.2rem] sm:text-[4rem] md:text-[4.8rem] lg:text-[5.2rem] font-bold text-charcoal leading-[0.92] tracking-[-0.02em] uppercase">
+                                    Redefined.
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Subtext */}
+                    <p
+                        ref={subRef}
+                        className="text-[15px] md:text-[16px] leading-relaxed text-charcoal/55 font-medium max-w-[400px] mb-10"
+                        style={{ opacity: 0 }}
+                    >
+                        Premium laser hair removal, HydraFacials & clinical skin treatments — combining <span className="text-charcoal font-bold">medical precision</span> with luxury care.
+                    </p>
+
+                    {/* CTAs */}
+                    <div
+                        ref={ctaRef}
+                        className="flex flex-wrap items-center gap-3 mb-12"
+                        style={{ opacity: 0 }}
+                    >
                         <Link
                             href="#services"
-                            className="bg-[#111] text-white px-[32px] py-[14px] rounded-full text-[15px] font-bold flex items-center gap-2 hover:bg-black transition-all group shadow-lg shadow-black/10"
+                            className="inline-flex items-center gap-2.5 bg-charcoal text-white px-7 py-4 rounded-full text-[13px] font-bold hover:bg-deep-rose transition-all duration-300 shadow-lg shadow-charcoal/15 hover:shadow-deep-rose/25 group active:scale-95"
                         >
-                            Explore Rituals
-                            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            <Sparkles className="w-4 h-4" />
+                            <span>Explore Services</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
-                        <button
-                            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="border-[1.5px] border-[#333]/20 text-[#333] bg-white/40 backdrop-blur-md px-[32px] py-[14px] rounded-full text-[15px] font-bold transition-all hover:bg-white/60"
+                        <a
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.B%20Beauty!%20I'd%20like%20to%20book%20a%20consultation.`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2.5 border border-charcoal/20 text-charcoal px-7 py-4 rounded-full text-[13px] font-bold hover:bg-charcoal/5 transition-all duration-300 active:scale-95"
                         >
-                            View Pricing
-                        </button>
+                            <CalendarCheck className="w-4 h-4" />
+                            <span>Book Free Consult</span>
+                        </a>
                     </div>
 
-                    {/* FLOATING CARD ROW */}
-                    <div className="flex flex-wrap items-end gap-[16px] mt-[48px] z-20">
-                        {/* CARD A — Special Offer card */}
+                    {/* Stats strip */}
+                    <div
+                        ref={statsRef}
+                        className="flex flex-wrap gap-6 md:gap-8"
+                        style={{ opacity: 0 }}
+                    >
+                        {STATS.map((s, i) => (
+                            <div key={i} className="flex flex-col">
+                                <span className="font-display text-xl md:text-2xl font-bold text-charcoal leading-none">{s.value}</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/40 font-sans mt-1">{s.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* ── RIGHT: Image ────────────────────────────────────────── */}
+                <div
+                    ref={imgRef}
+                    className="relative order-1 lg:order-2 flex justify-center lg:justify-end"
+                    style={{ opacity: 0 }}
+                >
+                    {/* Main image */}
+                    <div className="relative w-[300px] h-[380px] sm:w-[380px] sm:h-[480px] md:w-[420px] md:h-[530px]">
+                        <div className="w-full h-full rounded-[3rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.12)] border-[6px] border-white ring-1 ring-black/[0.06]">
+                            <img
+                                src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=90&auto=format&fit=crop"
+                                alt="R.B Beauty Clinic"
+                                className="w-full h-full object-cover"
+                            />
+                            {/* Subtle overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/15 to-transparent pointer-events-none" />
+                        </div>
+
+                        {/* Floating badge 1 — offer */}
                         <div
-                            ref={addToCards}
-                            className="w-[200px] h-[210px] rounded-[32px] p-[24px] relative shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-xl flex flex-col justify-between overflow-hidden group cursor-pointer"
+                            ref={badge1Ref}
+                            className="absolute -left-8 top-[18%] w-[170px] rounded-[22px] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.08)] border border-white/80"
                             style={{
-                                background: 'linear-gradient(135deg, rgba(160, 19, 77, 0.6) 0%, rgba(154, 123, 79, 0.6) 100%)',
+                                background: 'linear-gradient(135deg, rgba(160,19,77,0.85), rgba(154,123,79,0.85))',
+                                backdropFilter: 'blur(20px)',
+                                opacity: 0,
                             }}
                         >
-                            <div className="flex justify-between items-start">
-                                <span className="bg-white/30 backdrop-blur-md px-[12px] py-[6px] rounded-full text-[10px] font-bold text-white uppercase tracking-wider">
-                                    Clinic Offer
-                                </span>
-                                <div className="w-[32px] h-[32px] bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                                    <ArrowUpRight className="w-[16px] h-[16px] text-black" />
-                                </div>
-                            </div>
-
-                            <div className="text-white">
-                                <p className="text-[12px] font-bold uppercase tracking-widest opacity-80">Packages From</p>
-                                <p className="text-[32px] font-black leading-tight -mt-1 uppercase tracking-tighter">$299</p>
-                                <div className="mt-2 space-y-0.5 opacity-70">
-                                    <p className="text-[10px] font-medium leading-tight">Complete Glow Solution</p>
-                                    <p className="text-[10px] font-medium leading-tight">Book Free Consultation</p>
-                                </div>
+                            <p className="text-[9px] font-bold uppercase tracking-widest text-white/70 mb-1">Packages From</p>
+                            <p className="text-[28px] font-black text-white leading-none tracking-tight">$249</p>
+                            <div className="flex items-center gap-1.5 mt-2">
+                                <CheckCircle2 className="w-3 h-3 text-white/60" />
+                                <span className="text-[9px] font-medium text-white/60">Free first consultation</span>
                             </div>
                         </div>
 
-                        {/* CARD B — Review + Product card */}
+                        {/* Floating badge 2 — review */}
                         <div
-                            ref={addToCards}
-                            className="w-[180px] rounded-[32px] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.06)] flex flex-col relative group overflow-hidden"
+                            ref={badge2Ref}
+                            className="absolute -right-6 bottom-[22%] w-[158px] bg-white rounded-[20px] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.10)] border border-black/5"
+                            style={{ opacity: 0 }}
                         >
-                            {/* TOP SECTION: Review */}
-                            <div className="p-[20px] pb-[12px]">
-                                <div className="flex items-center gap-[10px] mb-[8px]">
-                                    <div className="w-[32px] h-[32px] bg-pink-50 rounded-full flex-shrink-0 flex items-center justify-center overflow-hidden">
-                                        <img src="https://i.pravatar.cc/100?u=rbbeauty" alt="avatar" className="w-full h-full object-cover" />
-                                    </div>
-                                    <span className="text-[13px] font-bold text-black tracking-tight">Pure Clinical Magic</span>
+                            <div className="flex items-center gap-2 mb-2">
+                                <div className="w-7 h-7 rounded-full overflow-hidden border-2 border-ivory flex-shrink-0">
+                                    <img src="https://i.pravatar.cc/60?u=rbbeauty1" alt="reviewer" className="w-full h-full object-cover" />
                                 </div>
-                                <p className="text-[11px] text-[#666] leading-[1.4] font-medium">
-                                    My skin has never looked this radiant. The expertise at R.B is unmatched.
-                                </p>
-                            </div>
-
-                            <div className="h-[1px] w-full bg-[#eee]" />
-
-                            {/* BOTTOM SECTION: Product */}
-                            <div className="p-[20px] pt-[12px] flex items-center gap-[10px]">
-                                <div className="w-[44px] h-[54px] bg-[#F8F8FF] rounded-[12px] overflow-hidden flex-shrink-0 border border-black/5">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=100&q=80&auto=format&fit=crop"
-                                        alt="Product"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-[12px] font-bold text-black leading-tight truncate w-[80px]">Dermal Repair</span>
-                                    <span className="text-[10px] text-[#999] mb-[4px]">Advanced Formula</span>
-                                    <div className="flex items-center gap-[0.5px]">
-                                        {[...Array(5)].map((_, i) => <Star key={i} className="w-[10px] h-[10px] fill-amber-400 stroke-amber-400" />)}
-                                    </div>
+                                <div className="flex gap-0.5">
+                                    {[...Array(5)].map((_, i) => <Star key={i} className="w-2.5 h-2.5 fill-amber-400 stroke-amber-400" />)}
                                 </div>
                             </div>
-
-                            {/* Plus Badge */}
-                            <div
-                                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="absolute top-[50%] -right-[12px] -translate-y-1/2 w-[32px] h-[32px] bg-[#A0134D] rounded-full flex items-center justify-center text-white shadow-xl z-10 cursor-pointer active:scale-95 transition-transform hover:rotate-90 duration-300"
-                            >
-                                <Plus className="w-[18px] h-[18px]" />
-                            </div>
+                            <p className="text-[11px] font-bold text-charcoal leading-tight mb-1">"Pure clinical magic"</p>
+                            <p className="text-[9px] text-soft-gray font-medium">— Sarah J., Toronto</p>
                         </div>
+
+                        {/* Decorative ring */}
+                        <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full border-2 border-deep-rose/15 animate-spin-slow pointer-events-none" />
+                        <div className="absolute -bottom-3 -left-3 w-12 h-12 rounded-full border border-warm-gold/20 animate-pulse-soft pointer-events-none" />
                     </div>
                 </div>
-
-                {/* RIGHT COLUMN */}
-                <div className="flex flex-col pt-[40px] lg:items-end">
-                    <div ref={bodyTextRef} className="mb-12 lg:text-right">
-                        <p className="text-[15px] leading-relaxed text-[#555] max-w-[320px] font-medium">
-                            Toronto's premier clinical mastership in <br />
-                            <span className="text-black font-bold underline decoration-pink-200 underline-offset-4">Advanced Medical Aesthetics</span> and dermal rituals.
-                        </p>
-                    </div>
-
-                    <div ref={heroImgRef} className="relative group self-center lg:self-end">
-                        <div className="w-[300px] h-[340px] sm:w-[400px] sm:h-[440px] rounded-[40px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.1)] border-[8px] border-white ring-1 ring-black/5">
-                            <img
-                                src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85&auto=format&fit=crop"
-                                alt="R.B Beauty Clinic Ritual"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            />
-                        </div>
-
-                        {/* Arrow Badge */}
-                        <div
-                            ref={arrowBadgeRef}
-                            className="absolute -top-[20px] -left-[20px] sm:-top-[30px] sm:-left-[30px] w-[60px] h-[60px] sm:w-[90px] sm:h-[90px] bg-white rounded-full shadow-[0_15px_30px_rgba(0,0,0,0.1)] flex items-center justify-center z-10 border border-black/5"
-                        >
-                            <div className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] bg-[#eee] rounded-full flex items-center justify-center">
-                                <ArrowUpRight className="w-[20px] h-[20px] sm:w-[32px] sm:h-[32px] text-black stroke-[3px]" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            {/* Bottom fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-ivory/60 to-transparent pointer-events-none" />
         </section>
     );
 };
-
 
 export default Hero;

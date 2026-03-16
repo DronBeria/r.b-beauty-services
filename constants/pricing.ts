@@ -27,7 +27,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'laser-hair-removal',
         title: 'Laser Treatments',
         icon: '✨',
-        image: '/laser-demo.png',
+        image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85&auto=format&fit=crop',
         sections: [
             {
                 items: [
@@ -47,7 +47,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'facial-rituals',
         title: 'Facial Rituals',
         icon: '🧴',
-        image: '/facial-demo.png',
+        image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=85&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Glow & Hydration',
@@ -65,7 +65,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'clinical-care',
         title: 'Clinical Care',
         icon: '💉',
-        image: '/products-demo.png',
+        image: 'https://images.unsplash.com/photo-1616391182219-e080b4d1042a?w=800&q=85&auto=format&fit=crop',
         sections: [
             {
                 subtitle: 'Advanced Repair',
@@ -82,7 +82,7 @@ export const PRICING_DATA: PricingCategory[] = [
         id: 'packages',
         title: 'Packages',
         icon: '🎁',
-        image: '/hero-main.png',
+        image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800&q=85&auto=format&fit=crop',
         sections: [
             {
                 items: [
