@@ -54,7 +54,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
             {/* Image Container */}
             <div className="relative aspect-[4/3] overflow-hidden bg-ivory">
                 <Image
-                    src={`https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800`}
+                    src={service.image}
                     alt={service.name}
                     fill
                     className="object-cover transition-transform duration-1000 group-hover:scale-110"

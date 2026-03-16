@@ -85,26 +85,24 @@ const Hero = () => {
                 <div className="flex flex-col pt-[40px]">
                     <div ref={titleRef} className="z-10">
                         <h1 className="text-[3rem] md:text-[4rem] font-bold text-[#111] leading-[1.05] font-playfair uppercase tracking-tight">
-                            CARE FOR YOUR SKIN, <br />
-                            <span className="opacity-80 font-normal italic">CARE FOR YOUR BEAUTY</span>
+                            R.B BEAUTY <br />
+                            <span className="opacity-80 font-normal italic">THE ART OF RADIANCE</span>
                         </h1>
                     </div>
 
                     <div ref={ctaRef} className="flex flex-wrap items-center gap-[12px] mt-[32px] z-10">
                         <Link
-                            href="#shop"
+                            href="#services"
                             className="bg-[#111] text-white px-[32px] py-[14px] rounded-full text-[15px] font-bold flex items-center gap-2 hover:bg-black transition-all group shadow-lg shadow-black/10"
                         >
-                            Shop Now
+                            Explore Rituals
                             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </Link>
                         <button
+                            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
                             className="border-[1.5px] border-[#333]/20 text-[#333] bg-white/40 backdrop-blur-md px-[32px] py-[14px] rounded-full text-[15px] font-bold transition-all hover:bg-white/60"
                         >
-                            <span className="flex items-center gap-2">
-                                <Play className="w-3.5 h-3.5 fill-[#333]" />
-                                Watch Video
-                            </span>
+                            View Pricing
                         </button>
                     </div>
 
@@ -115,12 +113,12 @@ const Hero = () => {
                             ref={addToCards}
                             className="w-[200px] h-[210px] rounded-[32px] p-[24px] relative shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-xl flex flex-col justify-between overflow-hidden group cursor-pointer"
                             style={{
-                                background: 'linear-gradient(135deg, rgba(216, 200, 240, 0.6) 0%, rgba(200, 216, 240, 0.6) 100%)',
+                                background: 'linear-gradient(135deg, rgba(160, 19, 77, 0.6) 0%, rgba(154, 123, 79, 0.6) 100%)',
                             }}
                         >
                             <div className="flex justify-between items-start">
                                 <span className="bg-white/30 backdrop-blur-md px-[12px] py-[6px] rounded-full text-[10px] font-bold text-white uppercase tracking-wider">
-                                    Special Offer
+                                    Clinic Offer
                                 </span>
                                 <div className="w-[32px] h-[32px] bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                                     <ArrowUpRight className="w-[16px] h-[16px] text-black" />
@@ -128,11 +126,11 @@ const Hero = () => {
                             </div>
 
                             <div className="text-white">
-                                <p className="text-[12px] font-bold uppercase tracking-widest opacity-80">Upto</p>
-                                <p className="text-[32px] font-black leading-tight -mt-1 uppercase tracking-tighter">20% off</p>
+                                <p className="text-[12px] font-bold uppercase tracking-widest opacity-80">Packages From</p>
+                                <p className="text-[32px] font-black leading-tight -mt-1 uppercase tracking-tighter">$299</p>
                                 <div className="mt-2 space-y-0.5 opacity-70">
-                                    <p className="text-[10px] font-medium leading-tight">Save this holiday season</p>
-                                    <p className="text-[10px] font-medium leading-tight">using code Y2024</p>
+                                    <p className="text-[10px] font-medium leading-tight">Complete Glow Solution</p>
+                                    <p className="text-[10px] font-medium leading-tight">Book Free Consultation</p>
                                 </div>
                             </div>
                         </div>
@@ -146,12 +144,12 @@ const Hero = () => {
                             <div className="p-[20px] pb-[12px]">
                                 <div className="flex items-center gap-[10px] mb-[8px]">
                                     <div className="w-[32px] h-[32px] bg-pink-50 rounded-full flex-shrink-0 flex items-center justify-center overflow-hidden">
-                                        <img src="https://i.pravatar.cc/100?u=skincare1" alt="avatar" className="w-full h-full object-cover" />
+                                        <img src="https://i.pravatar.cc/100?u=rbbeauty" alt="avatar" className="w-full h-full object-cover" />
                                     </div>
-                                    <span className="text-[13px] font-bold text-black tracking-tight">I just love it</span>
+                                    <span className="text-[13px] font-bold text-black tracking-tight">Pure Clinical Magic</span>
                                 </div>
                                 <p className="text-[11px] text-[#666] leading-[1.4] font-medium">
-                                    This product is just wow I love the fragrance I love the aura blew it
+                                    My skin has never looked this radiant. The expertise at R.B is unmatched.
                                 </p>
                             </div>
 
@@ -161,23 +159,25 @@ const Hero = () => {
                             <div className="p-[20px] pt-[12px] flex items-center gap-[10px]">
                                 <div className="w-[44px] h-[54px] bg-[#F8F8FF] rounded-[12px] overflow-hidden flex-shrink-0 border border-black/5">
                                     <img
-                                        src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=200&auto=format&fit=crop"
+                                        src="/products-demo.png"
                                         alt="Product"
-                                        className="w-full h-full object-cover mix-blend-multiply"
+                                        className="w-full h-full object-cover"
                                     />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[12px] font-bold text-black leading-tight truncate w-[80px]">Brightening Fac..</span>
-                                    <span className="text-[10px] text-[#999] mb-[4px]">30 ml</span>
+                                    <span className="text-[12px] font-bold text-black leading-tight truncate w-[80px]">Dermal Repair</span>
+                                    <span className="text-[10px] text-[#999] mb-[4px]">Advanced Formula</span>
                                     <div className="flex items-center gap-[0.5px]">
                                         {[...Array(5)].map((_, i) => <Star key={i} className="w-[10px] h-[10px] fill-amber-400 stroke-amber-400" />)}
                                     </div>
-                                    <span className="text-[14px] font-black text-black mt-[4px] leading-tight font-sans">$100.45</span>
                                 </div>
                             </div>
 
                             {/* Plus Badge */}
-                            <div className="absolute top-[50%] -right-[12px] -translate-y-1/2 w-[32px] h-[32px] bg-[#1a9d82] rounded-full flex items-center justify-center text-white shadow-xl z-10 cursor-pointer active:scale-95 transition-transform hover:rotate-90 duration-300">
+                            <div
+                                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="absolute top-[50%] -right-[12px] -translate-y-1/2 w-[32px] h-[32px] bg-[#A0134D] rounded-full flex items-center justify-center text-white shadow-xl z-10 cursor-pointer active:scale-95 transition-transform hover:rotate-90 duration-300"
+                            >
                                 <Plus className="w-[18px] h-[18px]" />
                             </div>
                         </div>
@@ -188,16 +188,16 @@ const Hero = () => {
                 <div className="flex flex-col pt-[40px] lg:items-end">
                     <div ref={bodyTextRef} className="mb-12 lg:text-right">
                         <p className="text-[15px] leading-relaxed text-[#555] max-w-[320px] font-medium">
-                            Our skin care clinic best dermatologists in <br />
-                            <span className="text-black font-bold underline decoration-pink-200 underline-offset-4">Lahore and Islamabad</span> offer premium cosmetics.
+                            Toronto's premier clinical mastership in <br />
+                            <span className="text-black font-bold underline decoration-pink-200 underline-offset-4">Advanced Medical Aesthetics</span> and dermal rituals.
                         </p>
                     </div>
 
                     <div ref={heroImgRef} className="relative group self-center lg:self-end">
                         <div className="w-[300px] h-[340px] sm:w-[400px] sm:h-[440px] rounded-[40px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.1)] border-[8px] border-white ring-1 ring-black/5">
                             <img
-                                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=800&auto=format&fit=crop"
-                                alt="Skincare Portrait"
+                                src="/hero-main.png"
+                                alt="R.B Beauty Clinic Ritual"
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             />
                         </div>
@@ -218,5 +218,6 @@ const Hero = () => {
         </section>
     );
 };
+
 
 export default Hero;

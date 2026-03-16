@@ -57,11 +57,11 @@ const Footer = () => {
                         <ul className="space-y-5">
                             {[
                                 'Laser Hair Removal',
-                                'Dermal Brightening',
-                                'Hydra-Luminous Therapy',
-                                'Clinical Peels',
-                                'Resurfacing Rituals',
-                                'Gentlemen\'s Protocols'
+                                'Signature HydraFacial',
+                                'Dermal Rejuvenation',
+                                'Medical Peels',
+                                'Skin Consultation',
+                                'Specialized Packages'
                             ].map((item) => (
                                 <li key={item}>
                                     <Link href="#services" className="text-white/40 hover:text-white transition-all flex items-center gap-3 group text-sm font-sans">

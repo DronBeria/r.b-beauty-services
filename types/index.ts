@@ -1,10 +1,9 @@
-export type Category = 
-  | 'All Services' 
-  | 'Laser Treatments' 
-  | 'Facial Treatments' 
-  | 'Skincare' 
-  | 'Waxing' 
-  | 'Add-ons' 
+export type Category =
+  | 'All Services'
+  | 'Laser Treatments'
+  | 'Facial Rituals'
+  | 'Clinical Care'
+  | 'Consultations'
   | 'Packages';
 
 export interface Service {

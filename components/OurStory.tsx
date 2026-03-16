@@ -67,7 +67,7 @@ const OurStory = () => {
                     <div className="relative group">
                         <div className="relative aspect-[4/5] overflow-hidden rounded-[4rem] shadow-premium z-10 group-hover:shadow-2xl transition-all duration-700">
                             <Image
-                                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1288"
+                                src="/hero-main.png"
                                 alt="Clinic Story"
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110"

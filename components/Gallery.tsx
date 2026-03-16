@@ -14,34 +14,35 @@ const Gallery = () => {
     const [sliderPos, setSliderPos] = useState(50);
     const [activeFilter, setActiveFilter] = useState('All');
 
-    const filters = ['All', 'Laser Hair Removal', 'Facials', 'Skin Brightening', 'Microneedling'];
+    const filters = ['All', 'Laser Treatments', 'Facial Rituals', 'Clinical Care'];
 
     const items = [
         {
-            title: "Laser Hair Removal Ritual",
+            title: "Advanced Laser Transformation",
             sessions: 6,
             skinType: "Fitzpatrick IV",
-            before: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1288",
-            after: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=1288",
-            tags: ['Laser Hair Removal']
+            before: "/laser-demo.png",
+            after: "/hero-main.png",
+            tags: ['Laser Treatments']
         },
         {
-            title: "Hydra-Luminous Facial",
+            title: "Hydra-Luminous Ritual",
             sessions: 1,
             skinType: "Fitzpatrick II",
-            before: "https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&q=80&w=1288",
-            after: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1288",
-            tags: ['Facials']
+            before: "/facial-demo.png",
+            after: "/hero-main.png",
+            tags: ['Facial Rituals']
         },
         {
-            title: "Precision Brightening",
+            title: "Dermal Repair Journey",
             sessions: 4,
             skinType: "Fitzpatrick VI",
-            before: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1288",
-            after: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=1288",
-            tags: ['Skin Brightening']
+            before: "/products-demo.png",
+            after: "/hero-main.png",
+            tags: ['Clinical Care']
         }
     ];
+
 
     useEffect(() => {
         const ctx = gsap.context(() => {

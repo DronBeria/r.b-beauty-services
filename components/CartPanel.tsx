@@ -91,7 +91,7 @@ const CartPanel = () => {
                             >
                                 <div className="relative w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg border border-charcoal/5">
                                     <Image
-                                        src={`https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=200`}
+                                        src={item.image}
                                         alt={item.name}
                                         fill
                                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
