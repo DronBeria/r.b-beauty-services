@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowLeftRight, Sparkles, Star, ChevronRight, CheckCircle2, Waves } from 'lucide-react';
+import { ArrowLeftRight, Sparkles, Star, ChevronRight, Waves } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -111,7 +111,7 @@ const Gallery = () => {
                 </div>
 
                 {/* Refined Filter Tabs */}
-                <div className="flex justify-start md:justify-center overflow-x-auto pb-16 scrollbar-none gap-3 no-scrollbar">
+                <div className="flex justify-start md:justify-center overflow-x-auto pb-8 md:pb-16 scrollbar-none gap-3 no-scrollbar">
                     <div className="flex bg-ivory/50 backdrop-blur-xl p-2 rounded-[2.5rem] border border-charcoal/5 shadow-premium">
                         {filters.map((filter) => (
                             <button
@@ -199,22 +199,22 @@ const Gallery = () => {
                 </div>
 
                 {/* Results Guarantee Section */}
-                <div className="mt-32 glass-card p-12 md:p-16 border-warm-gold/10 bg-gradient-to-br from-ivory to-white relative overflow-hidden">
+                <div className="mt-16 md:mt-32 glass-card p-6 md:p-12 lg:p-16 border-warm-gold/10 bg-gradient-to-br from-ivory to-white relative overflow-hidden">
                     <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
-                        <div className="flex items-center gap-8 text-center md:text-left">
-                            <div className="w-20 h-20 rounded-[2rem] bg-charcoal flex items-center justify-center flex-shrink-0 shadow-2xl rotate-3">
-                                <Sparkles className="w-10 h-10 text-warm-gold" />
+                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 md:gap-8 text-center sm:text-left">
+                            <div className="w-14 h-14 md:w-20 md:h-20 rounded-[1.5rem] md:rounded-[2rem] bg-charcoal flex items-center justify-center flex-shrink-0 shadow-2xl rotate-3">
+                                <Sparkles className="w-7 h-7 md:w-10 md:h-10 text-warm-gold" />
                             </div>
                             <div>
-                                <h4 className="font-display text-4xl text-charcoal mb-3 italic">Authenticity Redefined.</h4>
-                                <p className="text-soft-gray font-sans text-base max-w-xl leading-relaxed">
+                                <h4 className="font-display text-2xl md:text-4xl text-charcoal mb-2 md:mb-3 italic">Authenticity Redefined.</h4>
+                                <p className="text-soft-gray font-sans text-sm md:text-base max-w-xl leading-relaxed">
                                     All clinical imagery is presented with explicit consent. Our commitment to
                                     transparency is as profound as our dedication to your skin's health.
                                 </p>
                             </div>
                         </div>
-                        <button className="btn-primary group !px-12">
+                        <button className="btn-primary group w-full sm:w-auto !px-8 md:!px-12 justify-center">
                             <span>Schedule Consultation</span>
                             <ChevronRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
                         </button>

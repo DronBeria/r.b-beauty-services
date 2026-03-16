@@ -61,10 +61,10 @@ const OurStory = () => {
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-deep-rose/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="container-custom relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-center">
                     {/* Visual Side */}
                     <div className="relative group">
-                        <div className="relative aspect-[4/5] overflow-hidden rounded-[4rem] shadow-premium z-10 group-hover:shadow-2xl transition-all duration-700">
+                        <div className="relative aspect-[4/5] overflow-hidden rounded-[3rem] md:rounded-[4rem] shadow-premium z-10 group-hover:shadow-2xl transition-all duration-700">
                             <img
                                 src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=85&auto=format&fit=crop"
                                 alt="Clinic Story"
@@ -74,45 +74,45 @@ const OurStory = () => {
                         </div>
 
                         {/* Floating Stats Card */}
-                        <div className="absolute -bottom-8 -right-8 glass-card p-10 shadow-2xl z-20 transform group-hover:-translate-y-4 transition-transform duration-700 border-white/40">
+                        <div className="absolute -bottom-4 -right-3 md:-bottom-8 md:-right-8 glass-card p-5 md:p-10 shadow-2xl z-20 transform group-hover:-translate-y-4 transition-transform duration-700 border-white/40">
                             <div className="flex flex-col items-center justify-center">
-                                <span className="font-display text-6xl md:text-7xl text-deep-rose font-bold block leading-none">
+                                <span className="font-display text-4xl md:text-6xl lg:text-7xl text-deep-rose font-bold block leading-none">
                                     <span className="counter" data-target="500">0</span>+
                                 </span>
-                                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-charcoal/40 mt-2">Verified Transformations</span>
+                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-charcoal/40 mt-1 md:mt-2">Verified Transformations</span>
                             </div>
                         </div>
 
                         {/* Decorative Element */}
-                        <div className="absolute top-10 -left-10 w-24 h-24 border border-deep-rose/20 rounded-full animate-spin-slow" />
+                        <div className="hidden sm:block absolute top-10 -left-10 w-24 h-24 border border-deep-rose/20 rounded-full animate-spin-slow" />
                     </div>
 
                     {/* Narrative Side */}
-                    <div className="space-y-16">
+                    <div className="space-y-10 md:space-y-16">
                         <div className="story-reveal reveal-hidden">
-                            <div className="flex items-center gap-3 mb-6">
+                            <div className="flex items-center gap-3 mb-5 md:mb-6">
                                 <div className="w-12 h-px bg-warm-gold/40" />
                                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-warm-gold">Our Philosophy</span>
                             </div>
-                            <h2 className="font-display text-6xl md:text-8xl text-charcoal leading-[0.85] mb-8">
+                            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-charcoal leading-[0.85] mb-6 md:mb-8">
                                 A Heritage of <br />
                                 <span className="italic font-light text-gradient">Luminous</span> Results
                             </h2>
-                            <p className="text-soft-gray font-sans text-lg md:text-xl leading-relaxed max-w-xl">
+                            <p className="text-soft-gray font-sans text-base md:text-lg lg:text-xl leading-relaxed max-w-xl">
                                 We combine medical precision with a luxury boutique experience. Every treatment is an
                                 investment in your long-term confidence and skin health.
                             </p>
                         </div>
 
-                        <div className="space-y-12">
+                        <div className="space-y-8 md:space-y-12">
                             {chapters.map((chapter, index) => (
-                                <div key={index} className="story-reveal reveal-hidden flex items-start gap-8 group/item">
-                                    <div className="relative w-16 h-16 rounded-[2rem] bg-white shadow-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-deep-rose transition-all duration-500 transform group-hover/item:-translate-y-2 group-hover/item:rotate-6">
-                                        <chapter.icon className="w-7 h-7 text-deep-rose group-hover/item:text-white transition-all" />
+                                <div key={index} className="story-reveal reveal-hidden flex items-start gap-5 md:gap-8 group/item">
+                                    <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-[1.5rem] md:rounded-[2rem] bg-white shadow-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-deep-rose transition-all duration-500 transform group-hover/item:-translate-y-2 group-hover/item:rotate-6">
+                                        <chapter.icon className="w-5 h-5 md:w-7 md:h-7 text-deep-rose group-hover/item:text-white transition-all" />
                                     </div>
-                                    <div className="space-y-3 pt-2">
-                                        <h3 className="font-display text-3xl text-charcoal group-hover/item:text-deep-rose transition-colors duration-300">{chapter.title}</h3>
-                                        <p className="text-soft-gray text-base leading-relaxed font-sans max-w-sm">
+                                    <div className="space-y-2 md:space-y-3 pt-1 md:pt-2">
+                                        <h3 className="font-display text-xl md:text-3xl text-charcoal group-hover/item:text-deep-rose transition-colors duration-300">{chapter.title}</h3>
+                                        <p className="text-soft-gray text-sm md:text-base leading-relaxed font-sans max-w-sm">
                                             {chapter.content}
                                         </p>
                                     </div>

@@ -87,7 +87,7 @@ export default function Home() {
             {/* Trust / Stats Strip */}
             <section className="trust-section relative z-30 py-16 md:py-24">
                 <div className="container-custom">
-                    <div className="bg-white/85 backdrop-blur-3xl px-10 md:px-16 py-12 md:py-14 rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.05)] border border-white/50 relative overflow-hidden">
+                    <div className="bg-white/85 backdrop-blur-3xl px-5 sm:px-10 md:px-16 py-8 md:py-12 lg:py-14 rounded-[2rem] md:rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.05)] border border-white/50 relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-deep-rose/20 to-transparent" />
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-center">
@@ -145,7 +145,7 @@ export default function Home() {
                             <span className="text-[10px] font-black uppercase tracking-[0.6em] text-warm-gold font-sans">Client Stories</span>
                             <div className="w-10 h-px bg-warm-gold/30" />
                         </div>
-                        <h2 className="font-display text-5xl md:text-7xl text-charcoal mb-8 leading-[0.9]">
+                        <h2 className="font-display text-4xl md:text-5xl lg:text-7xl text-charcoal mb-6 md:mb-8 leading-[0.9]">
                             Real Stories <br />
                             <span className="italic font-light text-gradient">of Transformation</span>
                         </h2>
@@ -158,7 +158,7 @@ export default function Home() {
                             { name: 'Jessica M.', text: 'Highly recommend R.B Beauty! The staff are so knowledgeable and make you feel completely at ease throughout the entire journey.', tag: 'Skin Therapy' },
                         ].map((rev, i) => (
                             <div key={i} className="testimonial-reveal group">
-                                <div className="glass-card !rounded-[2.5rem] p-10 md:p-12 h-full border-charcoal/5 hover:border-deep-rose/20 hover:bg-ivory/20 transition-all duration-700 relative">
+                                <div className="glass-card !rounded-[2rem] md:!rounded-[2.5rem] p-7 md:p-10 lg:p-12 h-full border-charcoal/5 hover:border-deep-rose/20 hover:bg-ivory/20 transition-all duration-700 relative">
                                     <Quote className="absolute top-8 right-8 w-10 h-10 text-charcoal/[0.04] group-hover:text-deep-rose/5 transition-colors" />
                                     <div className="flex gap-1 mb-8">
                                         {[...Array(5)].map((_, s) => <Star key={s} className="w-3.5 h-3.5 text-warm-gold fill-warm-gold" />)}
@@ -187,22 +187,22 @@ export default function Home() {
             <Footer />
 
             {/* Floating action buttons */}
-            <div className="floating-cta fixed bottom-8 right-6 md:right-10 z-[90] flex flex-col gap-4 opacity-0">
+            <div className="floating-cta fixed bottom-5 md:bottom-8 right-4 md:right-10 z-[90] flex flex-col gap-3 md:gap-4 opacity-0">
                 <button
                     onClick={scrollToTop}
-                    className="w-14 h-14 bg-white/80 backdrop-blur-3xl text-charcoal rounded-full shadow-xl transition-all border border-charcoal/5 flex items-center justify-center group hover:-translate-y-1.5 active:scale-90"
+                    className="w-11 h-11 md:w-14 md:h-14 bg-white/80 backdrop-blur-3xl text-charcoal rounded-full shadow-xl transition-all border border-charcoal/5 flex items-center justify-center group hover:-translate-y-1.5 active:scale-90"
                 >
-                    <ChevronUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ChevronUp className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
                 <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-16 h-16 bg-charcoal text-white rounded-[1.75rem] shadow-2xl transition-all transform hover:scale-110 active:scale-95 group relative flex items-center justify-center overflow-hidden"
+                    className="w-12 h-12 md:w-16 md:h-16 bg-charcoal text-white rounded-[1.25rem] md:rounded-[1.75rem] shadow-2xl transition-all transform hover:scale-110 active:scale-95 group relative flex items-center justify-center overflow-hidden"
                 >
                     <div className="absolute inset-0 bg-gradient-to-br from-deep-rose to-deep-rose-dark opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <MessageCircle className="w-7 h-7 relative z-10" />
-                    <div className="absolute top-2 right-2 w-3.5 h-3.5 bg-deep-rose rounded-full border-2 border-white z-20" />
+                    <MessageCircle className="w-5 h-5 md:w-7 md:h-7 relative z-10" />
+                    <div className="absolute top-1.5 right-1.5 md:top-2 md:right-2 w-3 h-3 md:w-3.5 md:h-3.5 bg-deep-rose rounded-full border-2 border-white z-20" />
                 </a>
             </div>
 

@@ -23,18 +23,18 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer id="contact" className="relative bg-charcoal text-white pt-32 pb-16 overflow-hidden">
+        <footer id="contact" className="relative bg-charcoal text-white pt-16 md:pt-32 pb-10 md:pb-16 overflow-hidden">
             {/* Visual Ambient Flourishes */}
             <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-deep-rose/10 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-warm-gold/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/3 pointer-events-none" />
 
             <div className="container-custom relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 lg:gap-24 mb-24 md:mb-32">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-24 mb-14 md:mb-24 lg:mb-32">
                     {/* Brand Identity Area */}
                     <div className="space-y-10">
                         <Link href="#home" className="flex flex-col group max-w-fit">
-                            <span className="font-display text-5xl font-bold tracking-tighter text-gradient transition-all group-hover:scale-105 origin-left duration-500"> R.B BEAUTY </span>
+                            <span className="font-display text-3xl md:text-5xl font-bold tracking-tighter text-gradient transition-all group-hover:scale-105 origin-left duration-500"> R.B BEAUTY </span>
                             <span className="text-[10px] uppercase tracking-[0.6em] font-sans text-white/40 -mt-1 group-hover:translate-x-2 transition-transform duration-500"> The Clinic </span>
                         </Link>
                         <p className="text-white/50 font-sans text-base leading-relaxed max-w-xs">
@@ -141,7 +141,7 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Narrative Bar */}
-                <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-10 text-white/20 text-[9px] font-black uppercase tracking-[0.5em] font-sans">
+                <div className="pt-10 md:pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 text-white/20 text-[9px] font-black uppercase tracking-[0.5em] font-sans">
                     <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 text-center md:text-left">
                         <p>© {currentYear} R.B Beauty Clinic. All Rights Reserved.</p>
                         <div className="flex items-center gap-10">

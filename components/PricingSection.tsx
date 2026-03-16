@@ -89,7 +89,7 @@ const PricingSection = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
                     {/* Sidebar */}
                     <div className="lg:col-span-4 flex flex-col gap-4 lg:sticky lg:top-28">
                         {/* Image preview */}
@@ -143,7 +143,7 @@ const PricingSection = () => {
 
                     {/* Pricing Table */}
                     <div className="lg:col-span-8">
-                        <div ref={contentRef} className="bg-white rounded-[3rem] p-6 md:p-10 shadow-sm border border-black/5 relative overflow-hidden">
+                        <div ref={contentRef} className="bg-white rounded-[2rem] md:rounded-[3rem] p-4 md:p-8 lg:p-10 shadow-sm border border-black/5 relative overflow-hidden">
                             <div className="absolute top-8 right-8 opacity-[0.025] pointer-events-none select-none overflow-hidden max-w-[60%]">
                                 <span className="text-7xl font-display uppercase text-charcoal whitespace-nowrap">{activeCategory.title}</span>
                             </div>

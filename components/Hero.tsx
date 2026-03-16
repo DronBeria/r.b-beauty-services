@@ -196,7 +196,7 @@ const Hero = () => {
                         {/* Floating badge 1 — review */}
                         <div
                             ref={badge1Ref}
-                            className="absolute top-[13%] -left-5 sm:-left-12 opacity-0 z-10"
+                            className="absolute top-[12%] left-2 sm:-left-10 opacity-0 z-10"
                         >
                             <div className="bg-white rounded-[1.25rem] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.10)] border border-black/[0.05] w-[170px]">
                                 <div className="flex items-center gap-2 mb-2.5">
@@ -215,7 +215,7 @@ const Hero = () => {
                         {/* Floating badge 2 — service card */}
                         <div
                             ref={badge2Ref}
-                            className="absolute bottom-[18%] -left-5 sm:-left-12 opacity-0 z-10"
+                            className="absolute bottom-[18%] left-2 sm:-left-10 opacity-0 z-10"
                         >
                             <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.10)] border border-black/[0.05] w-[185px]">
                                 <div className="h-[70px] overflow-hidden">
