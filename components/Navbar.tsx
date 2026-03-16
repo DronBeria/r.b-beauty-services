@@ -123,7 +123,7 @@ const Navbar = () => {
                     'fixed top-0 left-0 w-full z-[150] transition-all duration-500',
                     scrolled
                         ? 'h-[66px] bg-white/97 backdrop-blur-2xl shadow-sm border-b border-black/[0.06]'
-                        : 'h-[80px] bg-white/65 backdrop-blur-xl border-b border-black/[0.04]'
+                        : 'h-[80px] bg-white/95 backdrop-blur-2xl border-b border-black/[0.05] shadow-[0_2px_20px_rgba(0,0,0,0.04)]'
                 )}
             >
                 <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
