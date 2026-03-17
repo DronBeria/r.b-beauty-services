@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { ArrowRight, Play, Star } from 'lucide-react';
 import gsap from 'gsap';
 import { WHATSAPP_NUMBER } from '../constants/services';
+import HeroAnimation from './HeroAnimation';
 
 const Hero = () => {
     const sectionRef = useRef<HTMLElement>(null);
-    const imgRef = useRef<HTMLDivElement>(null);
+    const animRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -33,9 +34,9 @@ const Hero = () => {
                     { y: 0, opacity: 1, duration: 0.8 },
                     '-=0.6'
                 )
-                .fromTo(imgRef.current,
-                    { x: 60, opacity: 0, scale: 1.04 },
-                    { x: 0, opacity: 1, scale: 1, duration: 1.4, ease: 'expo.out' },
+                .fromTo(animRef.current,
+                    { x: 50, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 1.4, ease: 'expo.out' },
                     '-=1.6'
                 );
         }, sectionRef);
@@ -134,26 +135,14 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* ── RIGHT: Image ─────────────────────────────────────────────── */}
+                {/* ── RIGHT: Animation ──────────────────────────────────────── */}
                 <div
-                    ref={imgRef}
+                    ref={animRef}
                     className="relative order-1 lg:order-2 flex justify-center lg:justify-end opacity-0"
                     style={{ height: 'clamp(340px, 52vw, 560px)' }}
                 >
-                    <div className="relative w-full max-w-[520px] lg:max-w-none h-full">
-                        <div className="w-full h-full rounded-[3rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.10)] border-[5px] border-white ring-1 ring-black/[0.05]">
-                            <img
-                                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=90&auto=format&fit=crop&crop=faces,top"
-                                alt="R.D. Beauty & Laser Clinic"
-                                className="w-full h-full object-cover object-top"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#FDFAF7]/25 to-transparent pointer-events-none" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/15 to-transparent pointer-events-none" />
-                        </div>
-
-                        {/* Decorative rings */}
-                        <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full border-2 border-deep-rose/15 animate-spin-slow pointer-events-none" />
-                        <div className="absolute bottom-8 -right-2 w-10 h-10 rounded-full border border-warm-gold/25 animate-pulse-soft pointer-events-none" />
+                    <div className="relative w-full h-full">
+                        <HeroAnimation />
                     </div>
                 </div>
             </div>

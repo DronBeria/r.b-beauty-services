@@ -11,10 +11,12 @@ import CartPanel from '../components/CartPanel';
 import Preloader from '../components/Preloader';
 import MarqueeStrip from '../components/MarqueeStrip';
 import CartToast from '../components/CartToast';
+import ContactSection from '../components/ContactSection';
+import TestimonialsCarousel from '../components/TestimonialsCarousel';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
-import { MessageCircle, Star, ChevronUp, CheckCircle2, Award, ShieldCheck, Sparkles, Quote } from 'lucide-react';
+import { MessageCircle, ChevronUp, Award, ShieldCheck, Sparkles, CheckCircle2, Star } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../constants/services';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -148,57 +150,10 @@ export default function Home() {
             <ServicesSection />
             <PricingSection />
 
-            {/* Testimonials */}
-            <section className="section-padding bg-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
-                <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-warm-gold/5 blur-[150px] rounded-full pointer-events-none" />
+            {/* Testimonials Carousel */}
+            <TestimonialsCarousel />
 
-                <div className="container-custom relative z-10">
-                    <div className="text-center mb-20">
-                        <div className="inline-flex items-center gap-3 mb-5">
-                            <div className="w-10 h-px bg-warm-gold/30" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.6em] text-warm-gold font-sans">Client Stories</span>
-                            <div className="w-10 h-px bg-warm-gold/30" />
-                        </div>
-                        <h2 className="font-display text-4xl md:text-5xl lg:text-7xl text-charcoal mb-6 md:mb-8 leading-[0.9]">
-                            Real Stories <br />
-                            <span className="italic font-light text-gradient">of Transformation</span>
-                        </h2>
-                    </div>
-
-                    <div className="testimonials-grid grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
-                        {[
-                            { name: 'Sarah J.', text: 'The most professional laser clinic in Edmonton. Amazing results in just 3 sessions — smooth, hair-free skin and zero irritation. Absolutely love it!', tag: 'Laser Hair Removal' },
-                            { name: 'Elena R.', text: 'The HydraFacial was a life-saver for my wedding prep. My skin has never looked so smooth and glowing — everyone noticed the difference!', tag: 'HydraFacial' },
-                            { name: 'Jessica M.', text: 'Highly recommend R.D. Beauty & Laser Clinic! The staff are so knowledgeable and make you feel completely at ease. The environment is clean, relaxing, and professional.', tag: 'Skin Rejuvenation' },
-                        ].map((rev, i) => (
-                            <div key={i} className="testimonial-reveal group">
-                                <div className="glass-card !rounded-[2rem] md:!rounded-[2.5rem] p-7 md:p-10 lg:p-12 h-full border-charcoal/5 hover:border-deep-rose/20 hover:bg-ivory/20 transition-all duration-700 relative">
-                                    <Quote className="absolute top-8 right-8 w-10 h-10 text-charcoal/[0.04] group-hover:text-deep-rose/5 transition-colors" />
-                                    <div className="flex gap-1 mb-8">
-                                        {[...Array(5)].map((_, s) => <Star key={s} className="w-3.5 h-3.5 text-warm-gold fill-warm-gold" />)}
-                                    </div>
-                                    <p className="text-charcoal/65 font-sans text-base md:text-lg leading-relaxed mb-10 italic">
-                                        "{rev.text}"
-                                    </p>
-                                    <div className="flex flex-col gap-1">
-                                        <span className="text-[11px] font-black uppercase tracking-[0.3em] text-charcoal">{rev.name}</span>
-                                        <span className="text-[9px] font-black uppercase tracking-widest text-deep-rose/40 font-sans">{rev.tag}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-16 pt-10 border-t border-charcoal/5 flex justify-center">
-                        <div className="flex items-center gap-4 bg-charcoal/4 px-7 py-3 rounded-full border border-charcoal/5">
-                            <CheckCircle2 className="w-4 h-4 text-green-600" />
-                            <span className="font-black text-[9px] uppercase tracking-[0.3em] text-charcoal/50">Verified Reviews • 4.9 / 5 Across 200+ Clients</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            <ContactSection />
             <Footer />
 
             {/* Floating action buttons */}
