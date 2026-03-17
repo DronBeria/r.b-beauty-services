@@ -30,6 +30,43 @@ export default function Hero() {
             className="relative w-full min-h-[100svh] overflow-hidden flex items-center"
             style={{ background: '#fdecd8' }}
         >
+            {/* ── Keyframe animations ── */}
+            <style>{`
+                @keyframes pulse-soft {
+                    0%, 100% { opacity: 0.35; transform: scale(1); }
+                    50%       { opacity: 0.9;  transform: scale(1.25); }
+                }
+                @keyframes float-a {
+                    0%, 100% { transform: translateY(0px); }
+                    50%      { transform: translateY(-13px); }
+                }
+                @keyframes float-b {
+                    0%, 100% { transform: translateY(0px); }
+                    50%      { transform: translateY(-19px); }
+                }
+                @keyframes float-c {
+                    0%, 100% { transform: translateY(0px) translateX(0px); }
+                    50%      { transform: translateY(-9px) translateX(6px); }
+                }
+                @keyframes spin-slow {
+                    from { transform: rotate(0deg); }
+                    to   { transform: rotate(360deg); }
+                }
+            `}</style>
+
+            {/* ── Decorative background accents ── */}
+            <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+                {/* Floating dots */}
+                <div style={{ position: 'absolute', top: '22%', left: '58%', width: 5, height: 5, borderRadius: '50%', background: 'rgba(19,19,19,0.07)', animation: 'float-a 7s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: '70%', left: '76%', width: 3.5, height: 3.5, borderRadius: '50%', background: 'rgba(19,19,19,0.05)', animation: 'float-b 9s ease-in-out infinite 0.8s' }} />
+                <div style={{ position: 'absolute', top: '44%', right: '5%', width: 6, height: 6, borderRadius: '50%', border: '1px solid rgba(19,19,19,0.08)', animation: 'float-c 8s ease-in-out infinite 0.3s' }} />
+                {/* Slowly spinning dashed ring */}
+                <div style={{ position: 'absolute', bottom: '11%', right: '10%', width: 96, height: 96, borderRadius: '50%', border: '1px dashed rgba(19,19,19,0.08)', animation: 'spin-slow 28s linear infinite' }} />
+                {/* Small ✦ sparkle accents */}
+                <div style={{ position: 'absolute', top: '16%', right: '23%', fontSize: '10px', color: 'rgba(19,19,19,0.09)', animation: 'pulse-soft 4.5s ease-in-out infinite 1s' }}>✦</div>
+                <div style={{ position: 'absolute', bottom: '26%', left: '47%', fontSize: '8px',  color: 'rgba(19,19,19,0.07)', animation: 'pulse-soft 5.5s ease-in-out infinite 2s' }}>✦</div>
+            </div>
+
             {/* ── Subtle large background text for depth ── */}
             <div
                 className="absolute right-[-2%] top-1/2 -translate-y-1/2 select-none pointer-events-none leading-none font-display font-black hidden lg:block"
@@ -53,6 +90,7 @@ export default function Hero() {
                         style={{ color: 'rgba(19,19,19,0.35)' }}>
                         Edmonton · Skin &amp; Laser Atelier
                     </span>
+                    <span style={{ fontSize: '8px', color: 'rgba(19,19,19,0.22)', animation: 'pulse-soft 3.5s ease-in-out infinite' }}>✦</span>
                 </div>
 
                 {/* Headline */}
