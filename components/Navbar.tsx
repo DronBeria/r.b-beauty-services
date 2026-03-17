@@ -142,8 +142,8 @@ const Navbar = () => {
                 className={cn(
                     'fixed top-0 left-0 w-full z-[150] transition-all duration-500',
                     scrolled
-                        ? 'h-[66px] bg-white shadow-sm border-b border-black/[0.06]'
-                        : 'h-[80px] bg-white border-b border-black/[0.05] shadow-[0_2px_20px_rgba(0,0,0,0.04)]'
+                        ? 'h-[66px] bg-white/95 backdrop-blur-xl shadow-sm border-b border-black/[0.06]'
+                        : 'h-[80px] bg-transparent border-b border-transparent'
                 )}
                 onMouseLeave={scheduleClose}
             >
