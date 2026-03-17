@@ -78,7 +78,7 @@ const Hero = () => {
                         <div className="flex gap-0.5">
                             {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-amber-400 stroke-amber-400" />)}
                         </div>
-                        <span className="text-[10px] font-black uppercase tracking-[0.45em] text-charcoal/45 font-sans">Toronto's #1 Rated Clinic</span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.45em] text-charcoal/45 font-sans">Beaumont's Premier Laser & Beauty Clinic</span>
                     </div>
 
                     {/* Headline — 4 lines matching reference */}
@@ -125,8 +125,8 @@ const Hero = () => {
 
                     {/* Subtext */}
                     <p className="hero-sub opacity-0 text-charcoal/50 text-[15px] md:text-[16px] leading-relaxed max-w-[390px] mb-9 font-medium">
-                        Our skin care clinic team connects you with premium laser treatments &amp; facials in Toronto —{' '}
-                        <span className="text-charcoal font-bold">medical precision</span> meets luxury care.
+                        Advanced Beauty &amp; Laser Treatments for Men &amp; Women in Beaumont — where modern technology meets personalized skincare for{' '}
+                        <span className="text-charcoal font-bold">visible, lasting results.</span>
                     </p>
 
                     {/* CTAs */}
@@ -139,7 +139,7 @@ const Hero = () => {
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <a
-                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.B%20Beauty!%20I'd%20like%20to%20book%20a%20consultation.`}
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I'd%20like%20to%20book%20a%20consultation.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2.5 border border-charcoal/20 text-charcoal px-7 py-4 rounded-full text-[12px] font-black uppercase tracking-[0.15em] hover:bg-charcoal/5 transition-all duration-300 active:scale-95"
@@ -186,7 +186,7 @@ const Hero = () => {
                         <div className="w-full h-full rounded-[3rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.10)] border-[5px] border-white ring-1 ring-black/[0.05]">
                             <img
                                 src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=90&auto=format&fit=crop&crop=faces,top"
-                                alt="R.B Beauty Clinic"
+                                alt="R.D. Beauty & Laser Clinic"
                                 className="w-full h-full object-cover object-top"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-[#FDFAF7]/25 to-transparent pointer-events-none" />

@@ -17,23 +17,23 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "R.B Beauty Services | Best Laser Clinic & Beauty Studio in Canada",
-  description: "Reveal your most radiant self with premium laser hair removal, facial treatments, and skincare. 500+ happy clients. Certified professionals. Advanced technology.",
-  keywords: "laser hair removal Canada, beauty clinic Toronto, skincare treatments, HydraFacial, IPL Photofacial, microneedling",
+  title: "R.D. Beauty & Laser Clinic | Advanced Laser & Skincare Treatments in Beaumont",
+  description: "Welcome to R.D. Beauty & Laser Clinic — advanced laser hair removal, HydraFacials, microneedling, skin rejuvenation, and professional waxing. Serving Beaumont with modern equipment and personalized care.",
+  keywords: "laser hair removal Beaumont, beauty clinic, skincare treatments, HydraFacial, microneedling, skin rejuvenation, professional waxing, R.D. Beauty",
   openGraph: {
-    title: "R.B Beauty Services | Reveal Your Most Radiant Self",
-    description: "Premium laser & beauty treatments in Canada — crafted for you.",
-    url: "https://rbbeauty.ca",
-    siteName: "R.B Beauty Services",
-    images: [{ url: "https://rbbeauty.ca/og-image.jpg" }],
+    title: "R.D. Beauty & Laser Clinic | Beaumont",
+    description: "Advanced Beauty & Laser Treatments for Men & Women in Beaumont.",
+    url: "https://rdbeauty.ca",
+    siteName: "R.D. Beauty & Laser Clinic",
+    images: [{ url: "https://rdbeauty.ca/og-image.jpg" }],
     locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "R.B Beauty Services | Laser Clinic Canada",
-    description: "Premium beauty and laser treatments with clinical precision.",
-    images: ["https://rbbeauty.ca/og-image.jpg"],
+    title: "R.D. Beauty & Laser Clinic | Beaumont",
+    description: "Advanced laser and beauty treatments with visible, lasting results.",
+    images: ["https://rdbeauty.ca/og-image.jpg"],
   },
 };
 

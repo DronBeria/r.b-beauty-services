@@ -71,7 +71,7 @@ const Preloader = () => {
                             lineHeight: 1.1,
                         }}
                     >
-                        R.B BEAUTY
+                        R.D. BEAUTY
                     </h1>
                     <p
                         style={{
@@ -83,7 +83,7 @@ const Preloader = () => {
                             fontFamily: 'var(--font-plus-jakarta)',
                         }}
                     >
-                        The Art of Radiance
+                        Advanced Beauty & Laser Clinic
                     </p>
                 </div>
 

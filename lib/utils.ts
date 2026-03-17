@@ -25,7 +25,7 @@ export function formatWhatsAppMessage(items: any[]) {
     }, 0);
 
     return encodeURIComponent(
-        `Hi R.B Beauty! 🌸\n\nI'd like to book the following services:\n\n` +
+        `Hi R.D. Beauty & Laser Clinic! 🌸\n\nI'd like to book the following services:\n\n` +
         `${serviceList}\n\n` +
         `━━━━━━━━━━━━━━━━\n` +
         `📋 *Booking Summary*\n` +

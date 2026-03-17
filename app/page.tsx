@@ -5,14 +5,11 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import ServicesSection from '../components/ServicesSection';
 import OurStory from '../components/OurStory';
-import LaserEducation from '../components/LaserEducation';
-import Gallery from '../components/Gallery';
 import PricingSection from '../components/PricingSection';
 import Footer from '../components/Footer';
 import CartPanel from '../components/CartPanel';
 import Preloader from '../components/Preloader';
 import MarqueeStrip from '../components/MarqueeStrip';
-import FAQSection from '../components/FAQSection';
 import CartToast from '../components/CartToast';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -113,7 +110,7 @@ export default function Home() {
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-center">
                             {[
-                                { icon: Award, value: '10+', label: 'Years Excellence', sub: 'Clinical experience in Toronto & Lahore', color: 'text-amber-600' },
+                                { icon: Award, value: '10+', label: 'Years Excellence', sub: 'Serving Beaumont with professional clinical care', color: 'text-amber-600' },
                                 { icon: Zap, value: 'FDA', label: 'Approved Tech', sub: 'Latest diode laser & medical-grade devices', color: 'text-blue-600' },
                                 { icon: ShieldCheck, value: '100%', label: 'Sanitized Clinic', sub: 'Strict hospital-grade hygiene protocols', color: 'text-emerald-600' },
                                 { icon: Star, value: '5.0', label: 'Client Rating', sub: 'Based on 300+ verified clinic reviews', color: 'text-rose-600' },
@@ -150,8 +147,6 @@ export default function Home() {
             {/* Main content sections */}
             <OurStory />
             <ServicesSection />
-            <LaserEducation />
-            <Gallery />
             <PricingSection />
 
             {/* Testimonials */}
@@ -174,9 +169,9 @@ export default function Home() {
 
                     <div className="testimonials-grid grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
                         {[
-                            { name: 'Sarah J.', text: 'The most professional laser clinic in Toronto. Amazing results in just 3 sessions. The clinical expertise is evident in everything they do.', tag: 'Laser Hair Removal' },
-                            { name: 'Elena R.', text: 'The HydraFacial was a life-saver for my wedding prep. My skin has never looked so smooth and glowing — everyone noticed!', tag: 'Facial Rituals' },
-                            { name: 'Jessica M.', text: 'Highly recommend R.B Beauty! The staff are so knowledgeable and make you feel completely at ease throughout the entire journey.', tag: 'Skin Therapy' },
+                            { name: 'Sarah J.', text: 'The most professional laser clinic in Beaumont. Amazing results in just 3 sessions — smooth, hair-free skin and zero irritation. Absolutely love it!', tag: 'Laser Hair Removal' },
+                            { name: 'Elena R.', text: 'The HydraFacial was a life-saver for my wedding prep. My skin has never looked so smooth and glowing — everyone noticed the difference!', tag: 'HydraFacial' },
+                            { name: 'Jessica M.', text: 'Highly recommend R.D. Beauty & Laser Clinic! The staff are so knowledgeable and make you feel completely at ease. The environment is clean, relaxing, and professional.', tag: 'Skin Rejuvenation' },
                         ].map((rev, i) => (
                             <div key={i} className="testimonial-reveal group">
                                 <div className="glass-card !rounded-[2rem] md:!rounded-[2.5rem] p-7 md:p-10 lg:p-12 h-full border-charcoal/5 hover:border-deep-rose/20 hover:bg-ivory/20 transition-all duration-700 relative">
@@ -205,7 +200,6 @@ export default function Home() {
                 </div>
             </section>
 
-            <FAQSection />
             <Footer />
 
             {/* Floating action buttons */}

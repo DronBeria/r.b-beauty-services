@@ -40,19 +40,19 @@ const OurStory = () => {
 
     const chapters = [
         {
-            title: "Visionary Roots",
+            title: "Personalized Care",
             icon: Heart,
-            content: "Founded on the belief that everyone deserves clinical-grade care delivered with artisan precision and warmth."
+            content: "Every treatment is carefully customized based on your skin type and concerns — because no two clients are the same."
         },
         {
-            title: "Curated Excellence",
+            title: "Modern Technology",
             icon: Globe,
-            content: "We scour the globe for the most advanced technologies, bringing FDA-approved innovations to Canada."
+            content: "We use modern equipment and high-quality professional products to ensure safe, effective, and long-lasting results."
         },
         {
-            title: "Your Radiance, Defined",
+            title: "Comfortable Environment",
             icon: Sparkles,
-            content: "Personalized treatment plans crafted by experts who understand that your beauty profile is unique."
+            content: "A clean, relaxing space where clients receive professional treatments they can trust — designed around your comfort."
         }
     ];
 
@@ -92,15 +92,15 @@ const OurStory = () => {
                         <div className="story-reveal reveal-hidden">
                             <div className="flex items-center gap-3 mb-5 md:mb-6">
                                 <div className="w-12 h-px bg-warm-gold/40" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-warm-gold">Our Philosophy</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-warm-gold">About Our Clinic</span>
                             </div>
                             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-charcoal leading-[0.85] mb-6 md:mb-8">
-                                A Heritage of <br />
-                                <span className="italic font-light text-gradient">Luminous</span> Results
+                                Advanced Technology, <br />
+                                <span className="italic font-light text-gradient">Visible Results</span>
                             </h2>
                             <p className="text-soft-gray font-sans text-base md:text-lg lg:text-xl leading-relaxed max-w-xl">
-                                We combine medical precision with a luxury boutique experience. Every treatment is an
-                                investment in your long-term confidence and skin health.
+                                At R.D. Beauty & Laser Clinic, advanced technology and professional skincare come together
+                                to deliver smoother skin, improved texture, and a more radiant complexion — for men and women in Beaumont.
                             </p>
                         </div>
 
@@ -122,7 +122,7 @@ const OurStory = () => {
 
                         <div className="story-reveal reveal-hidden pt-4">
                             <button className="btn-secondary !border-transparent !bg-transparent !p-0 hover:!text-deep-rose-dark group">
-                                <span className="text-[11px] font-black uppercase tracking-[0.4em]">Learn Our Legacy</span>
+                                <span className="text-[11px] font-black uppercase tracking-[0.4em]">Book Your Appointment</span>
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-4 transition-transform text-deep-rose" />
                             </button>
                         </div>

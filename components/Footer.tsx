@@ -35,12 +35,11 @@ const Footer = () => {
                         {/* Brand Identity Area */}
                         <div className="space-y-10">
                             <Link href="#home" className="flex flex-col group max-w-fit">
-                                <span className="font-display text-3xl md:text-5xl font-bold tracking-tighter text-gradient transition-all group-hover:scale-105 origin-left duration-500"> R.B BEAUTY </span>
-                                <span className="text-[10px] uppercase tracking-[0.6em] font-sans text-white/40 -mt-1 group-hover:translate-x-2 transition-transform duration-500"> The Clinic </span>
+                                <span className="font-display text-3xl md:text-5xl font-bold tracking-tighter text-gradient transition-all group-hover:scale-105 origin-left duration-500">R.D. BEAUTY</span>
+                                <span className="text-[10px] uppercase tracking-[0.6em] font-sans text-white/40 -mt-1 group-hover:translate-x-2 transition-transform duration-500">& Laser Clinic</span>
                             </Link>
                             <p className="text-white/50 font-sans text-base leading-relaxed max-w-xs">
-                                Dedicated to the science of radiance. We blend clinical precision with
-                                luxury mastership to reveal your skin's true biological potential.
+                                Advanced laser and professional skincare treatments for men and women. Clean, comfortable, and results-driven care you can trust.
                             </p>
                             <div className="flex items-center gap-5">
                                 <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 hover:bg-deep-rose hover:border-deep-rose flex items-center justify-center transition-all duration-500 group">
@@ -85,9 +84,9 @@ const Footer = () => {
                                     <div className="space-y-1">
                                         <p className="text-white/60 text-sm font-sans leading-relaxed">
                                             Clinical Practice <br />
-                                            Toronto, Ontario, Canada
+                                            Beaumont, Ontario
                                         </p>
-                                        <span className="text-[9px] font-black uppercase tracking-widest text-deep-rose/40">The Flagship</span>
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-deep-rose/40">Our Clinic</span>
                                     </div>
                                 </div>
 
@@ -144,7 +143,7 @@ const Footer = () => {
                     {/* Bottom Narrative Bar */}
                     <div className="pt-10 md:pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 text-white/20 text-[9px] font-black uppercase tracking-[0.5em] font-sans">
                         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 text-center md:text-left">
-                            <p>© {currentYear} R.B Beauty Clinic. All Rights Reserved.</p>
+                            <p>© {currentYear} R.D. Beauty & Laser Clinic. All Rights Reserved.</p>
                             <div className="flex items-center gap-10">
                                 <Link href="#" className="hover:text-white transition-colors">Privacy Protocol</Link>
                                 <Link href="#" className="hover:text-white transition-colors">Service Terms</Link>

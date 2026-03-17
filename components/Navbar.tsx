@@ -132,10 +132,10 @@ const Navbar = () => {
                     {/* Logo */}
                     <Link href="#home" className="flex flex-col leading-none group shrink-0" onClick={closeMobileMenu}>
                         <span className="font-display text-lg md:text-xl font-bold tracking-[0.18em] text-charcoal uppercase group-hover:text-deep-rose transition-colors duration-300">
-                            R.B BEAUTY
+                            R.D. BEAUTY
                         </span>
                         <span className="text-[7px] font-black uppercase tracking-[0.5em] text-charcoal/30 font-sans">
-                            The Clinic
+                            & Laser Clinic
                         </span>
                     </Link>
 
@@ -215,7 +215,7 @@ const Navbar = () => {
                         </button>
 
                         <a
-                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.B%20Beauty!%20I'd%20like%20to%20book%20a%20consultation.`}
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I'd%20like%20to%20book%20a%20consultation.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hidden md:inline-flex items-center gap-2 bg-charcoal text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em] hover:bg-deep-rose transition-all duration-300 shadow-sm active:scale-95"
@@ -312,7 +312,7 @@ const Navbar = () => {
                     <div className="flex items-center justify-between px-7 pt-7 pb-5 border-b border-black/5">
                         <div>
                             <span className="font-display text-lg font-bold tracking-[0.15em] text-charcoal uppercase">Menu</span>
-                            <p className="text-[8px] font-black uppercase tracking-[0.4em] text-charcoal/30 font-sans">R.B Beauty Clinic</p>
+                            <p className="text-[8px] font-black uppercase tracking-[0.4em] text-charcoal/30 font-sans">R.D. Beauty & Laser Clinic</p>
                         </div>
                         <button
                             onClick={closeMobileMenu}
@@ -382,7 +382,7 @@ const Navbar = () => {
                             <span>My Booking {cartCount > 0 && `(${cartCount})`}</span>
                         </button>
                         <a
-                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.B%20Beauty!%20I'd%20like%20to%20book%20a%20consultation.`}
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I'd%20like%20to%20book%20a%20consultation.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={closeMobileMenu}
