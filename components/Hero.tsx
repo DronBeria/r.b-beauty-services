@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Play, Star } from 'lucide-react';
 import gsap from 'gsap';
 import { WHATSAPP_NUMBER } from '../constants/services';
-import HeroAnimation from './HeroAnimation';
+import HeroSlideshow from './HeroSlideshow';
 
 const Hero = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -142,7 +142,7 @@ const Hero = () => {
                     style={{ height: 'clamp(340px, 52vw, 560px)' }}
                 >
                     <div className="relative w-full h-full">
-                        <HeroAnimation />
+                        <HeroSlideshow />
                     </div>
                 </div>
             </div>
