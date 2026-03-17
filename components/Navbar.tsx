@@ -142,19 +142,22 @@ const Navbar = () => {
                 className={cn(
                     'fixed top-0 left-0 w-full z-[150] transition-all duration-500',
                     scrolled
-                        ? 'h-[66px] bg-white/95 backdrop-blur-xl shadow-sm border-b border-black/[0.06]'
+                        ? 'h-[66px] backdrop-blur-xl shadow-sm border-b border-black/[0.06]'
                         : 'h-[80px] bg-transparent border-b border-transparent'
                 )}
+                style={scrolled ? { background: 'rgba(253,242,228,0.96)' } : undefined}
                 onMouseLeave={scheduleClose}
             >
                 <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
 
                     {/* Logo */}
                     <Link href="#home" className="flex flex-col leading-none group shrink-0" onClick={closeMobileMenu}>
-                        <span className="font-display text-lg md:text-xl font-bold tracking-[0.18em] text-charcoal uppercase group-hover:text-deep-rose transition-colors duration-300">
+                        <span className="font-display text-lg md:text-xl font-bold tracking-[0.18em] uppercase transition-colors duration-300"
+                            style={{ color: '#131313' }}>
                             R.D. BEAUTY
                         </span>
-                        <span className="text-[7px] font-black uppercase tracking-[0.5em] text-charcoal/30 font-sans">
+                        <span className="text-[7px] font-black uppercase tracking-[0.5em] font-sans"
+                            style={{ color: 'rgba(19,19,19,0.28)' }}>
                             & Laser Clinic
                         </span>
                     </Link>
@@ -237,7 +240,8 @@ const Navbar = () => {
                             href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I'd%20like%20to%20book%20a%20consultation.`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center gap-2 bg-charcoal text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em] hover:bg-deep-rose transition-all duration-300 shadow-sm active:scale-95"
+                            className="hidden md:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-300 shadow-sm active:scale-95 hover:opacity-80"
+                            style={{ background: '#131313' }}
                         >
                             <CalendarCheck className="w-3.5 h-3.5" />
                             <span>Book Now</span>
