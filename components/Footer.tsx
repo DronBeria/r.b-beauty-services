@@ -3,8 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import {
-    Instagram,
-    Linkedin,
     MapPin,
     PhoneCall,
     Mail,
@@ -41,14 +39,6 @@ const Footer = () => {
                             <p className="text-white/50 font-sans text-base leading-relaxed max-w-xs">
                                 Advanced laser and professional skincare treatments for men and women. Clean, comfortable, and results-driven care you can trust.
                             </p>
-                            <div className="flex items-center gap-5">
-                                <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 hover:bg-deep-rose hover:border-deep-rose flex items-center justify-center transition-all duration-500 group">
-                                    <Instagram className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                                </Link>
-                                <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 hover:bg-deep-rose hover:border-deep-rose flex items-center justify-center transition-all duration-500 group">
-                                    <Linkedin className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                                </Link>
-                            </div>
                         </div>
 
                         {/* Curated Pathways */}
