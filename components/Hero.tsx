@@ -51,7 +51,7 @@ export default function Hero() {
                     <span className="w-6 h-px block" style={{ background: 'rgba(19,19,19,0.2)' }} />
                     <span className="font-sans text-[9.5px] font-bold uppercase tracking-[0.55em]"
                         style={{ color: 'rgba(19,19,19,0.35)' }}>
-                        Edmonton · Beauty &amp; Laser Clinic
+                        Edmonton · Skin &amp; Laser Atelier
                     </span>
                 </div>
 
@@ -67,7 +67,7 @@ export default function Hero() {
                                 color: '#131313',
                                 opacity: 0,
                             }}>
-                            Enhancing
+                            Reveal Your
                         </h1>
                     </div>
                     <div className="overflow-hidden">
@@ -79,7 +79,7 @@ export default function Hero() {
                                 color: '#131313',
                                 opacity: 0,
                             }}>
-                            Your Beauty
+                            Radiance
                         </h1>
                     </div>
                 </div>
@@ -93,10 +93,10 @@ export default function Hero() {
                     {/* Body */}
                     <p className="h-body font-sans leading-[1.95] max-w-[400px]"
                         style={{ fontSize: '15px', color: 'rgba(19,19,19,0.44)', opacity: 0 }}>
-                        Laser hair removal, HydraFacials, microneedling &amp; waxing —
-                        results-driven treatments tailored for{' '}
+                        Bespoke treatments — laser hair removal, HydraFacials,
+                        microneedling &amp; more — thoughtfully crafted for{' '}
                         <span style={{ color: 'rgba(19,19,19,0.72)', fontWeight: 600 }}>
-                            every skin type in Edmonton.
+                            your unique skin in Edmonton.
                         </span>
                     </p>
 
@@ -116,7 +116,7 @@ export default function Hero() {
                                 className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.22em] transition-all duration-300 hover:bg-black/[0.05] active:scale-95"
                                 style={{ border: '1.5px solid rgba(19,19,19,0.16)', color: 'rgba(19,19,19,0.48)' }}>
                                 <MessageCircle className="w-3.5 h-3.5" />
-                                <span>Book a Consult</span>
+                                <span>Book a Consultation</span>
                             </a>
                         </div>
 
@@ -133,7 +133,7 @@ export default function Hero() {
                             </div>
                             <span className="text-[11px] font-sans" style={{ color: 'rgba(19,19,19,0.36)' }}>
                                 <strong style={{ color: 'rgba(19,19,19,0.62)', fontWeight: 700 }}>4.9 ★</strong>
-                                {' '}· 200+ happy clients in Edmonton
+                                {' '}· Trusted by 200+ clients across Edmonton
                             </span>
                         </div>
                     </div>
