@@ -49,12 +49,26 @@ const Hero = () => {
             ref={sectionRef}
             id="home"
             className="relative min-h-[100svh] w-full overflow-hidden pt-[80px]"
-            style={{ background: 'linear-gradient(130deg, #FDFAF7 0%, #FBF6F8 45%, #F9F5FD 100%)' }}
+            style={{ background: 'linear-gradient(125deg, #FDFAF7 0%, #FCF6F0 35%, #FBF4F7 70%, #FAF5FF 100%)' }}
         >
-            <div className="w-full max-w-[1380px] mx-auto px-6 md:px-12 lg:px-16 min-h-[calc(100svh-80px)] grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-8 items-center py-12 lg:py-0">
+            {/* Global warm sunlight wash over the whole hero */}
+            <div
+                className="absolute pointer-events-none"
+                style={{
+                    top: '-20%',
+                    right: '-5%',
+                    width: '65%',
+                    height: '80%',
+                    background: 'radial-gradient(ellipse, rgba(255,210,120,0.13) 0%, rgba(255,180,80,0.06) 45%, transparent 70%)',
+                    filter: 'blur(60px)',
+                    zIndex: 1,
+                }}
+            />
+
+            <div className="relative z-10 w-full max-w-[1380px] mx-auto px-6 md:px-12 lg:px-16 min-h-[calc(100svh-80px)] grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-0 items-center py-12 lg:py-0">
 
                 {/* ── LEFT: Text ──────────────────────────────────────────────── */}
-                <div className="flex flex-col justify-center order-2 lg:order-1 lg:pr-8 xl:pr-14">
+                <div className="flex flex-col justify-center order-2 lg:order-1 lg:pr-8 xl:pr-16">
 
                     {/* Eyebrow */}
                     <div className="hero-eyebrow opacity-0 flex items-center gap-3 mb-7">
@@ -135,20 +149,21 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* ── RIGHT: Animation ──────────────────────────────────────── */}
+                {/* ── RIGHT: Slideshow — no box, bleeds full height ─────── */}
                 <div
                     ref={animRef}
-                    className="relative order-1 lg:order-2 flex justify-center lg:justify-end opacity-0"
-                    style={{ height: 'clamp(340px, 52vw, 560px)' }}
+                    className="relative order-1 lg:order-2 opacity-0 self-stretch"
+                    style={{ minHeight: 'clamp(380px, 75vw, 100%)' }}
                 >
-                    <div className="relative w-full h-full">
+                    {/* Full-height container that bleeds to section edges */}
+                    <div className="absolute inset-0 lg:-top-[80px] lg:-right-16 lg:-bottom-0">
                         <HeroSlideshow />
                     </div>
                 </div>
             </div>
 
             {/* Bottom fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-ivory/40 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#FDFAF7]/60 to-transparent pointer-events-none z-20" />
         </section>
     );
 };
