@@ -1,13 +1,28 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../constants/services';
 
+const BG_WORDS = ['Beauty', 'Radiance', 'Glow', 'Laser', 'Skin', 'Atelier'];
+
 export default function Hero() {
     const sectionRef = useRef<HTMLElement>(null);
+    const [wordIdx, setWordIdx] = useState(0);
+    const [fading, setFading] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFading(true);
+            setTimeout(() => {
+                setWordIdx((i: number) => (i + 1) % BG_WORDS.length);
+                setFading(false);
+            }, 700);
+        }, 3200);
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -76,8 +91,10 @@ export default function Hero() {
                     WebkitTextStroke: '1.5px rgba(19,19,19,0.055)',
                     letterSpacing: '-0.05em',
                     lineHeight: 1,
+                    opacity: fading ? 0 : 1,
+                    transition: 'opacity 0.7s ease-in-out',
                 }}>
-                Beauty
+                {BG_WORDS[wordIdx]}
             </div>
 
             {/* ── Content ── */}

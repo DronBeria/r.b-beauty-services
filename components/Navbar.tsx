@@ -140,12 +140,10 @@ const Navbar = () => {
             <nav
                 ref={navRef}
                 className={cn(
-                    'fixed top-0 left-0 w-full z-[150] transition-all duration-500',
-                    scrolled
-                        ? 'h-[66px] backdrop-blur-xl shadow-sm border-b border-black/[0.06]'
-                        : 'h-[80px] bg-transparent border-b border-transparent'
+                    'fixed top-0 left-0 w-full z-[150] transition-all duration-500 backdrop-blur-xl border-b border-black/[0.06]',
+                    scrolled ? 'h-[66px] shadow-sm' : 'h-[80px]'
                 )}
-                style={scrolled ? { background: 'rgba(253,242,228,0.96)' } : undefined}
+                style={{ background: scrolled ? 'rgba(253,236,216,0.97)' : 'rgba(253,236,216,0.88)' }}
                 onMouseLeave={scheduleClose}
             >
                 <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
