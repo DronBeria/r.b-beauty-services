@@ -1,261 +1,308 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
-import { ArrowRight, MessageCircle, Star } from 'lucide-react';
+import { ArrowRight, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../constants/services';
 
-/* Images that are guaranteed beautiful + load fast */
+/* ─── Carousel slides ──────────────────────────────────────── */
 const SLIDES = [
-    { img: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=1100&q=95&auto=format&fit=crop&crop=faces', label: 'Facial Treatment'   },
-    { img: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1100&q=95&auto=format&fit=crop&crop=faces', label: 'Waxing & Skincare'  },
-    { img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1100&q=95&auto=format&fit=crop&crop=faces', label: 'Threading'          },
-    { img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1100&q=95&auto=format&fit=crop&crop=faces', label: 'Dermaplaning'       },
+    {
+        img: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=800&q=95&auto=format&fit=crop&crop=faces',
+        tag: 'Facial Treatment',
+        color: '#C2185B',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=95&auto=format&fit=crop&crop=faces',
+        tag: 'Waxing & Skincare',
+        color: '#9A7B4F',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=95&auto=format&fit=crop&crop=faces',
+        tag: 'Threading',
+        color: '#7A6B9A',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=95&auto=format&fit=crop&crop=faces',
+        tag: 'Dermaplaning',
+        color: '#A05030',
+    },
 ];
 
-const Hero = () => {
+/* ─── Component ────────────────────────────────────────────── */
+export default function Hero() {
     const sectionRef = useRef<HTMLElement>(null);
-    const [active, setActive]   = useState(0);
-    const [leaving, setLeaving] = useState<number | null>(null);
-    const [running, setRunning] = useState(false);
+    const [active, setActive]     = useState(0);
+    const [direction, setDirection] = useState<'left'|'right'>('left');
+    const [animating, setAnimating] = useState(false);
+    const intervalRef = useRef<ReturnType<typeof setInterval>|null>(null);
 
-    /* Auto advance */
+    /* Navigate */
+    const goTo = useCallback((idx: number, dir: 'left'|'right') => {
+        if (animating) return;
+        setDirection(dir);
+        setAnimating(true);
+        setTimeout(() => { setActive(idx); setAnimating(false); }, 550);
+    }, [animating]);
+
+    const next = useCallback(() => goTo((active + 1) % SLIDES.length, 'left'),  [active, goTo]);
+    const prev = useCallback(() => goTo((active - 1 + SLIDES.length) % SLIDES.length, 'right'), [active, goTo]);
+
+    /* Auto-advance */
     useEffect(() => {
-        const id = setInterval(() => {
-            setActive(prev => {
-                const next = (prev + 1) % SLIDES.length;
-                setLeaving(prev);
-                setRunning(true);
-                setTimeout(() => { setLeaving(null); setRunning(false); }, 1200);
-                return next;
-            });
-        }, 5500);
-        return () => clearInterval(id);
-    }, []);
+        intervalRef.current = setInterval(next, 4500);
+        return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+    }, [next]);
 
-    /* Entrance animations */
+    /* Entrance */
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 1.1 })
-                .fromTo('.h-tag',   { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7 })
-                .fromTo('.h-h1',    { y: 70, autoAlpha: 0, skewY: 3 }, { y: 0, autoAlpha: 1, skewY: 0, stagger: 0.09, duration: 1 }, '-=0.2')
-                .fromTo('.h-body',  { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 }, '-=0.4')
-                .fromTo('.h-btns',  { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 }, '-=0.5')
-                .fromTo('.h-proof', { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7 }, '-=0.4')
-                .fromTo('.h-img',   { x: 40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 1.4, ease: 'expo.out' }, '-=1.6');
+            gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 1.0 })
+                .fromTo('.h-label',  { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6 })
+                .fromTo('.h-title',  { y: 60, autoAlpha: 0, skewY: 2 }, { y: 0, autoAlpha: 1, skewY: 0, stagger: 0.1, duration: 1.0 }, '-=0.2')
+                .fromTo('.h-body',   { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 }, '-=0.4')
+                .fromTo('.h-ctas',   { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 }, '-=0.5')
+                .fromTo('.h-carousel', { x: 50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 1.2, ease: 'expo.out' }, '-=1.2');
         }, sectionRef);
         return () => ctx.revert();
     }, []);
+
+    const slide = SLIDES[active];
+    const nextSlide = SLIDES[(active + 1) % SLIDES.length];
 
     return (
         <section
             ref={sectionRef}
             id="home"
-            className="relative w-full min-h-[100svh] overflow-hidden"
-            style={{ background: '#FAF7F4' }}
+            className="relative w-full min-h-[100svh] overflow-hidden flex items-center"
+            style={{ background: '#FFF8F5', paddingTop: '80px' }}
         >
-            {/* ── Very subtle warm blush bloom — top right only ── */}
+            {/* Subtle blush bloom — doesn't compete */}
             <div className="absolute pointer-events-none" style={{
-                top: '-20%', right: '-10%', width: '60%', height: '70%',
-                background: 'radial-gradient(ellipse, rgba(200,80,120,0.07) 0%, rgba(200,80,120,0.02) 50%, transparent 72%)',
-                filter: 'blur(80px)',
+                top: '-10%', right: '0', width: '45%', height: '60%',
+                background: 'radial-gradient(ellipse, rgba(194,24,91,0.055) 0%, transparent 70%)',
+                filter: 'blur(60px)',
+            }} />
+            <div className="absolute pointer-events-none" style={{
+                bottom: '0', left: '10%', width: '35%', height: '40%',
+                background: 'radial-gradient(ellipse, rgba(154,123,79,0.05) 0%, transparent 70%)',
+                filter: 'blur(50px)',
             }} />
 
-            {/* ── Layout ──────────────────────────────────────── */}
-            <div className="flex min-h-[100svh] pt-[80px]">
+            {/* ─── Grid ─────────────────────────────────────── */}
+            <div className="w-full max-w-[1320px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 min-h-[calc(100svh-80px)] flex flex-col lg:flex-row items-center gap-12 lg:gap-8 py-14 lg:py-0">
 
-                {/* LEFT — text */}
-                <div className="flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-20 xl:px-28 py-16 lg:py-0 w-full lg:w-[48%] xl:w-[45%] flex-shrink-0 relative z-10">
+                {/* ─── LEFT TEXT ──────────────────────────── */}
+                <div className="flex-1 flex flex-col justify-center order-2 lg:order-1 max-w-[520px]">
 
-                    {/* Stars + tag */}
-                    <div className="h-tag flex items-center gap-2.5 mb-9" style={{ opacity: 0 }}>
-                        <div className="flex gap-[2px]">
-                            {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-amber-400 stroke-amber-400" />)}
-                        </div>
-                        <span className="text-[9.5px] font-black uppercase tracking-[0.5em] text-charcoal/40 font-sans">
-                            Edmonton's Beauty & Laser Clinic
+                    {/* Label pill */}
+                    <div className="h-label flex items-center gap-2.5 mb-8" style={{ opacity: 0 }}>
+                        <span
+                            className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.55em] px-4 py-2 rounded-full font-sans"
+                            style={{ background: 'rgba(194,24,91,0.07)', color: 'rgba(160,19,77,0.7)', border: '1px solid rgba(160,19,77,0.1)' }}
+                        >
+                            <span className="w-1 h-1 rounded-full bg-deep-rose/60 animate-pulse-soft inline-block" />
+                            Edmonton · Beauty & Laser Clinic
                         </span>
                     </div>
 
                     {/* Headline */}
-                    <div className="mb-7 space-y-0">
-                        {[
-                            { t: 'Advanced',      g: false },
-                            { t: 'Beauty',        g: true  },
-                            { t: '& Laser Care',  g: false },
-                        ].map((l, i) => (
-                            <div key={i} className="overflow-hidden">
-                                <h1
-                                    className="h-h1 font-display leading-[0.95] tracking-[-0.025em]"
-                                    style={{
-                                        fontSize: 'clamp(2.8rem, 5.5vw, 5.8rem)',
-                                        opacity: 0,
-                                        ...(l.g ? {
-                                            background: 'linear-gradient(125deg, #A0134D 0%, #C2185B 45%, #9A5B30 100%)',
-                                            WebkitBackgroundClip: 'text',
-                                            WebkitTextFillColor: 'transparent',
-                                            fontWeight: 300,
-                                            fontStyle: 'italic',
-                                        } : {
-                                            color: '#0F0E12',
-                                            fontWeight: 800,
-                                            textTransform: 'uppercase' as const,
-                                        }),
-                                    }}
-                                >
-                                    {l.t}
-                                </h1>
-                            </div>
-                        ))}
+                    <div className="space-y-1 mb-7">
+                        <div className="overflow-hidden">
+                            <h1
+                                className="h-title font-display leading-[0.95] tracking-[-0.02em]"
+                                style={{ fontSize: 'clamp(2.6rem, 5vw, 5rem)', fontWeight: 800, color: '#1A0E12', textTransform: 'uppercase', opacity: 0 }}
+                            >
+                                Beautiful
+                            </h1>
+                        </div>
+                        <div className="overflow-hidden">
+                            <h1
+                                className="h-title font-display leading-[0.95] tracking-[-0.02em]"
+                                style={{
+                                    fontSize: 'clamp(2.6rem, 5vw, 5rem)',
+                                    fontWeight: 300, fontStyle: 'italic',
+                                    background: 'linear-gradient(120deg, #A0134D, #C2185B 50%, #9A5B30)',
+                                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                                    opacity: 0,
+                                }}
+                            >
+                                Skin Starts
+                            </h1>
+                        </div>
+                        <div className="overflow-hidden">
+                            <h1
+                                className="h-title font-display leading-[0.95] tracking-[-0.02em]"
+                                style={{ fontSize: 'clamp(2.6rem, 5vw, 5rem)', fontWeight: 800, color: '#1A0E12', textTransform: 'uppercase', opacity: 0 }}
+                            >
+                                Here.
+                            </h1>
+                        </div>
                     </div>
 
-                    {/* Thin rose rule */}
-                    <div className="h-body flex items-center gap-3 mb-6" style={{ opacity: 0 }}>
-                        <div className="h-px w-10 bg-deep-rose/30" />
-                        <div className="w-1 h-1 rounded-full bg-deep-rose/40" />
-                        <div className="h-px w-5 bg-deep-rose/15" />
+                    {/* Divider */}
+                    <div className="h-body flex items-center gap-2.5 mb-5" style={{ opacity: 0 }}>
+                        <div className="h-px w-8" style={{ background: 'linear-gradient(to right, #A0134D44, transparent)' }} />
+                        <div className="w-1 h-1 rounded-full" style={{ background: '#A0134D55' }} />
                     </div>
 
                     {/* Body */}
-                    <p className="h-body text-charcoal/45 text-[15px] md:text-[15.5px] leading-[1.85] max-w-[350px] mb-9 font-sans" style={{ opacity: 0 }}>
-                        Laser hair removal, facials, microneedling and waxing —
-                        personalized for{' '}
-                        <span className="text-charcoal/75 font-semibold">
-                            men and women in Edmonton.
+                    <p
+                        className="h-body text-[15px] leading-[1.85] mb-9 font-sans"
+                        style={{ color: 'rgba(26,14,18,0.45)', maxWidth: '360px', opacity: 0 }}
+                    >
+                        Laser hair removal, HydraFacials, microneedling & waxing —
+                        results-driven care for{' '}
+                        <span style={{ color: 'rgba(26,14,18,0.72)', fontWeight: 600 }}>
+                            everyone in Edmonton.
                         </span>
                     </p>
 
                     {/* CTAs */}
-                    <div className="h-btns flex flex-wrap items-center gap-3 mb-10" style={{ opacity: 0 }}>
+                    <div className="h-ctas flex flex-wrap items-center gap-3 mb-10" style={{ opacity: 0 }}>
                         <Link
                             href="#services"
-                            className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-[11.5px] font-black uppercase tracking-[0.18em] text-white transition-all duration-300 active:scale-95 hover:shadow-xl hover:shadow-deep-rose/20"
-                            style={{ background: 'linear-gradient(135deg, #A0134D 0%, #C2185B 100%)' }}
+                            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.18em] text-white transition-all duration-300 hover:opacity-90 active:scale-95"
+                            style={{ background: 'linear-gradient(135deg,#A0134D,#C2185B)', boxShadow: '0 8px 28px rgba(160,19,77,0.22)' }}
                         >
                             <span>Explore Services</span>
                             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </Link>
                         <a
-                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty!%20I'd%20like%20to%20book.`}
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty!`}
                             target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-[11.5px] font-black uppercase tracking-[0.18em] text-charcoal/60 border border-charcoal/12 hover:border-charcoal/25 hover:text-charcoal/80 transition-all duration-300 active:scale-95"
+                            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.18em] transition-all duration-300 hover:bg-black/5 active:scale-95"
+                            style={{ border: '1.5px solid rgba(26,14,18,0.1)', color: 'rgba(26,14,18,0.5)' }}
                         >
                             <MessageCircle className="w-3.5 h-3.5" />
                             <span>Book Consult</span>
                         </a>
                     </div>
 
-                    {/* Proof strip */}
-                    <div className="h-proof flex items-center gap-4" style={{ opacity: 0 }}>
-                        <div className="flex -space-x-2">
-                            {['#A0134D','#C2185B','#9A7B4F','#7A3A6A'].map((c, i) => (
-                                <div key={i} className="w-8 h-8 rounded-full border-2 border-[#FAF7F4] flex items-center justify-center text-[9px] font-black text-white" style={{ background: c }}>
-                                    {['S','E','J','P'][i]}
-                                </div>
+                    {/* Stars proof */}
+                    <div className="h-ctas flex items-center gap-3" style={{ opacity: 0 }}>
+                        <div className="flex gap-0.5">
+                            {[...Array(5)].map((_,i) => (
+                                <svg key={i} width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B">
+                                    <path d="M6 0L7.35 4.18L12 4.38L8.46 6.89L9.71 11.09L6 8.71L2.29 11.09L3.54 6.89L0 4.38L4.65 4.18Z"/>
+                                </svg>
                             ))}
                         </div>
-                        <div className="h-8 w-px bg-charcoal/10" />
-                        <div>
-                            <p className="text-[10px] font-black text-charcoal/35 uppercase tracking-[0.3em]">
-                                4.9 ★ · 200+ clients
-                            </p>
-                        </div>
+                        <span className="text-[10px] font-semibold font-sans" style={{ color: 'rgba(26,14,18,0.35)' }}>
+                            4.9 · Trusted by <span style={{ color: 'rgba(26,14,18,0.55)' }}>200+ clients</span>
+                        </span>
                     </div>
                 </div>
 
-                {/* RIGHT — image, bleeds to top + right + bottom edges */}
-                <div className="h-img hidden lg:block flex-1 relative" style={{ opacity: 0 }}>
+                {/* ─── RIGHT: CAROUSEL ────────────────────── */}
+                <div className="h-carousel order-1 lg:order-2 flex-shrink-0 flex flex-col items-center gap-6" style={{ opacity: 0 }}>
 
-                    {/* Image stack */}
-                    <div className="absolute inset-0">
+                    {/* Card stack */}
+                    <div className="relative" style={{ width: 'clamp(260px, 36vw, 420px)', height: 'clamp(340px, 48vw, 560px)' }}>
 
-                        {/* Leaving image */}
-                        {leaving !== null && (
-                            <img
-                                key={`l-${leaving}`}
-                                src={SLIDES[leaving].img}
-                                alt={SLIDES[leaving].label}
-                                className="absolute inset-0 w-full h-full object-cover object-center"
-                                style={{
-                                    opacity: running ? 0 : 1,
-                                    transform: running ? 'scale(1.04)' : 'scale(1)',
-                                    transition: 'opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 1.2s cubic-bezier(0.4,0,0.2,1)',
-                                    zIndex: 1,
-                                }}
-                            />
-                        )}
-
-                        {/* Active image — subtle Ken Burns */}
-                        <img
-                            key={`a-${active}`}
-                            src={SLIDES[active].img}
-                            alt={SLIDES[active].label}
-                            className="absolute inset-0 w-full h-full object-cover object-center"
+                        {/* ── Ghost card behind (next image) ── */}
+                        <div
+                            className="absolute inset-0 overflow-hidden"
                             style={{
-                                opacity: running ? 0 : 1,
-                                transform: running ? 'scale(0.97)' : 'scale(1)',
-                                transition: 'opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 1.2s cubic-bezier(0.4,0,0.2,1)',
-                                animation: !running ? 'heroKB 5.5s ease-in-out forwards' : 'none',
-                                zIndex: 2,
+                                borderRadius: '2rem',
+                                transform: 'scale(0.93) translateY(18px)',
+                                transformOrigin: 'bottom center',
+                                zIndex: 1,
+                                filter: 'brightness(0.75)',
                             }}
-                        />
-
-                        {/* Warm color grade */}
-                        <div className="absolute inset-0 pointer-events-none" style={{
-                            zIndex: 3,
-                            background: 'linear-gradient(160deg, rgba(160,19,77,0.06) 0%, transparent 45%)',
-                        }} />
-
-                        {/* Left blend → page bg */}
-                        <div className="absolute inset-y-0 left-0 w-[25%] pointer-events-none" style={{
-                            zIndex: 4,
-                            background: 'linear-gradient(to right, #FAF7F4 0%, rgba(250,247,244,0.7) 45%, transparent 100%)',
-                        }} />
-
-                        {/* Bottom blend */}
-                        <div className="absolute bottom-0 inset-x-0 h-28 pointer-events-none" style={{
-                            zIndex: 4,
-                            background: 'linear-gradient(to top, #FAF7F4 0%, transparent 100%)',
-                        }} />
-
-                        {/* Currently showing tag — bottom left of image */}
-                        <div className="absolute bottom-10 left-8 z-10 flex items-center gap-2.5 bg-white/80 backdrop-blur-xl px-4 py-2.5 rounded-full border border-black/[0.06] shadow-sm">
-                            <div className="w-1.5 h-1.5 rounded-full bg-deep-rose animate-pulse-soft" />
-                            <span className="text-[9px] font-black uppercase tracking-[0.35em] text-charcoal/55">
-                                {SLIDES[active].label}
-                            </span>
+                        >
+                            <img
+                                src={nextSlide.img}
+                                alt=""
+                                className="w-full h-full object-cover"
+                                style={{ transform: 'scale(1.05)' }}
+                            />
                         </div>
 
-                        {/* Slide indicators */}
-                        <div className="absolute bottom-10 right-8 z-10 flex flex-col gap-2">
+                        {/* ── Main card (active) ── */}
+                        <div
+                            className="absolute inset-0 overflow-hidden"
+                            style={{
+                                borderRadius: '2rem',
+                                zIndex: 2,
+                                boxShadow: '0 24px 60px rgba(0,0,0,0.14), 0 8px 24px rgba(0,0,0,0.08)',
+                                opacity: animating ? 0 : 1,
+                                transform: animating
+                                    ? `translateX(${direction === 'left' ? '-8%' : '8%'}) scale(0.97)`
+                                    : 'translateX(0) scale(1)',
+                                transition: 'opacity 0.55s cubic-bezier(0.4,0,0.2,1), transform 0.55s cubic-bezier(0.4,0,0.2,1)',
+                            }}
+                        >
+                            <img
+                                src={slide.img}
+                                alt={slide.tag}
+                                className="w-full h-full object-cover"
+                            />
+
+                            {/* Warm overlay */}
+                            <div className="absolute inset-0" style={{
+                                background: 'linear-gradient(170deg, transparent 50%, rgba(10,4,8,0.45) 100%)',
+                            }} />
+
+                            {/* Treatment tag */}
+                            <div className="absolute bottom-5 left-5 flex items-center gap-2"
+                                style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(14px)', borderRadius: '100px', padding: '7px 14px', border: '1px solid rgba(255,255,255,0.25)' }}>
+                                <div className="w-1.5 h-1.5 rounded-full" style={{ background: slide.color }} />
+                                <span className="text-[9px] font-black uppercase tracking-[0.35em] text-white/85">{slide.tag}</span>
+                            </div>
+
+                            {/* Slide counter */}
+                            <div className="absolute top-4 right-4 text-[9px] font-black tabular-nums"
+                                style={{ color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em' }}>
+                                {String(active + 1).padStart(2,'0')} / {String(SLIDES.length).padStart(2,'0')}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ── Controls ──────────────────────────── */}
+                    <div className="flex items-center gap-5">
+
+                        {/* Prev */}
+                        <button
+                            onClick={prev}
+                            className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
+                            style={{ border: '1.5px solid rgba(26,14,18,0.12)', color: 'rgba(26,14,18,0.45)' }}
+                        >
+                            <ChevronLeft className="w-4 h-4" />
+                        </button>
+
+                        {/* Dots */}
+                        <div className="flex items-center gap-2">
                             {SLIDES.map((_, i) => (
-                                <div
+                                <button
                                     key={i}
-                                    className="rounded-full transition-all duration-700"
+                                    onClick={() => goTo(i, i > active ? 'left' : 'right')}
+                                    className="rounded-full transition-all duration-500"
                                     style={{
-                                        width: '5px',
-                                        height: i === active ? '22px' : '5px',
-                                        background: i === active
-                                            ? 'linear-gradient(180deg, #A0134D, #C2185B)'
-                                            : 'rgba(15,14,18,0.15)',
+                                        width: i === active ? '28px' : '7px',
+                                        height: '7px',
+                                        background: i === active ? slide.color : 'rgba(26,14,18,0.12)',
                                     }}
                                 />
                             ))}
                         </div>
+
+                        {/* Next */}
+                        <button
+                            onClick={next}
+                            className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
+                            style={{ border: '1.5px solid rgba(26,14,18,0.12)', color: 'rgba(26,14,18,0.45)' }}
+                        >
+                            <ChevronRight className="w-4 h-4" />
+                        </button>
                     </div>
                 </div>
             </div>
 
-            {/* Ken Burns keyframe */}
-            <style>{`
-                @keyframes heroKB {
-                    from { transform: scale(1.0); }
-                    to   { transform: scale(1.06); }
-                }
-            `}</style>
+            {/* Bottom fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+                style={{ background: 'linear-gradient(to top, #FFF8F5 0%, transparent 100%)' }} />
         </section>
     );
-};
-
-export default Hero;
+}
