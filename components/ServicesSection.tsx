@@ -14,11 +14,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CATEGORIES: Category[] = [
     'All Services',
-    'Laser Treatments',
-    'Facial Rituals',
-    'Clinical Care',
+    'Threading',
     'Waxing',
-    'Packages',
+    'Nufree Waxing',
+    'Facial Treatments',
+    'Laser Hair Removal',
 ];
 
 const INITIAL_VISIBLE = 6;
@@ -103,15 +103,15 @@ const ServicesSection = () => {
                 <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
                     <div className="services-header-reveal opacity-0 translate-y-10 inline-flex items-center gap-3 mb-6">
                         <div className="w-10 h-px bg-deep-rose/30" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-deep-rose font-sans">Our Signature Menu</span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-deep-rose font-sans">Our Services</span>
                         <div className="w-10 h-px bg-deep-rose/30" />
                     </div>
                     <h2 className="services-header-reveal opacity-0 translate-y-10 font-display text-5xl md:text-7xl lg:text-8xl text-charcoal mb-8 leading-[0.9]">
-                        Artistry In <br />
-                        <span className="italic font-light text-gradient">Clinical</span> Precision
+                        Treatments <br />
+                        <span className="italic font-light text-gradient">for every</span> need
                     </h2>
                     <p className="services-header-reveal opacity-0 translate-y-10 max-w-xl mx-auto text-soft-gray font-sans text-lg leading-relaxed">
-                        Select a service, add to your booking, then send directly to our team via WhatsApp to confirm your appointment.
+                        Browse our full menu of threading, waxing, facials, and laser services. Add to your booking and confirm directly via WhatsApp.
                     </p>
                 </div>
 
@@ -197,7 +197,7 @@ const ServicesSection = () => {
                             Our specialists will build a personalized treatment plan during a free consultation.
                         </p>
                         <a
-                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.B%20Beauty!%20I%27d%20like%20to%20book%20a%20free%20consultation.`}
+                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I%27d%20like%20to%20book%20a%20free%20consultation.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn-primary mx-auto group inline-flex"

@@ -78,14 +78,14 @@ const Hero = () => {
                         <div className="flex gap-0.5">
                             {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-amber-400 stroke-amber-400" />)}
                         </div>
-                        <span className="text-[10px] font-black uppercase tracking-[0.45em] text-charcoal/45 font-sans">Beaumont's Premier Laser & Beauty Clinic</span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.45em] text-charcoal/45 font-sans">Edmonton's Laser & Beauty Clinic</span>
                     </div>
 
-                    {/* Headline — 4 lines matching reference */}
+                    {/* Headline */}
                     <div className="mb-8 space-y-0.5">
                         <div className="overflow-hidden">
                             <h1 className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-charcoal leading-[1.05] tracking-[-0.02em] uppercase">
-                                Care for
+                                Advanced
                             </h1>
                         </div>
                         <div className="overflow-hidden">
@@ -99,12 +99,12 @@ const Hero = () => {
                                     fontStyle: 'italic',
                                 }}
                             >
-                                your skin,
+                                Beauty & Laser
                             </h1>
                         </div>
                         <div className="overflow-hidden">
                             <h1 className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-charcoal leading-[0.9] tracking-[-0.02em] uppercase">
-                                care for
+                                Treatments in
                             </h1>
                         </div>
                         <div className="overflow-hidden">
@@ -118,15 +118,15 @@ const Hero = () => {
                                     fontStyle: 'italic',
                                 }}
                             >
-                                your beauty.
+                                Edmonton.
                             </h1>
                         </div>
                     </div>
 
                     {/* Subtext */}
                     <p className="hero-sub opacity-0 text-charcoal/50 text-[15px] md:text-[16px] leading-relaxed max-w-[390px] mb-9 font-medium">
-                        Advanced Beauty &amp; Laser Treatments for Men &amp; Women in Beaumont — where modern technology meets personalized skincare for{' '}
-                        <span className="text-charcoal font-bold">visible, lasting results.</span>
+                        Personalized care for radiant skin — laser hair removal, facials, microneedling, and waxing for{' '}
+                        <span className="text-charcoal font-bold">men and women in Edmonton.</span>
                     </p>
 
                     {/* CTAs */}

@@ -4,18 +4,18 @@ import React from 'react';
 import { Star, ShieldCheck, Zap, Award, CheckCircle2, Sparkles, Heart, Clock } from 'lucide-react';
 
 const items = [
-    { icon: Star, text: "5.0 Star Rating" },
-    { icon: Zap, text: "FDA Approved Technology" },
-    { icon: Award, text: "10+ Years Excellence" },
-    { icon: CheckCircle2, text: "500+ Happy Clients" },
-    { icon: ShieldCheck, text: "Hospital-Grade Safety" },
-    { icon: Sparkles, text: "Free First Consultation" },
-    { icon: Heart, text: "Medical Grade Lasers" },
-    { icon: Clock, text: "Same-Day Bookings Available" },
-    { icon: Star, text: "Toronto's #1 Rated Clinic" },
-    { icon: Zap, text: "Cryo-Cooling Comfort Tech" },
-    { icon: Award, text: "Certified Dermal Practice" },
-    { icon: CheckCircle2, text: "All Skin Types Welcome" },
+    { icon: Sparkles, text: "Threading & Waxing" },
+    { icon: Zap, text: "Laser Hair Removal" },
+    { icon: Heart, text: "HydraFacial" },
+    { icon: Star, text: "Nufree Organic Waxing" },
+    { icon: ShieldCheck, text: "Microneedling" },
+    { icon: Award, text: "Professional Facials" },
+    { icon: CheckCircle2, text: "Edmonton's Beauty Clinic" },
+    { icon: Clock, text: "Same-Day Bookings" },
+    { icon: Sparkles, text: "Dermaplaning" },
+    { icon: Zap, text: "Microdermabrasion" },
+    { icon: Heart, text: "Men & Women Welcome" },
+    { icon: Star, text: "Book via WhatsApp" },
 ];
 
 // Triplicated for a seamless infinite loop

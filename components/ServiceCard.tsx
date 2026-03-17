@@ -25,7 +25,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     };
 
     const badgeLabel = service.badge || (service.isPopular ? 'Popular' : null);
-    const isLaser = service.category === 'Laser Treatments';
+    const isLaser = service.category === 'Laser Hair Removal';
 
     return (
         <div className="group relative bg-white rounded-[2rem] overflow-hidden border border-charcoal/[0.07] shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col transform hover:-translate-y-2">

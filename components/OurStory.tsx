@@ -100,7 +100,7 @@ const OurStory = () => {
                             </h2>
                             <p className="text-soft-gray font-sans text-base md:text-lg lg:text-xl leading-relaxed max-w-xl">
                                 At R.D. Beauty & Laser Clinic, advanced technology and professional skincare come together
-                                to deliver smoother skin, improved texture, and a more radiant complexion — for men and women in Beaumont.
+                                to deliver smoother skin, improved texture, and a more radiant complexion — for men and women in Edmonton.
                             </p>
                         </div>
 

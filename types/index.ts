@@ -1,10 +1,10 @@
 export type Category =
   | 'All Services'
-  | 'Laser Treatments'
-  | 'Facial Rituals'
-  | 'Clinical Care'
+  | 'Threading'
   | 'Waxing'
-  | 'Packages';
+  | 'Nufree Waxing'
+  | 'Facial Treatments'
+  | 'Laser Hair Removal';
 
 export interface Service {
   id: string;

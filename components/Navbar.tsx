@@ -10,55 +10,60 @@ import { WHATSAPP_NUMBER } from '../constants/services';
 
 const SERVICE_COLS = [
     {
-        title: 'Laser Treatments',
-        icon: Zap,
-        color: 'text-sky-500',
-        items: [
-            { name: 'Laser – Upper Lip', price: '$35', href: '#services' },
-            { name: 'Laser – Under Arm', price: '$35', href: '#services' },
-            { name: 'Laser – Full Face', price: '$120', href: '#services', badge: 'Popular' },
-            { name: 'Laser – Brazilian', price: '$129.99', href: '#services', badge: 'Bestseller' },
-            { name: 'Laser – Full Body', price: '$599.99', href: '#services' },
-        ],
-    },
-    {
-        title: 'Facial Rituals',
+        title: 'Threading',
         icon: Sparkles,
         color: 'text-rose-500',
         items: [
-            { name: 'Signature HydraFacial', price: '$195', href: '#services', badge: 'Signature' },
-            { name: 'Deep Face Cleansing', price: '$40', href: '#services' },
-            { name: 'Microdermabrasion', price: '$85', href: '#services' },
-            { name: 'Dermaplaning', price: '$75', href: '#services' },
-            { name: 'Custom Ritual Facial', price: '$110', href: '#services' },
+            { name: 'Eyebrow Threading', price: '$12', href: '#services', badge: 'Popular' },
+            { name: 'Upper Lip', price: '$8', href: '#services' },
+            { name: 'Chin', price: '$8', href: '#services' },
+            { name: 'Forehead', price: '$10', href: '#services' },
+            { name: 'Full Face', price: '$35', href: '#services' },
         ],
     },
     {
-        title: 'Clinical Care',
+        title: 'Waxing & Nufree',
         icon: ShieldCheck,
         color: 'text-emerald-500',
         items: [
-            { name: 'Medical Peel', price: '$120', href: '#services' },
-            { name: 'Micro-Needling', price: '$175', href: '#services', badge: 'Anti-Ageing' },
-            { name: 'Dermal Rejuvenation', price: '$250', href: '#services' },
+            { name: 'Eyebrow Wax', price: '$15', href: '#services' },
+            { name: 'Brazilian Wax', price: '$55', href: '#services', badge: 'Popular' },
+            { name: 'Full Leg', price: '$55', href: '#services' },
+            { name: 'Nufree – Full Face', price: '$48', href: '#services', badge: 'Organic' },
+            { name: 'Nufree – Brazilian', price: '$65', href: '#services' },
         ],
     },
     {
-        title: 'Packages & Bundles',
+        title: 'Facial Treatments',
+        icon: Zap,
+        color: 'text-sky-500',
+        items: [
+            { name: 'HydraFacial', price: '$150', href: '#services', badge: 'Signature' },
+            { name: 'Microneedling', price: '$175', href: '#services', badge: 'Anti-Ageing' },
+            { name: 'Dermaplaning', price: '$85', href: '#services' },
+            { name: 'Microdermabrasion', price: '$95', href: '#services' },
+            { name: 'Classic Facial', price: '$75', href: '#services' },
+        ],
+    },
+    {
+        title: 'Laser Hair Removal',
         icon: Package2,
         color: 'text-amber-500',
         items: [
-            { name: 'The Radiance Pack', price: '$249.99', href: '#pricing', badge: 'Best Bundle' },
-            { name: 'Full Transformation', price: '$499.99', href: '#pricing', badge: 'VIP' },
+            { name: 'Upper Lip', price: '$35', href: '#services' },
+            { name: 'Full Face', price: '$120', href: '#services', badge: 'Popular' },
+            { name: 'Underarm', price: '$45', href: '#services' },
+            { name: 'Brazilian', price: '$129', href: '#services', badge: 'Bestseller' },
+            { name: 'Full Body', price: '$599', href: '#services' },
         ],
     },
 ];
 
 const PRICING_LINKS = [
-    { name: 'Laser Treatments', href: '#pricing' },
-    { name: 'Facial Rituals', href: '#pricing' },
-    { name: 'Clinical Care', href: '#pricing' },
-    { name: 'Packages', href: '#pricing' },
+    { name: 'Threading', href: '#services' },
+    { name: 'Waxing & Nufree', href: '#services' },
+    { name: 'Facial Treatments', href: '#services' },
+    { name: 'Laser Hair Removal', href: '#services' },
 ];
 
 const navLinks = [
@@ -283,7 +288,7 @@ const Navbar = () => {
 
                             <div className="px-6 py-3 bg-[#fafafa] border-t border-black/[0.04] flex items-center justify-between">
                                 <span className="text-[9px] text-charcoal/30 font-sans font-semibold uppercase tracking-widest">
-                                    FDA Approved · All Skin Types · Toronto & Lahore
+                                    Threading · Waxing · Facials · Laser · Edmonton
                                 </span>
                                 <Link
                                     href="#services"

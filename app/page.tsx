@@ -14,7 +14,7 @@ import CartToast from '../components/CartToast';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
-import { MessageCircle, Star, ChevronUp, CheckCircle2, Award, ShieldCheck, Zap, Quote } from 'lucide-react';
+import { MessageCircle, Star, ChevronUp, CheckCircle2, Award, ShieldCheck, Sparkles, Quote } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../constants/services';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -110,10 +110,10 @@ export default function Home() {
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-center">
                             {[
-                                { icon: Award, value: '10+', label: 'Years Excellence', sub: 'Serving Beaumont with professional clinical care', color: 'text-amber-600' },
-                                { icon: Zap, value: 'FDA', label: 'Approved Tech', sub: 'Latest diode laser & medical-grade devices', color: 'text-blue-600' },
-                                { icon: ShieldCheck, value: '100%', label: 'Sanitized Clinic', sub: 'Strict hospital-grade hygiene protocols', color: 'text-emerald-600' },
-                                { icon: Star, value: '5.0', label: 'Client Rating', sub: 'Based on 300+ verified clinic reviews', color: 'text-rose-600' },
+                                { icon: Award, value: 'Laser', label: 'Hair Removal', sub: 'Safe, effective laser for all skin types', color: 'text-amber-600' },
+                                { icon: Sparkles, value: 'Facial', label: 'Treatments', sub: 'HydraFacial, microneedling, dermaplaning & more', color: 'text-blue-600' },
+                                { icon: ShieldCheck, value: 'Waxing', label: '& Threading', sub: 'Nufree organic waxing & precision threading', color: 'text-emerald-600' },
+                                { icon: Star, value: 'Book', label: 'Via WhatsApp', sub: 'Same-day appointments available for most services', color: 'text-rose-600' },
                             ].map((item, i) => (
                                 <div key={i} className="trust-reveal flex flex-col items-center text-center px-2 group">
                                     <div className={cn(
@@ -125,8 +125,7 @@ export default function Home() {
                                     <div className="space-y-1">
                                         <div className="flex items-center justify-center gap-1">
                                             <span className="text-2xl font-display font-black text-charcoal">{item.value}</span>
-                                            {i === 3 && <Star className="w-4 h-4 fill-amber-400 stroke-amber-400" />}
-                                        </div>
+                                            </div>
                                         <h4 className="text-[11px] font-black uppercase tracking-[0.18em] text-charcoal/80 font-sans">{item.label}</h4>
                                         <p className="text-[10px] text-soft-gray font-sans font-medium leading-relaxed max-w-[140px] mx-auto opacity-60 italic">{item.sub}</p>
                                     </div>
@@ -169,7 +168,7 @@ export default function Home() {
 
                     <div className="testimonials-grid grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
                         {[
-                            { name: 'Sarah J.', text: 'The most professional laser clinic in Beaumont. Amazing results in just 3 sessions — smooth, hair-free skin and zero irritation. Absolutely love it!', tag: 'Laser Hair Removal' },
+                            { name: 'Sarah J.', text: 'The most professional laser clinic in Edmonton. Amazing results in just 3 sessions — smooth, hair-free skin and zero irritation. Absolutely love it!', tag: 'Laser Hair Removal' },
                             { name: 'Elena R.', text: 'The HydraFacial was a life-saver for my wedding prep. My skin has never looked so smooth and glowing — everyone noticed the difference!', tag: 'HydraFacial' },
                             { name: 'Jessica M.', text: 'Highly recommend R.D. Beauty & Laser Clinic! The staff are so knowledgeable and make you feel completely at ease. The environment is clean, relaxing, and professional.', tag: 'Skin Rejuvenation' },
                         ].map((rev, i) => (
