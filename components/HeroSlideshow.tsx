@@ -26,35 +26,25 @@ const SLIDES = [
 ];
 
 const INTERVAL_MS = 6500;
-const WIPE_MS     = 900;
+const WIPE_MS = 1000;
 
 const HeroSlideshow = () => {
-    const [current,  setCurrent]  = useState(0);
-    const [next,     setNext]     = useState<number | null>(null);
-    const [wiping,   setWiping]   = useState(false);
+    const [current,  setCurrent] = useState(0);
+    const [next,     setNext]    = useState<number | null>(null);
+    const [wiping,   setWiping]  = useState(false);
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     const goTo = (idx: number) => {
         if (wiping || idx === current) return;
-        setNext(idx);
-        setWiping(true);
-        setTimeout(() => {
-            setCurrent(idx);
-            setNext(null);
-            setWiping(false);
-        }, WIPE_MS);
+        setNext(idx); setWiping(true);
+        setTimeout(() => { setCurrent(idx); setNext(null); setWiping(false); }, WIPE_MS);
     };
 
     const advance = () => {
         setCurrent(prev => {
             const n = (prev + 1) % SLIDES.length;
-            setNext(n);
-            setWiping(true);
-            setTimeout(() => {
-                setCurrent(n);
-                setNext(null);
-                setWiping(false);
-            }, WIPE_MS);
+            setNext(n); setWiping(true);
+            setTimeout(() => { setCurrent(n); setNext(null); setWiping(false); }, WIPE_MS);
             return prev;
         });
     };
@@ -67,33 +57,33 @@ const HeroSlideshow = () => {
     return (
         <div className="relative w-full h-full select-none overflow-visible">
 
-            {/* ── Outer ambient glow ─── */}
-            <div className="absolute -top-8 -right-8 w-[55%] h-[50%] pointer-events-none rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(255,210,100,0.22) 0%, transparent 70%)', filter: 'blur(45px)', zIndex: 0 }} />
-            <div className="absolute -bottom-6 right-8 w-[45%] h-[40%] pointer-events-none rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(180,100,50,0.1) 0%, transparent 70%)', filter: 'blur(36px)', zIndex: 0 }} />
+            {/* Outer golden halo bleeding beyond the frame */}
+            <div className="absolute pointer-events-none" style={{
+                inset: '-20px',
+                background: 'radial-gradient(ellipse at 60% 40%, rgba(210,165,60,0.18) 0%, transparent 65%)',
+                filter: 'blur(30px)', zIndex: 0,
+                borderRadius: '3rem',
+            }} />
 
-            {/* ── Video frame ───────── */}
-            <div className="relative w-full h-full overflow-hidden rounded-[2.5rem]" style={{ zIndex: 1 }}>
+            {/* Animated border glow */}
+            <div className="absolute pointer-events-none" style={{
+                inset: '-1.5px',
+                borderRadius: '2.7rem',
+                background: 'linear-gradient(135deg, rgba(210,165,60,0.5) 0%, rgba(180,100,130,0.3) 35%, rgba(210,165,60,0.4) 65%, rgba(160,19,77,0.3) 100%)',
+                zIndex: 0,
+            }} />
 
-                {/* Base — current video always visible */}
-                <video
-                    key={`base-${current}`}
-                    src={SLIDES[current].src}
-                    poster={SLIDES[current].poster}
-                    autoPlay muted loop playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ zIndex: 1 }}
-                />
+            {/* Frame */}
+            <div className="relative w-full h-full overflow-hidden" style={{ borderRadius: '2.5rem', zIndex: 1 }}>
 
-                {/* Incoming video revealed by curtain wipe */}
+                {/* Base video */}
+                <video key={`base-${current}`} src={SLIDES[current].src} poster={SLIDES[current].poster}
+                    autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover" style={{ zIndex: 1 }} />
+
+                {/* Incoming — curtain wipe left→right */}
                 {next !== null && (
-                    <video
-                        key={`next-${next}`}
-                        src={SLIDES[next].src}
-                        poster={SLIDES[next].poster}
-                        autoPlay muted loop playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
+                    <video key={`next-${next}`} src={SLIDES[next].src} poster={SLIDES[next].poster}
+                        autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover"
                         style={{
                             zIndex: 2,
                             clipPath: wiping ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
@@ -102,58 +92,49 @@ const HeroSlideshow = () => {
                     />
                 )}
 
-                {/* Golden shimmer band that rides the wipe edge */}
+                {/* Gold shimmer band riding the wipe */}
                 {next !== null && (
-                    <div
-                        className="absolute inset-y-0 w-[60px] pointer-events-none"
-                        style={{
-                            zIndex: 3,
-                            background: 'linear-gradient(90deg, transparent, rgba(255,220,120,0.55), rgba(255,245,180,0.7), rgba(255,220,120,0.55), transparent)',
-                            left: wiping ? 'calc(100% - 30px)' : '-60px',
-                            transition: `left ${WIPE_MS}ms cubic-bezier(0.77,0,0.18,1)`,
-                        }}
-                    />
+                    <div className="absolute inset-y-0 pointer-events-none" style={{
+                        zIndex: 3, width: '80px',
+                        background: 'linear-gradient(90deg, transparent, rgba(255,230,140,0.6), rgba(255,250,200,0.8), rgba(255,230,140,0.6), transparent)',
+                        left: wiping ? 'calc(100% - 40px)' : '-80px',
+                        transition: `left ${WIPE_MS}ms cubic-bezier(0.77,0,0.18,1)`,
+                    }} />
                 )}
 
-                {/* Sunlight bloom */}
-                <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 4,
-                    background: 'radial-gradient(ellipse 75% 45% at 65% -5%, rgba(255,220,120,0.28) 0%, rgba(255,185,70,0.12) 40%, transparent 70%)' }} />
+                {/* Warm tone grade over video */}
+                <div className="absolute inset-0 pointer-events-none" style={{
+                    zIndex: 4,
+                    background: 'linear-gradient(170deg, rgba(210,160,60,0.12) 0%, transparent 50%, rgba(120,40,70,0.15) 100%)',
+                    mixBlendMode: 'multiply',
+                }} />
 
-                {/* Light rays */}
-                <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 4,
-                    background: `conic-gradient(from -18deg at 68% -8%,
-                        transparent 0deg, rgba(255,235,160,0.06) 7deg, transparent 13deg,
-                        rgba(255,220,130,0.045) 21deg, transparent 29deg,
-                        rgba(255,240,170,0.055) 39deg, transparent 50deg)` }} />
+                {/* Left blend into dark bg */}
+                <div className="absolute inset-y-0 left-0 w-[22%] pointer-events-none" style={{
+                    zIndex: 5,
+                    background: 'linear-gradient(to right, rgba(10,7,5,0.92) 0%, rgba(10,7,5,0.5) 50%, transparent 100%)',
+                }} />
+                {/* Bottom blend */}
+                <div className="absolute bottom-0 inset-x-0 h-[35%] pointer-events-none" style={{
+                    zIndex: 5,
+                    background: 'linear-gradient(to top, rgba(10,7,5,0.8) 0%, transparent 100%)',
+                }} />
 
-                {/* Left fade to hero bg */}
-                <div className="absolute inset-y-0 left-0 w-[28%] pointer-events-none" style={{ zIndex: 5,
-                    background: 'linear-gradient(to right, rgba(253,246,230,0.82) 0%, transparent 100%)' }} />
-
-                {/* Bottom fade */}
-                <div className="absolute bottom-0 inset-x-0 h-[40%] pointer-events-none" style={{ zIndex: 5,
-                    background: 'linear-gradient(to top, rgba(253,246,230,0.75) 0%, transparent 100%)' }} />
-
-                {/* Currently playing pill */}
-                <div className="absolute top-4 right-4 z-10 flex items-center gap-2 bg-white/60 backdrop-blur-xl px-3.5 py-2 rounded-full border border-white/50 shadow-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-deep-rose animate-pulse" />
-                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-charcoal/60">{SLIDES[current].label}</span>
+                {/* Currently playing label */}
+                <div className="absolute bottom-5 left-5 z-10 flex items-center gap-2"
+                    style={{ background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(12px)', border: '1px solid rgba(210,165,60,0.25)', borderRadius: '100px', padding: '6px 14px' }}>
+                    <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D4A844' }} />
+                    <span className="text-[8.5px] font-black uppercase tracking-[0.35em]" style={{ color: 'rgba(255,220,140,0.7)' }}>{SLIDES[current].label}</span>
                 </div>
             </div>
 
-            {/* ── Dot indicators ─── */}
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-20">
+            {/* Dot indicators */}
+            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-20">
                 {SLIDES.map((_, i) => (
-                    <button key={i} onClick={() => goTo(i)}
-                        className="rounded-full transition-all duration-700"
-                        style={{
-                            width: i === current ? '26px' : '7px',
-                            height: '7px',
-                            background: i === current
-                                ? 'linear-gradient(90deg,#A0134D,#C2185B)'
-                                : 'rgba(160,19,77,0.2)',
-                        }}
-                    />
+                    <button key={i} onClick={() => goTo(i)} className="rounded-full transition-all duration-700" style={{
+                        width: i === current ? '26px' : '7px', height: '7px',
+                        background: i === current ? 'linear-gradient(90deg,#D4A844,#F0C870)' : 'rgba(210,165,60,0.2)',
+                    }} />
                 ))}
             </div>
         </div>
