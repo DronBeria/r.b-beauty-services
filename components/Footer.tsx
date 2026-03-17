@@ -73,8 +73,8 @@ const Footer = () => {
                                     </div>
                                     <div className="space-y-1">
                                         <p className="text-white/60 text-sm font-sans leading-relaxed">
-                                            Clinical Practice <br />
-                                            Edmonton, Alberta
+                                            3913 49 Ave <br />
+                                            Beaumont, Alberta T4X 1Y7
                                         </p>
                                         <span className="text-[9px] font-black uppercase tracking-widest text-deep-rose/40">Our Clinic</span>
                                     </div>

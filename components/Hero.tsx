@@ -3,8 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
-import { ArrowRight, MessageCircle } from 'lucide-react';
-import { WHATSAPP_NUMBER } from '../constants/services';
+import { ArrowRight } from 'lucide-react';
 
 const BG_WORDS = ['Beauty', 'Radiance', 'Glow', 'Laser', 'Skin', 'Atelier'];
 
@@ -105,7 +104,7 @@ export default function Hero() {
                     <span className="w-6 h-px block" style={{ background: 'rgba(19,19,19,0.2)' }} />
                     <span className="font-sans text-[9.5px] font-bold uppercase tracking-[0.55em]"
                         style={{ color: 'rgba(19,19,19,0.35)' }}>
-                        Edmonton · Skin &amp; Laser Atelier
+                        Beaumont · Alberta
                     </span>
                     <span style={{ fontSize: '8px', color: 'rgba(19,19,19,0.22)', animation: 'pulse-soft 3.5s ease-in-out infinite' }}>✦</span>
                 </div>
@@ -151,7 +150,7 @@ export default function Hero() {
                         Bespoke treatments — laser hair removal, HydraFacials,
                         microneedling &amp; more — thoughtfully crafted for{' '}
                         <span style={{ color: 'rgba(19,19,19,0.72)', fontWeight: 600 }}>
-                            your unique skin in Edmonton.
+                            your unique skin in Beaumont, Alberta.
                         </span>
                     </p>
 
@@ -159,20 +158,12 @@ export default function Hero() {
                     <div className="flex flex-col gap-6">
                         <div className="h-ctas flex flex-wrap items-center gap-3" style={{ opacity: 0 }}>
                             <Link
-                                href="#services"
+                                href="#book"
                                 className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:opacity-80 active:scale-95"
                                 style={{ background: '#131313', boxShadow: '0 8px 28px rgba(19,19,19,0.14)' }}>
-                                <span>Explore Services</span>
+                                <span>Book Now</span>
                                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                             </Link>
-                            <a
-                                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty!`}
-                                target="_blank" rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.22em] transition-all duration-300 hover:bg-black/[0.05] active:scale-95"
-                                style={{ border: '1.5px solid rgba(19,19,19,0.16)', color: 'rgba(19,19,19,0.48)' }}>
-                                <MessageCircle className="w-3.5 h-3.5" />
-                                <span>Book a Consultation</span>
-                            </a>
                         </div>
 
                         {/* Social proof */}
@@ -188,7 +179,7 @@ export default function Hero() {
                             </div>
                             <span className="text-[11px] font-sans" style={{ color: 'rgba(19,19,19,0.36)' }}>
                                 <strong style={{ color: 'rgba(19,19,19,0.62)', fontWeight: 700 }}>4.9 ★</strong>
-                                {' '}· Trusted by 200+ clients across Edmonton
+                                {' '}· Trusted by 200+ clients across Beaumont
                             </span>
                         </div>
                     </div>

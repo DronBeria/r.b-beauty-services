@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X, ShoppingBag, ArrowRight, CalendarCheck, Zap, Sparkles, ShieldCheck, Package2, ChevronDown } from 'lucide-react';
-import { useCartStore } from '../store/useCartStore';
+import { Menu, X, ArrowRight, CalendarCheck, Zap, Sparkles, ShieldCheck, Package2, ChevronDown } from 'lucide-react';
 import { useServiceFilter } from '../store/useServiceFilter';
 import { cn } from '../lib/utils';
 import gsap from 'gsap';
@@ -83,9 +82,7 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const { getTotalItems } = useCartStore();
     const { setActiveCategory } = useServiceFilter();
-    const cartCount = getTotalItems();
     const navRef = useRef<HTMLElement>(null);
 
     const goToCategory = (cat: Category) => {
@@ -123,11 +120,6 @@ const Navbar = () => {
 
     const cancelClose = () => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-
-    const toggleCart = () => {
-        const panel = document.getElementById('cart-panel');
-        if (panel) panel.classList.toggle('translate-x-full');
     };
 
     const closeMobileMenu = () => {
@@ -220,20 +212,6 @@ const Navbar = () => {
 
                     {/* Right */}
                     <div className="flex items-center gap-2.5 shrink-0">
-                        <button
-                            type="button"
-                            onClick={toggleCart}
-                            className="relative p-2 text-charcoal/60 hover:text-charcoal transition-colors rounded-full hover:bg-charcoal/[0.05]"
-                            aria-label="Booking"
-                        >
-                            <ShoppingBag className="w-[18px] h-[18px]" />
-                            {cartCount > 0 && (
-                                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-deep-rose text-white text-[9px] flex items-center justify-center rounded-full font-bold border-2 border-white animate-pulse-soft">
-                                    {cartCount}
-                                </span>
-                            )}
-                        </button>
-
                         <a
                             href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I'd%20like%20to%20book%20a%20consultation.`}
                             target="_blank"
@@ -393,13 +371,6 @@ const Navbar = () => {
                     </div>
 
                     <div className="px-5 pb-8 space-y-2.5 border-t border-black/5 pt-5">
-                        <button
-                            onClick={() => { toggleCart(); closeMobileMenu(); }}
-                            className="w-full flex items-center justify-center gap-2 border border-charcoal/15 text-charcoal py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-charcoal hover:text-white transition-all duration-300"
-                        >
-                            <ShoppingBag className="w-3.5 h-3.5" />
-                            <span>My Booking {cartCount > 0 && `(${cartCount})`}</span>
-                        </button>
                         <a
                             href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I'd%20like%20to%20book%20a%20consultation.`}
                             target="_blank"

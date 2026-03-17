@@ -7,17 +7,13 @@ import ServicesSection from '../components/ServicesSection';
 import OurStory from '../components/OurStory';
 import PricingSection from '../components/PricingSection';
 import Footer from '../components/Footer';
-import CartPanel from '../components/CartPanel';
 import Preloader from '../components/Preloader';
-import MarqueeStrip from '../components/MarqueeStrip';
-import CartToast from '../components/CartToast';
 import ContactSection from '../components/ContactSection';
 import TestimonialsCarousel from '../components/TestimonialsCarousel';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
-import { MessageCircle, ChevronUp, Award, ShieldCheck, Sparkles, CheckCircle2, Star } from 'lucide-react';
-import { WHATSAPP_NUMBER } from '../constants/services';
+import { ChevronUp, Award, ShieldCheck, Sparkles, CheckCircle2, Star } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -98,11 +94,8 @@ export default function Home() {
 
             <Preloader />
             <Navbar />
-            <CartPanel />
-            <CartToast />
 
             <Hero />
-            <MarqueeStrip />
 
             {/* Trust / Stats Strip */}
             <section className="trust-section relative z-30 py-16 md:py-24">
@@ -156,24 +149,14 @@ export default function Home() {
             <ContactSection />
             <Footer />
 
-            {/* Floating action buttons */}
-            <div className="floating-cta fixed bottom-5 md:bottom-8 right-4 md:right-10 z-[90] flex flex-col gap-3 md:gap-4 opacity-0">
+            {/* Scroll to top */}
+            <div className="floating-cta fixed bottom-5 md:bottom-8 right-4 md:right-10 z-[90] opacity-0">
                 <button
                     onClick={scrollToTop}
                     className="w-11 h-11 md:w-14 md:h-14 bg-white/80 backdrop-blur-3xl text-charcoal rounded-full shadow-xl transition-all border border-charcoal/5 flex items-center justify-center group hover:-translate-y-1.5 active:scale-90"
                 >
                     <ChevronUp className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
-                <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 md:w-16 md:h-16 bg-charcoal text-white rounded-[1.25rem] md:rounded-[1.75rem] shadow-2xl transition-all transform hover:scale-110 active:scale-95 group relative flex items-center justify-center overflow-hidden"
-                >
-                    <div className="absolute inset-0 bg-gradient-to-br from-deep-rose to-deep-rose-dark opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <MessageCircle className="w-5 h-5 md:w-7 md:h-7 relative z-10" />
-                    <div className="absolute top-1.5 right-1.5 md:top-2 md:right-2 w-3 h-3 md:w-3.5 md:h-3.5 bg-deep-rose rounded-full border-2 border-white z-20" />
-                </a>
             </div>
 
             {/* Global atmospheric orbs */}

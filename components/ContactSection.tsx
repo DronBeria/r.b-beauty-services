@@ -177,8 +177,8 @@ const ContactSection = () => {
                                 </div>
                                 <div>
                                     <p className="text-[9px] font-black uppercase tracking-[0.3em] text-charcoal/35 mb-0.5">Location</p>
-                                    <p className="text-[13.5px] font-bold text-charcoal leading-tight">Edmonton, Alberta</p>
-                                    <p className="text-[11px] text-charcoal/40 font-sans mt-0.5">Exact address provided on booking</p>
+                                    <p className="text-[13.5px] font-bold text-charcoal leading-tight">3913 49 Ave</p>
+                                    <p className="text-[13.5px] font-bold text-charcoal leading-tight">Beaumont, Alberta T4X 1Y7</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4 bg-white rounded-2xl px-5 py-4 border border-black/[0.05] shadow-sm">
@@ -197,8 +197,8 @@ const ContactSection = () => {
                         {/* Map */}
                         <div className="relative rounded-[2rem] overflow-hidden shadow-xl border border-black/[0.06]" style={{ height: '300px' }}>
                             <iframe
-                                title="R.D. Beauty & Laser Clinic — Edmonton"
-                                src="https://www.openstreetmap.org/export/embed.html?bbox=-113.6938%2C53.4461%2C-113.2938%2C53.6461&layer=mapnik&marker=53.5461%2C-113.4938"
+                                title="R.D. Beauty & Laser Clinic — Beaumont, Alberta"
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=-113.45%2C53.33%2C-113.38%2C53.38&layer=mapnik&marker=53.357%2C-113.414"
                                 className="w-full h-full border-0"
                                 loading="lazy"
                                 allowFullScreen
@@ -207,10 +207,10 @@ const ContactSection = () => {
                             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
                                 <div className="flex items-center gap-2.5 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2.5 shadow-lg border border-black/[0.05]">
                                     <div className="w-2 h-2 rounded-full bg-deep-rose animate-pulse-soft flex-shrink-0" />
-                                    <span className="text-[11px] font-black text-charcoal uppercase tracking-[0.2em]">R.D. Beauty & Laser Clinic</span>
+                                    <span className="text-[11px] font-black text-charcoal uppercase tracking-[0.2em]">R.D. Beauty — Beaumont, AB</span>
                                 </div>
                                 <a
-                                    href="https://www.openstreetmap.org/?mlat=53.5461&mlon=-113.4938#map=13/53.5461/-113.4938"
+                                    href="https://www.openstreetmap.org/?mlat=53.357&mlon=-113.414#map=15/53.357/-113.414"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-charcoal text-white text-[9px] font-black uppercase tracking-[0.2em] px-3 py-2 rounded-full hover:bg-deep-rose transition-colors pointer-events-auto"
