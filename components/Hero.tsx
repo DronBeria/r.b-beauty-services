@@ -2,16 +2,13 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Play, Star, CheckCircle2, Tag } from 'lucide-react';
+import { ArrowRight, Play, Star } from 'lucide-react';
 import gsap from 'gsap';
 import { WHATSAPP_NUMBER } from '../constants/services';
 
 const Hero = () => {
     const sectionRef = useRef<HTMLElement>(null);
     const imgRef = useRef<HTMLDivElement>(null);
-    const badge1Ref = useRef<HTMLDivElement>(null);
-    const badge2Ref = useRef<HTMLDivElement>(null);
-    const promoRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -36,26 +33,11 @@ const Hero = () => {
                     { y: 0, opacity: 1, duration: 0.8 },
                     '-=0.6'
                 )
-                .fromTo(promoRef.current,
-                    { y: 24, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.8 },
-                    '-=0.5'
-                )
                 .fromTo(imgRef.current,
                     { x: 60, opacity: 0, scale: 1.04 },
                     { x: 0, opacity: 1, scale: 1, duration: 1.4, ease: 'expo.out' },
-                    '-=1.8'
-                )
-                .fromTo([badge1Ref.current, badge2Ref.current],
-                    { scale: 0.7, opacity: 0, y: 20 },
-                    { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.7)', stagger: 0.18 },
-                    '-=0.9'
+                    '-=1.6'
                 );
-
-            // Idle floats
-            gsap.to(badge1Ref.current, { y: '-=8', duration: 3.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.2 });
-            gsap.to(badge2Ref.current, { y: '+=6', rotation: '+=0.8', duration: 3.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.8 });
-            gsap.to(promoRef.current, { y: '-=5', duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4 });
         }, sectionRef);
 
         return () => ctx.revert();
@@ -130,7 +112,7 @@ const Hero = () => {
                     </p>
 
                     {/* CTAs */}
-                    <div className="hero-cta opacity-0 flex flex-wrap items-center gap-3 mb-10">
+                    <div className="hero-cta opacity-0 flex flex-wrap items-center gap-3">
                         <Link
                             href="#services"
                             className="inline-flex items-center gap-2.5 bg-charcoal text-white px-7 py-4 rounded-full text-[12px] font-black uppercase tracking-[0.15em] hover:bg-deep-rose transition-all duration-300 shadow-lg hover:shadow-deep-rose/25 group active:scale-95"
@@ -150,28 +132,6 @@ const Hero = () => {
                             <span>Book Consult</span>
                         </a>
                     </div>
-
-                    {/* Promo badge */}
-                    <div ref={promoRef} className="opacity-0 w-fit">
-                        <div
-                            className="flex items-center gap-4 rounded-[1.5rem] px-5 py-4 shadow-[0_12px_40px_rgba(0,0,0,0.14)]"
-                            style={{ background: '#1A1A1E' }}
-                        >
-                            <div
-                                className="w-11 h-11 rounded-[0.875rem] flex items-center justify-center flex-shrink-0"
-                                style={{ background: 'linear-gradient(135deg, #A0134D, #9A7B4F)' }}
-                            >
-                                <Tag className="w-5 h-5 text-white" />
-                            </div>
-                            <div>
-                                <p className="font-display text-[1.2rem] font-bold text-white leading-none">Up to 20% Off</p>
-                                <p className="text-[10px] text-white/45 mt-0.5 font-sans">
-                                    Save on holiday packages — code{' '}
-                                    <span className="font-black" style={{ color: '#D4A843' }}>GLOW2024</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 {/* ── RIGHT: Image ─────────────────────────────────────────────── */}
@@ -181,8 +141,6 @@ const Hero = () => {
                     style={{ height: 'clamp(440px, 72vw, 700px)' }}
                 >
                     <div className="relative w-full max-w-[520px] lg:max-w-none h-full">
-
-                        {/* Main image */}
                         <div className="w-full h-full rounded-[3rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.10)] border-[5px] border-white ring-1 ring-black/[0.05]">
                             <img
                                 src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=90&auto=format&fit=crop&crop=faces,top"
@@ -191,52 +149,6 @@ const Hero = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-[#FDFAF7]/25 to-transparent pointer-events-none" />
                             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/15 to-transparent pointer-events-none" />
-                        </div>
-
-                        {/* Floating badge 1 — review */}
-                        <div
-                            ref={badge1Ref}
-                            className="absolute top-[12%] left-2 sm:-left-10 opacity-0 z-10"
-                        >
-                            <div className="bg-white rounded-[1.25rem] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.10)] border border-black/[0.05] w-[170px]">
-                                <div className="flex items-center gap-2 mb-2.5">
-                                    <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-[#FDF6F8] flex-shrink-0">
-                                        <img src="https://i.pravatar.cc/60?u=rbbeauty1" alt="reviewer" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="flex gap-0.5">
-                                        {[...Array(5)].map((_, i) => <Star key={i} className="w-2.5 h-2.5 fill-amber-400 stroke-amber-400" />)}
-                                    </div>
-                                </div>
-                                <p className="text-[11px] font-bold text-charcoal leading-snug">"Skin has never looked better!"</p>
-                                <p className="text-[9px] text-charcoal/35 font-medium mt-1 font-sans">— Sarah J., Toronto</p>
-                            </div>
-                        </div>
-
-                        {/* Floating badge 2 — service card */}
-                        <div
-                            ref={badge2Ref}
-                            className="absolute bottom-[18%] left-2 sm:-left-10 opacity-0 z-10"
-                        >
-                            <div className="bg-white rounded-[1.25rem] overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.10)] border border-black/[0.05] w-[185px]">
-                                <div className="h-[70px] overflow-hidden">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=80&auto=format&fit=crop"
-                                        alt="Brightening Facial"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                <div className="p-3.5">
-                                    <p className="text-[9px] font-black uppercase tracking-widest text-charcoal/35 mb-0.5 font-sans">Most Popular</p>
-                                    <p className="font-display text-[14px] text-charcoal font-bold leading-tight">Brightening Facial</p>
-                                    <div className="flex items-center justify-between mt-1.5">
-                                        <span className="font-black text-[15px] text-deep-rose">$110</span>
-                                        <div className="flex items-center gap-1">
-                                            <CheckCircle2 className="w-3 h-3 text-[#1a9d82]" />
-                                            <span className="text-[9px] text-charcoal/40 font-semibold font-sans">Available</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         {/* Decorative rings */}
