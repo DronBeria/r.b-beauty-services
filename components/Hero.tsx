@@ -50,7 +50,7 @@ const Hero = () => {
             className="relative min-h-[100svh] w-full overflow-hidden pt-[80px]"
             style={{ background: 'linear-gradient(130deg, #FDFAF7 0%, #FBF6F8 45%, #F9F5FD 100%)' }}
         >
-            <div className="w-full max-w-[1380px] mx-auto px-6 md:px-12 lg:px-16 min-h-[calc(100svh-80px)] grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-6 items-center py-12 lg:py-0">
+            <div className="w-full max-w-[1380px] mx-auto px-6 md:px-12 lg:px-16 min-h-[calc(100svh-80px)] grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-8 items-center py-12 lg:py-0">
 
                 {/* ── LEFT: Text ──────────────────────────────────────────────── */}
                 <div className="flex flex-col justify-center order-2 lg:order-1 lg:pr-8 xl:pr-14">
@@ -66,13 +66,13 @@ const Hero = () => {
                     {/* Headline */}
                     <div className="mb-8 space-y-0.5">
                         <div className="overflow-hidden">
-                            <h1 className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-charcoal leading-[1.05] tracking-[-0.02em] uppercase">
+                            <h1 className="hero-line opacity-0 font-display text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.6rem] xl:text-[4rem] font-bold text-charcoal leading-[1.05] tracking-[-0.02em] uppercase">
                                 Advanced
                             </h1>
                         </div>
                         <div className="overflow-hidden">
                             <h1
-                                className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] leading-[0.9] tracking-[-0.02em]"
+                                className="hero-line opacity-0 font-display text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.6rem] xl:text-[4rem] leading-[0.9] tracking-[-0.02em]"
                                 style={{
                                     background: 'linear-gradient(135deg, #A0134D 0%, #C2185B 40%, #9A7B4F 100%)',
                                     WebkitBackgroundClip: 'text',
@@ -85,13 +85,13 @@ const Hero = () => {
                             </h1>
                         </div>
                         <div className="overflow-hidden">
-                            <h1 className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-charcoal leading-[0.9] tracking-[-0.02em] uppercase">
+                            <h1 className="hero-line opacity-0 font-display text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.6rem] xl:text-[4rem] font-bold text-charcoal leading-[0.9] tracking-[-0.02em] uppercase">
                                 Treatments in
                             </h1>
                         </div>
                         <div className="overflow-hidden">
                             <h1
-                                className="hero-line opacity-0 font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[4.5rem] xl:text-[5rem] leading-[0.9] tracking-[-0.02em]"
+                                className="hero-line opacity-0 font-display text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.6rem] xl:text-[4rem] leading-[0.9] tracking-[-0.02em]"
                                 style={{
                                     background: 'linear-gradient(135deg, #A0134D 0%, #C2185B 40%, #9A7B4F 100%)',
                                     WebkitBackgroundClip: 'text',
@@ -138,7 +138,7 @@ const Hero = () => {
                 <div
                     ref={imgRef}
                     className="relative order-1 lg:order-2 flex justify-center lg:justify-end opacity-0"
-                    style={{ height: 'clamp(440px, 72vw, 700px)' }}
+                    style={{ height: 'clamp(340px, 52vw, 560px)' }}
                 >
                     <div className="relative w-full max-w-[520px] lg:max-w-none h-full">
                         <div className="w-full h-full rounded-[3rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.10)] border-[5px] border-white ring-1 ring-black/[0.05]">

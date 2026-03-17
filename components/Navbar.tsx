@@ -4,21 +4,23 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X, ShoppingBag, ArrowRight, CalendarCheck, Zap, Sparkles, ShieldCheck, Package2, ChevronDown } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
+import { useServiceFilter } from '../store/useServiceFilter';
 import { cn } from '../lib/utils';
 import gsap from 'gsap';
 import { WHATSAPP_NUMBER } from '../constants/services';
+import { Category } from '../types';
 
-const SERVICE_COLS = [
+const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; items: { name: string; price: string; category: Category; badge?: string }[] }[] = [
     {
         title: 'Threading',
         icon: Sparkles,
         color: 'text-rose-500',
         items: [
-            { name: 'Eyebrow Threading', price: '$12', href: '#services', badge: 'Popular' },
-            { name: 'Upper Lip', price: '$8', href: '#services' },
-            { name: 'Chin', price: '$8', href: '#services' },
-            { name: 'Forehead', price: '$10', href: '#services' },
-            { name: 'Full Face', price: '$35', href: '#services' },
+            { name: 'Eyebrow Threading', price: '$12', category: 'Threading', badge: 'Popular' },
+            { name: 'Upper Lip', price: '$8', category: 'Threading' },
+            { name: 'Chin', price: '$8', category: 'Threading' },
+            { name: 'Forehead', price: '$10', category: 'Threading' },
+            { name: 'Full Face', price: '$35', category: 'Threading' },
         ],
     },
     {
@@ -26,11 +28,11 @@ const SERVICE_COLS = [
         icon: ShieldCheck,
         color: 'text-emerald-500',
         items: [
-            { name: 'Eyebrow Wax', price: '$15', href: '#services' },
-            { name: 'Brazilian Wax', price: '$55', href: '#services', badge: 'Popular' },
-            { name: 'Full Leg', price: '$55', href: '#services' },
-            { name: 'Nufree – Full Face', price: '$48', href: '#services', badge: 'Organic' },
-            { name: 'Nufree – Brazilian', price: '$65', href: '#services' },
+            { name: 'Eyebrow Wax', price: '$15', category: 'Waxing' },
+            { name: 'Brazilian Wax', price: '$55', category: 'Waxing', badge: 'Popular' },
+            { name: 'Full Leg', price: '$55', category: 'Waxing' },
+            { name: 'Nufree – Full Face', price: '$48', category: 'Nufree Waxing', badge: 'Organic' },
+            { name: 'Nufree – Brazilian', price: '$65', category: 'Nufree Waxing' },
         ],
     },
     {
@@ -38,11 +40,11 @@ const SERVICE_COLS = [
         icon: Zap,
         color: 'text-sky-500',
         items: [
-            { name: 'HydraFacial', price: '$150', href: '#services', badge: 'Signature' },
-            { name: 'Microneedling', price: '$175', href: '#services', badge: 'Anti-Ageing' },
-            { name: 'Dermaplaning', price: '$85', href: '#services' },
-            { name: 'Microdermabrasion', price: '$95', href: '#services' },
-            { name: 'Classic Facial', price: '$75', href: '#services' },
+            { name: 'HydraFacial', price: '$150', category: 'Facial Treatments', badge: 'Signature' },
+            { name: 'Microneedling', price: '$175', category: 'Facial Treatments', badge: 'Anti-Ageing' },
+            { name: 'Dermaplaning', price: '$85', category: 'Facial Treatments' },
+            { name: 'Microdermabrasion', price: '$95', category: 'Facial Treatments' },
+            { name: 'Classic Facial', price: '$75', category: 'Facial Treatments' },
         ],
     },
     {
@@ -50,20 +52,21 @@ const SERVICE_COLS = [
         icon: Package2,
         color: 'text-amber-500',
         items: [
-            { name: 'Upper Lip', price: '$35', href: '#services' },
-            { name: 'Full Face', price: '$120', href: '#services', badge: 'Popular' },
-            { name: 'Underarm', price: '$45', href: '#services' },
-            { name: 'Brazilian', price: '$129', href: '#services', badge: 'Bestseller' },
-            { name: 'Full Body', price: '$599', href: '#services' },
+            { name: 'Upper Lip', price: '$35', category: 'Laser Hair Removal' },
+            { name: 'Full Face', price: '$120', category: 'Laser Hair Removal', badge: 'Popular' },
+            { name: 'Underarm', price: '$45', category: 'Laser Hair Removal' },
+            { name: 'Brazilian', price: '$129', category: 'Laser Hair Removal', badge: 'Bestseller' },
+            { name: 'Full Body', price: '$599', category: 'Laser Hair Removal' },
         ],
     },
 ];
 
-const PRICING_LINKS = [
-    { name: 'Threading', href: '#services' },
-    { name: 'Waxing & Nufree', href: '#services' },
-    { name: 'Facial Treatments', href: '#services' },
-    { name: 'Laser Hair Removal', href: '#services' },
+const PRICING_LINKS: { name: string; category: Category }[] = [
+    { name: 'Threading', category: 'Threading' },
+    { name: 'Waxing', category: 'Waxing' },
+    { name: 'Nufree Waxing', category: 'Nufree Waxing' },
+    { name: 'Facial Treatments', category: 'Facial Treatments' },
+    { name: 'Laser Hair Removal', category: 'Laser Hair Removal' },
 ];
 
 const navLinks = [
@@ -81,8 +84,20 @@ const Navbar = () => {
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const { getTotalItems } = useCartStore();
+    const { setActiveCategory } = useServiceFilter();
     const cartCount = getTotalItems();
     const navRef = useRef<HTMLElement>(null);
+
+    const goToCategory = (cat: Category) => {
+        setActiveCategory(cat);
+        setActiveMenu(null);
+        setMobileOpen(false);
+        setMobileServicesOpen(false);
+        // small delay so state propagates before scroll
+        setTimeout(() => {
+            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+    };
 
     useEffect(() => {
         gsap.fromTo(navRef.current,
@@ -186,15 +201,14 @@ const Navbar = () => {
                                         <div className="w-52 bg-white rounded-2xl shadow-[0_16px_60px_rgba(0,0,0,0.18)] border border-black/[0.07] overflow-hidden p-1.5">
                                             <div className="h-px w-full bg-gradient-to-r from-transparent via-deep-rose/20 to-transparent mb-1.5" />
                                             {PRICING_LINKS.map((item) => (
-                                                <Link
+                                                <button
                                                     key={item.name}
-                                                    href={item.href}
-                                                    onClick={() => setActiveMenu(null)}
-                                                    className="flex items-center justify-between px-4 py-2.5 rounded-xl hover:bg-ivory group transition-all duration-200"
+                                                    onClick={() => goToCategory(item.category)}
+                                                    className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl hover:bg-ivory group transition-all duration-200 text-left"
                                                 >
                                                     <span className="text-[11.5px] font-bold text-charcoal/65 group-hover:text-charcoal transition-colors">{item.name}</span>
                                                     <ArrowRight className="w-3 h-3 text-charcoal/20 group-hover:text-deep-rose group-hover:translate-x-0.5 transition-all" />
-                                                </Link>
+                                                </button>
                                             ))}
                                         </div>
                                     </div>
@@ -264,11 +278,10 @@ const Navbar = () => {
                                         </div>
                                         <div className="space-y-0.5">
                                             {col.items.map((item) => (
-                                                <Link
+                                                <button
                                                     key={item.name}
-                                                    href={item.href}
-                                                    onClick={() => setActiveMenu(null)}
-                                                    className="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-ivory group transition-all duration-200"
+                                                    onClick={() => goToCategory(item.category)}
+                                                    className="w-full flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-ivory group transition-all duration-200 text-left"
                                                 >
                                                     <div className="flex items-center gap-1.5 min-w-0">
                                                         <span className="text-[12px] font-semibold text-charcoal/65 group-hover:text-charcoal transition-colors truncate leading-tight">{item.name}</span>
@@ -279,7 +292,7 @@ const Navbar = () => {
                                                         )}
                                                     </div>
                                                     <span className="flex-shrink-0 text-[11px] font-black text-charcoal/35 group-hover:text-deep-rose transition-colors ml-2">{item.price}</span>
-                                                </Link>
+                                                </button>
                                             ))}
                                         </div>
                                     </div>
@@ -347,15 +360,14 @@ const Navbar = () => {
                                                 <span className="text-[9px] font-black uppercase tracking-[0.3em] text-charcoal/35">{col.title}</span>
                                             </div>
                                             {col.items.map((item) => (
-                                                <Link
+                                                <button
                                                     key={item.name}
-                                                    href={item.href}
-                                                    onClick={closeMobileMenu}
-                                                    className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-ivory group transition-all duration-200"
+                                                    onClick={() => goToCategory(item.category)}
+                                                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-ivory group transition-all duration-200 text-left"
                                                 >
                                                     <span className="text-[12px] font-semibold text-charcoal/60 group-hover:text-charcoal">{item.name}</span>
                                                     <span className="text-[10px] font-black text-charcoal/30">{item.price}</span>
-                                                </Link>
+                                                </button>
                                             ))}
                                         </div>
                                     ))}

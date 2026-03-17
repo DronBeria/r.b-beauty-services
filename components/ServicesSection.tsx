@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
 import { Sparkles, ArrowRight, LayoutGrid, ChevronDown, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
+import { useServiceFilter } from '../store/useServiceFilter';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +25,7 @@ const CATEGORIES: Category[] = [
 const INITIAL_VISIBLE = 6;
 
 const ServicesSection = () => {
-    const [activeCategory, setActiveCategory] = useState<Category>('All Services');
+    const { activeCategory, setActiveCategory } = useServiceFilter();
     const [showAll, setShowAll] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);

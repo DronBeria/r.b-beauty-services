@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Sparkles, Heart, Globe, Star, ArrowRight } from 'lucide-react';
+import { Sparkles, Heart, Globe, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,16 +12,6 @@ const OurStory = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.to('.counter', {
-                innerText: (i: number, target: HTMLElement) => target.dataset.target || "0",
-                duration: 2.5,
-                snap: { innerText: 1 },
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: '.counter',
-                    start: "top 95%",
-                }
-            });
 
             gsap.to('.story-reveal', {
                 y: 0,
@@ -73,14 +63,11 @@ const OurStory = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent" />
                         </div>
 
-                        {/* Floating Stats Card */}
-                        <div className="absolute -bottom-4 -right-3 md:-bottom-8 md:-right-8 glass-card p-5 md:p-10 shadow-2xl z-20 transform group-hover:-translate-y-4 transition-transform duration-700 border-white/40">
-                            <div className="flex flex-col items-center justify-center">
-                                <span className="font-display text-4xl md:text-6xl lg:text-7xl text-deep-rose font-bold block leading-none">
-                                    <span className="counter" data-target="500">0</span>+
-                                </span>
-                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-charcoal/40 mt-1 md:mt-2">Verified Transformations</span>
-                            </div>
+                        {/* Genuine info card */}
+                        <div className="absolute -bottom-4 -right-3 md:-bottom-8 md:-right-8 glass-card px-5 py-4 md:px-7 md:py-5 shadow-2xl z-20 transform group-hover:-translate-y-4 transition-transform duration-700 border-white/40 max-w-[190px]">
+                            <p className="text-[9px] font-black uppercase tracking-[0.3em] text-charcoal/35 mb-1.5">Based in</p>
+                            <p className="font-display text-[1.1rem] text-charcoal font-bold leading-tight">Edmonton, Alberta</p>
+                            <p className="text-[10px] text-charcoal/40 font-sans mt-1 leading-snug">Serving clients with personalized clinical care</p>
                         </div>
 
                         {/* Decorative Element */}
