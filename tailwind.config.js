@@ -40,6 +40,21 @@ module.exports = {
                 'expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
                 'ease-luxury': 'cubic-bezier(0.4, 0, 0.2, 1)',
             },
+            animation: {
+                'spin-slow':    'spin 28s linear infinite',
+                'pulse-soft':   'pulseSoft 4s ease-in-out infinite',
+                'float':        'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+                pulseSoft: {
+                    '0%, 100%': { opacity: '1' },
+                    '50%':      { opacity: '0.5' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%':      { transform: 'translateY(-12px)' },
+                },
+            },
         },
     },
     plugins: [],
