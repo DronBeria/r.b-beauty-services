@@ -26,8 +26,8 @@ const SERVICES = [
 ];
 
 const ContactSection = () => {
-    const [name, setName]       = useState('');
-    const [phone, setPhone]     = useState('');
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
     const [service, setService] = useState('');
     const [message, setMessage] = useState('');
     const sectionRef = useRef<HTMLElement>(null);
@@ -55,14 +55,14 @@ const ContactSection = () => {
         e.preventDefault();
         const serviceStr = service ? `\n📌 Service: ${service}` : '';
         const msgStr = message ? `\n💬 Note: ${message}` : '';
-        const full = `Hi R.D. Beauty & Laser Clinic! 😊\n\nMy name is ${name || 'a potential client'}.${serviceStr}${msgStr}\n\nBest number to reach me: ${phone || 'I'll share in chat'}.\n\nLooking forward to booking with you! 🌸`;
+        const full = `Hi R.D. Beauty & Laser Clinic! 😊\n\nMy name is ${name || 'a potential client'}.${serviceStr}${msgStr}\n\nBest number to reach me: ${phone || "I'll share in chat"}.\n\nLooking forward to booking with you! 🌸`;
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(full)}`, '_blank');
     };
 
     return (
         <section ref={sectionRef} id="book" className="relative py-20 md:py-32 overflow-hidden" style={{ background: '#FDFAF7' }}>
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-deep-rose/4 blur-[130px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-deep-rose/5 blur-[130px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-warm-gold/5 blur-[100px] rounded-full pointer-events-none" />
 
             <div className="container-custom relative z-10">
