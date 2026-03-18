@@ -4,36 +4,90 @@ import "./globals.css";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
   variable: "--font-playfair",
   display: "swap",
+  preload: true,
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
   variable: "--font-plus-jakarta",
   display: "swap",
+  preload: true,
 });
 
+const SITE_URL = "https://rdbeauty.ca";
+const SITE_NAME = "R.D. Beauty & Laser Clinic";
+
 export const metadata: Metadata = {
-  title: "R.D. Beauty & Laser Clinic | Advanced Laser & Skincare Treatments in Beaumont",
-  description: "Welcome to R.D. Beauty & Laser Clinic — advanced laser hair removal, HydraFacials, microneedling, skin rejuvenation, and professional waxing. Serving Beaumont with modern equipment and personalized care.",
-  keywords: "laser hair removal Beaumont, beauty clinic, skincare treatments, HydraFacial, microneedling, skin rejuvenation, professional waxing, R.D. Beauty",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "R.D. Beauty & Laser Clinic | Beaumont, Alberta",
+    template: "%s | R.D. Beauty & Laser Clinic",
+  },
+  description:
+    "R.D. Beauty & Laser Clinic in Beaumont, Alberta — advanced laser hair removal, HydraFacials, microneedling, threading, waxing & skin rejuvenation. Book via WhatsApp today.",
+  keywords: [
+    "laser hair removal Beaumont",
+    "beauty clinic Beaumont Alberta",
+    "HydraFacial Beaumont",
+    "microneedling Beaumont",
+    "threading Beaumont",
+    "waxing Beaumont",
+    "skin treatment Alberta",
+    "facial Beaumont",
+    "dermaplaning",
+    "Nufree waxing",
+    "R.D. Beauty",
+    "beauty salon Beaumont",
+    "laser clinic Alberta",
+  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Beauty & Wellness",
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: "R.D. Beauty & Laser Clinic | Beaumont",
-    description: "Advanced Beauty & Laser Treatments for Men & Women in Beaumont.",
-    url: "https://rdbeauty.ca",
-    siteName: "R.D. Beauty & Laser Clinic",
-    images: [{ url: "https://rdbeauty.ca/og-image.jpg" }],
+    title: "R.D. Beauty & Laser Clinic | Beaumont, Alberta",
+    description:
+      "Advanced laser hair removal, HydraFacials, threading & more — beautifully crafted for your unique skin in Beaumont, Alberta.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "R.D. Beauty & Laser Clinic — Beaumont Alberta",
+      },
+    ],
     locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "R.D. Beauty & Laser Clinic | Beaumont",
-    description: "Advanced laser and beauty treatments with visible, lasting results.",
-    images: ["https://rdbeauty.ca/og-image.jpg"],
+    title: "R.D. Beauty & Laser Clinic | Beaumont, Alberta",
+    description:
+      "Advanced laser and beauty treatments with visible, lasting results — Beaumont, Alberta.",
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add your Google Search Console verification token here when ready
+    // google: "your-verification-token",
   },
 };
 
@@ -44,13 +98,88 @@ export const viewport: Viewport = {
   themeColor: "#A0134D",
 };
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  name: SITE_NAME,
+  image: `${SITE_URL}/og-image.jpg`,
+  description:
+    "Advanced laser hair removal, HydraFacials, microneedling, threading, and waxing services in Beaumont, Alberta.",
+  url: SITE_URL,
+  telephone: "+16478904871",
+  email: "info@rbbeauty.ca",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "3913 49 Ave",
+    addressLocality: "Beaumont",
+    addressRegion: "Alberta",
+    postalCode: "T4X 1Y7",
+    addressCountry: "CA",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 53.357,
+    longitude: -113.414,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "10:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "11:00",
+      closes: "18:00",
+    },
+  ],
+  hasMap: `https://www.openstreetmap.org/?mlat=53.357&mlon=-113.414#map=15/53.357/-113.414`,
+  sameAs: [],
+  servesCuisine: [],
+  currenciesAccepted: "CAD",
+  paymentAccepted: "Cash, Credit Card, Debit Card",
+  areaServed: [
+    { "@type": "City", name: "Beaumont" },
+    { "@type": "City", name: "Edmonton" },
+    { "@type": "AdministrativeArea", name: "Alberta" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Beauty & Laser Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Laser Hair Removal" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "HydraFacial" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Microneedling" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Threading" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Waxing" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dermaplaning" } },
+    ],
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${plusJakarta.variable}`}>
+    <html lang="en-CA" className={`${playfair.variable} ${plusJakarta.variable}`}>
+      <head>
+        {/* Preconnect to speed up font & image loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* JSON-LD structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body className="antialiased font-body bg-ivory text-charcoal min-h-screen selection:bg-deep-rose selection:text-white">
         {children}
       </body>
