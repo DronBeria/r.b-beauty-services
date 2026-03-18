@@ -137,16 +137,10 @@ const ServicesSection = () => {
                 </div>
 
                 {/* Count indicator */}
-                <div className="flex items-center justify-between mb-8 px-1">
+                <div className="flex items-center mb-8 px-1">
                     <span className="text-[10px] font-black uppercase tracking-widest text-charcoal/30 font-sans">
                         {filteredServices.length} {activeCategory === 'All Services' ? 'Services Available' : `${activeCategory} services`}
                     </span>
-                    <button
-                        onClick={() => openModal()}
-                        className="flex items-center gap-2 bg-charcoal text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-deep-rose transition-all duration-300 shadow-lg"
-                    >
-                        <span>Book Now</span>
-                    </button>
                 </div>
 
                 {/* Services Grid */}

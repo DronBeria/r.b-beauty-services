@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Clock, Check, ArrowRight, Zap, Star, ShieldCheck, Scissors, Sparkles } from 'lucide-react';
+import { Clock, Check, Zap, Star, ShieldCheck, Scissors, Sparkles } from 'lucide-react';
 import { Service } from '../types';
-import { useBookingStore } from '../store/useBookingStore';
 import { cn } from '../lib/utils';
 
 interface ServiceCardProps {
@@ -20,14 +19,13 @@ const CATEGORY_CONFIG: Record<string, { icon: React.ElementType; accent: string;
 };
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
-    const { openModal } = useBookingStore();
     const isLaser = service.category === 'Laser Hair Removal';
     const config = CATEGORY_CONFIG[service.category] || CATEGORY_CONFIG['Threading'];
     const CategoryIcon = config.icon;
     const badgeLabel = service.badge || (service.isPopular ? 'Popular' : null);
 
     return (
-        <div className="group relative bg-white rounded-[1.75rem] overflow-hidden border border-charcoal/[0.07] shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col transform hover:-translate-y-1.5">
+        <div className="group relative bg-white rounded-[1.75rem] overflow-hidden border border-charcoal/[0.07] shadow-sm hover:shadow-lg transition-all duration-500 flex flex-col">
 
             {/* Top accent bar */}
             <div className="h-[3px] w-full" style={{ background: `linear-gradient(90deg, ${config.accent}, transparent)` }} />
@@ -35,7 +33,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             {/* Header area — icon + price */}
             <div className="px-6 pt-5 pb-4 flex items-start justify-between gap-3">
                 <div
-                    className="w-11 h-11 rounded-[0.875rem] flex items-center justify-center flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                    className="w-11 h-11 rounded-[0.875rem] flex items-center justify-center flex-shrink-0 transition-all duration-500 group-hover:scale-105"
                     style={{ background: config.bg }}
                 >
                     <CategoryIcon className="w-5 h-5" style={{ color: config.accent }} />
@@ -56,7 +54,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             {badgeLabel && (
                 <div className="absolute top-4 left-1/2 -translate-x-1/2">
                     <span className={cn(
-                        'text-white text-[8px] tracking-widest uppercase font-black px-2.5 py-1 rounded-full flex items-center gap-1',
+                        'text-white text-[8px] tracking-widest uppercase font-black px-2.5 py-1 rounded-full',
                         isLaser ? 'bg-[#1565C0]/80' : 'bg-warm-gold/80'
                     )}>
                         {badgeLabel}
@@ -68,7 +66,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             <div className="px-6 pb-6 flex flex-col flex-grow">
                 <div className="w-full h-px bg-charcoal/[0.05] mb-4" />
 
-                <h3 className="font-display text-[1.15rem] text-charcoal leading-tight mb-2 group-hover:text-deep-rose transition-colors duration-400">
+                <h3 className="font-display text-[1.15rem] text-charcoal leading-tight mb-2">
                     {service.name}
                 </h3>
 
@@ -77,7 +75,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                 </p>
 
                 {/* Benefits */}
-                <ul className="flex flex-col gap-1.5 mb-5">
+                <ul className="flex flex-col gap-1.5">
                     {service.benefits.slice(0, 3).map((b, i) => (
                         <li key={i} className="flex items-center gap-2 text-[10.5px] text-charcoal/55 font-sans font-semibold">
                             <Check className="w-3 h-3 flex-shrink-0 stroke-[2.5]" style={{ color: config.accent }} />
@@ -85,16 +83,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                         </li>
                     ))}
                 </ul>
-
-                {/* CTA */}
-                <button
-                    onClick={() => openModal(service.id)}
-                    className="w-full py-3 rounded-[1.25rem] font-black text-[9px] tracking-[0.25em] uppercase transition-all duration-400 flex items-center justify-center gap-2 relative overflow-hidden bg-charcoal text-white hover:bg-deep-rose shadow-sm hover:shadow-md group/btn"
-                >
-                    <span>Book This</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                    <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
-                </button>
             </div>
         </div>
     );
