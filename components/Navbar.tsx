@@ -4,9 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X, ArrowRight, CalendarCheck, Zap, Sparkles, ShieldCheck, Package2, ChevronDown } from 'lucide-react';
 import { useServiceFilter } from '../store/useServiceFilter';
+import { useBookingStore } from '../store/useBookingStore';
 import { cn } from '../lib/utils';
 import gsap from 'gsap';
-import { WHATSAPP_NUMBER } from '../constants/services';
+
 import { Category } from '../types';
 
 const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; items: { name: string; price: string; category: Category; badge?: string }[] }[] = [
@@ -83,6 +84,7 @@ const Navbar = () => {
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const { setActiveCategory } = useServiceFilter();
+    const { openModal } = useBookingStore();
     const navRef = useRef<HTMLElement>(null);
 
     const goToCategory = (cat: Category) => {
@@ -212,16 +214,15 @@ const Navbar = () => {
 
                     {/* Right */}
                     <div className="flex items-center gap-2.5 shrink-0">
-                        <a
-                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I'd%20like%20to%20book%20a%20consultation.`}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <button
+                            type="button"
+                            onClick={() => openModal()}
                             className="hidden md:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-300 shadow-sm active:scale-95 hover:opacity-80"
                             style={{ background: '#131313' }}
                         >
                             <CalendarCheck className="w-3.5 h-3.5" />
                             <span>Book Now</span>
-                        </a>
+                        </button>
 
                         <button
                             type="button"
@@ -371,16 +372,14 @@ const Navbar = () => {
                     </div>
 
                     <div className="px-5 pb-8 space-y-2.5 border-t border-black/5 pt-5">
-                        <a
-                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I'd%20like%20to%20book%20a%20consultation.`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={closeMobileMenu}
-                            className="w-full flex items-center justify-center gap-2 bg-deep-rose text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:opacity-90 transition-all shadow-md"
+                        <button
+                            type="button"
+                            onClick={() => { openModal(); closeMobileMenu(); }}
+                            className="w-full flex items-center justify-center gap-2 bg-charcoal text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:opacity-90 transition-all shadow-md"
                         >
                             <CalendarCheck className="w-3.5 h-3.5" />
-                            <span>Book via WhatsApp</span>
-                        </a>
+                            <span>Book Now</span>
+                        </button>
                     </div>
                 </div>
             </div>

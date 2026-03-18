@@ -8,6 +8,7 @@ import OurStory from '../components/OurStory';
 import PricingSection from '../components/PricingSection';
 import Footer from '../components/Footer';
 import Preloader from '../components/Preloader';
+import BookingModal from '../components/BookingModal';
 import ContactSection from '../components/ContactSection';
 import TestimonialsCarousel from '../components/TestimonialsCarousel';
 import { gsap } from 'gsap';
@@ -94,6 +95,7 @@ export default function Home() {
 
             <Preloader />
             <Navbar />
+            <BookingModal />
 
             <Hero />
 

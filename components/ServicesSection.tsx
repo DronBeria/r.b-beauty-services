@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { SERVICES, WHATSAPP_NUMBER } from '../constants/services';
+import { SERVICES } from '../constants/services';
 import { Category } from '../types';
 import ServiceCard from './ServiceCard';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
-import { Sparkles, ArrowRight, LayoutGrid, ChevronDown, ShoppingBag } from 'lucide-react';
-import { useCartStore } from '../store/useCartStore';
+import { Sparkles, ArrowRight, LayoutGrid, ChevronDown } from 'lucide-react';
 import { useServiceFilter } from '../store/useServiceFilter';
+import { useBookingStore } from '../store/useBookingStore';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,8 +29,7 @@ const ServicesSection = () => {
     const [showAll, setShowAll] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
-    const { getTotalItems } = useCartStore();
-    const cartCount = getTotalItems();
+    const { openModal } = useBookingStore();
 
     const filteredServices = useMemo(() => {
         if (activeCategory === 'All Services') return SERVICES;
@@ -83,11 +82,6 @@ const ServicesSection = () => {
         }
     }, [visibleServices]);
 
-    const toggleCart = () => {
-        const panel = document.getElementById('cart-panel');
-        if (panel) panel.classList.toggle('translate-x-full');
-    };
-
     return (
         <section
             id="services"
@@ -112,7 +106,7 @@ const ServicesSection = () => {
                         <span className="italic font-light text-gradient">for every</span> need
                     </h2>
                     <p className="services-header-reveal opacity-0 translate-y-10 max-w-xl mx-auto text-soft-gray font-sans text-lg leading-relaxed">
-                        Browse our full menu of threading, waxing, facials, and laser services. Add to your booking and confirm directly via WhatsApp.
+                        Browse our full menu of threading, waxing, facials, and laser services. Click any service to book instantly via WhatsApp.
                     </p>
                 </div>
 
@@ -147,15 +141,12 @@ const ServicesSection = () => {
                     <span className="text-[10px] font-black uppercase tracking-widest text-charcoal/30 font-sans">
                         {filteredServices.length} {activeCategory === 'All Services' ? 'Services Available' : `${activeCategory} services`}
                     </span>
-                    {cartCount > 0 && (
-                        <button
-                            onClick={toggleCart}
-                            className="flex items-center gap-2 bg-charcoal text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-deep-rose transition-all duration-300 shadow-lg"
-                        >
-                            <ShoppingBag className="w-3.5 h-3.5" />
-                            <span>View Booking ({cartCount})</span>
-                        </button>
-                    )}
+                    <button
+                        onClick={() => openModal()}
+                        className="flex items-center gap-2 bg-charcoal text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-deep-rose transition-all duration-300 shadow-lg"
+                    >
+                        <span>Book Now</span>
+                    </button>
                 </div>
 
                 {/* Services Grid */}
@@ -197,15 +188,13 @@ const ServicesSection = () => {
                         <p className="text-soft-gray font-sans text-base mb-10 max-w-lg mx-auto">
                             Our specialists will build a personalized treatment plan during a free consultation.
                         </p>
-                        <a
-                            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20R.D.%20Beauty%20%26%20Laser%20Clinic!%20I%27d%20like%20to%20book%20a%20free%20consultation.`}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <button
+                            onClick={() => openModal()}
                             className="btn-primary mx-auto group inline-flex"
                         >
                             <span>Book a Free Consultation</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

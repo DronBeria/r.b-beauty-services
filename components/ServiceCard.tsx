@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Clock, Check, ShoppingCart, Zap, Star, ShieldCheck, Scissors, Sparkles } from 'lucide-react';
+import { Clock, Check, ArrowRight, Zap, Star, ShieldCheck, Scissors, Sparkles } from 'lucide-react';
 import { Service } from '../types';
-import { useCartStore } from '../store/useCartStore';
+import { useBookingStore } from '../store/useBookingStore';
 import { cn } from '../lib/utils';
-import { gsap } from 'gsap';
 
 interface ServiceCardProps {
     service: Service;
@@ -21,21 +20,11 @@ const CATEGORY_CONFIG: Record<string, { icon: React.ElementType; accent: string;
 };
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
-    const { addItem, items } = useCartStore();
-    const isInCart = items.some((item) => item.id === service.id);
-
-    const handleAddToCart = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        if (isInCart) return;
-        addItem(service);
-        const target = e.currentTarget;
-        gsap.to(target, { scale: 0.93, duration: 0.1, yoyo: true, repeat: 1, ease: 'power2.inOut' });
-    };
-
-    const badgeLabel = service.badge || (service.isPopular ? 'Popular' : null);
+    const { openModal } = useBookingStore();
     const isLaser = service.category === 'Laser Hair Removal';
     const config = CATEGORY_CONFIG[service.category] || CATEGORY_CONFIG['Threading'];
     const CategoryIcon = config.icon;
+    const badgeLabel = service.badge || (service.isPopular ? 'Popular' : null);
 
     return (
         <div className="group relative bg-white rounded-[1.75rem] overflow-hidden border border-charcoal/[0.07] shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col transform hover:-translate-y-1.5">
@@ -68,9 +57,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                 <div className="absolute top-4 left-1/2 -translate-x-1/2">
                     <span className={cn(
                         'text-white text-[8px] tracking-widest uppercase font-black px-2.5 py-1 rounded-full flex items-center gap-1',
-                        isLaser
-                            ? 'bg-[#1565C0]/80'
-                            : 'bg-warm-gold/80'
+                        isLaser ? 'bg-[#1565C0]/80' : 'bg-warm-gold/80'
                     )}>
                         {badgeLabel}
                     </span>
@@ -79,7 +66,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
             {/* Content */}
             <div className="px-6 pb-6 flex flex-col flex-grow">
-                {/* Divider */}
                 <div className="w-full h-px bg-charcoal/[0.05] mb-4" />
 
                 <h3 className="font-display text-[1.15rem] text-charcoal leading-tight mb-2 group-hover:text-deep-rose transition-colors duration-400">
@@ -102,29 +88,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
                 {/* CTA */}
                 <button
-                    onClick={handleAddToCart}
-                    disabled={isInCart}
-                    className={cn(
-                        'w-full py-3 rounded-[1.25rem] font-black text-[9px] tracking-[0.25em] uppercase transition-all duration-400 flex items-center justify-center gap-2 relative overflow-hidden',
-                        isInCart
-                            ? 'bg-ivory text-soft-gray border border-charcoal/10 cursor-default'
-                            : 'bg-charcoal text-white hover:bg-deep-rose shadow-sm hover:shadow-md'
-                    )}
+                    onClick={() => openModal(service.id)}
+                    className="w-full py-3 rounded-[1.25rem] font-black text-[9px] tracking-[0.25em] uppercase transition-all duration-400 flex items-center justify-center gap-2 relative overflow-hidden bg-charcoal text-white hover:bg-deep-rose shadow-sm hover:shadow-md group/btn"
                 >
-                    {isInCart ? (
-                        <>
-                            <Check className="w-3.5 h-3.5 text-deep-rose stroke-[2.5]" />
-                            <span>Added to Booking</span>
-                        </>
-                    ) : (
-                        <>
-                            <ShoppingCart className="w-3.5 h-3.5" />
-                            <span>Add to Booking</span>
-                        </>
-                    )}
-                    {!isInCart && (
-                        <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                    )}
+                    <span>Book This</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                    <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
                 </button>
             </div>
         </div>
