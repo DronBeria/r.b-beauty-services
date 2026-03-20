@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ArrowRight } from 'lucide-react';
-import { useBookingStore } from '../store/useBookingStore';
+const SQUARE_BOOKING_URL = 'https://app.squareup.com/appointments/book/mfaodungeatf80/L15XQCCP0YC3D/start';
 
 const BG_WORDS = ['Beauty', 'Radiance', 'Glow', 'Laser', 'Skin', 'Atelier'];
 
@@ -12,8 +12,6 @@ export default function Hero() {
     const sectionRef = useRef<HTMLElement>(null);
     const [wordIdx, setWordIdx] = useState(0);
     const [fading, setFading] = useState(false);
-    const { openModal } = useBookingStore();
-
     useEffect(() => {
         const interval = setInterval(() => {
             setFading(true);
@@ -159,14 +157,15 @@ export default function Hero() {
                     {/* CTAs + proof */}
                     <div className="flex flex-col gap-6">
                         <div className="h-ctas flex flex-wrap items-center gap-3" style={{ opacity: 0 }}>
-                            <button
-                                type="button"
-                                onClick={() => openModal()}
+                            <a
+                                href={SQUARE_BOOKING_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:opacity-80 active:scale-95"
                                 style={{ background: '#131313', boxShadow: '0 8px 28px rgba(19,19,19,0.14)' }}>
                                 <span>Book Now</span>
                                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                            </button>
+                            </a>
                         </div>
 
                         {/* Social proof */}

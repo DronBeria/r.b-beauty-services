@@ -4,8 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X, ArrowRight, CalendarCheck, Zap, Sparkles, ShieldCheck, Package2, ChevronDown } from 'lucide-react';
 import { useServiceFilter } from '../store/useServiceFilter';
-import { useBookingStore } from '../store/useBookingStore';
 import { cn } from '../lib/utils';
+
+const SQUARE_BOOKING_URL = 'https://app.squareup.com/appointments/book/mfaodungeatf80/L15XQCCP0YC3D/start';
 import gsap from 'gsap';
 
 import { Category } from '../types';
@@ -80,11 +81,11 @@ const navLinks = [
 const Navbar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+    const [openServiceCats, setOpenServiceCats] = useState<Set<string>>(new Set());
     const [scrolled, setScrolled] = useState(false);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const { setActiveCategory } = useServiceFilter();
-    const { openModal } = useBookingStore();
     const navRef = useRef<HTMLElement>(null);
 
     const goToCategory = (cat: Category) => {
@@ -214,15 +215,16 @@ const Navbar = () => {
 
                     {/* Right */}
                     <div className="flex items-center gap-2.5 shrink-0">
-                        <button
-                            type="button"
-                            onClick={() => openModal()}
+                        <a
+                            href={SQUARE_BOOKING_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="hidden md:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-300 shadow-sm active:scale-95 hover:opacity-80"
                             style={{ background: '#131313' }}
                         >
                             <CalendarCheck className="w-3.5 h-3.5" />
                             <span>Book Now</span>
-                        </button>
+                        </a>
 
                         <button
                             type="button"
@@ -333,25 +335,51 @@ const Navbar = () => {
                             </button>
 
                             {mobileServicesOpen && (
-                                <div className="mt-1 ml-2 space-y-3 pl-3 border-l-2 border-charcoal/5 pb-2">
-                                    {SERVICE_COLS.map((col) => (
-                                        <div key={col.title}>
-                                            <div className="flex items-center gap-2 px-2 py-1.5">
-                                                <col.icon className={cn('w-3 h-3', col.color)} />
-                                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-charcoal/35">{col.title}</span>
-                                            </div>
-                                            {col.items.map((item) => (
+                                <div className="mt-2 space-y-1 pb-2">
+                                    {SERVICE_COLS.map((col) => {
+                                        const isOpen = openServiceCats.has(col.title);
+                                        const toggle = () => setOpenServiceCats((prev) => {
+                                            const next = new Set(prev);
+                                            isOpen ? next.delete(col.title) : next.add(col.title);
+                                            return next;
+                                        });
+                                        return (
+                                            <div key={col.title} className="rounded-2xl overflow-hidden border border-black/[0.05]">
+                                                {/* Category header — tappable */}
                                                 <button
-                                                    key={item.name}
-                                                    onClick={() => goToCategory(item.category)}
-                                                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-ivory group transition-all duration-200 text-left"
+                                                    onClick={toggle}
+                                                    className="w-full flex items-center justify-between px-4 py-3.5 bg-ivory/60 hover:bg-ivory transition-colors duration-200"
                                                 >
-                                                    <span className="text-[12px] font-semibold text-charcoal/60 group-hover:text-charcoal">{item.name}</span>
-                                                    <span className="text-[10px] font-black text-charcoal/30">{item.price}</span>
+                                                    <div className="flex items-center gap-2.5">
+                                                        <col.icon className={cn('w-4 h-4 flex-shrink-0', col.color)} />
+                                                        <span className="text-[15px] font-black tracking-tight text-charcoal">{col.title}</span>
+                                                    </div>
+                                                    <ChevronDown className={cn('w-4 h-4 text-charcoal/30 transition-transform duration-300 flex-shrink-0', isOpen && 'rotate-180')} />
                                                 </button>
-                                            ))}
-                                        </div>
-                                    ))}
+
+                                                {/* Items */}
+                                                {isOpen && (
+                                                    <div className="bg-white divide-y divide-black/[0.04]">
+                                                        {col.items.map((item) => (
+                                                            <button
+                                                                key={item.name}
+                                                                onClick={() => goToCategory(item.category)}
+                                                                className="w-full flex items-center justify-between px-5 py-3 hover:bg-ivory/70 group transition-colors duration-150 text-left"
+                                                            >
+                                                                <div className="flex items-center gap-2 min-w-0">
+                                                                    <span className="text-[13px] font-semibold text-charcoal/75 group-hover:text-charcoal truncate">{item.name}</span>
+                                                                    {item.badge && (
+                                                                        <span className="flex-shrink-0 text-[7px] font-black uppercase tracking-wider text-deep-rose bg-deep-rose/8 border border-deep-rose/15 px-1.5 py-0.5 rounded-full">{item.badge}</span>
+                                                                    )}
+                                                                </div>
+                                                                <span className="flex-shrink-0 text-[12px] font-black text-charcoal/40 group-hover:text-deep-rose ml-3 transition-colors">{item.price}</span>
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             )}
                         </div>
@@ -372,14 +400,16 @@ const Navbar = () => {
                     </div>
 
                     <div className="px-5 pb-8 space-y-2.5 border-t border-black/5 pt-5">
-                        <button
-                            type="button"
-                            onClick={() => { openModal(); closeMobileMenu(); }}
+                        <a
+                            href={SQUARE_BOOKING_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={closeMobileMenu}
                             className="w-full flex items-center justify-center gap-2 bg-charcoal text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:opacity-90 transition-all shadow-md"
                         >
                             <CalendarCheck className="w-3.5 h-3.5" />
                             <span>Book Now</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

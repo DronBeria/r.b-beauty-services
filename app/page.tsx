@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Preloader from '../components/Preloader';
-import BookingModal from '../components/BookingModal';
 
 // Below-fold — lazy load to reduce initial bundle
 const ServicesSection   = dynamic(() => import('../components/ServicesSection'),   { ssr: false });
@@ -85,7 +84,6 @@ export default function Home() {
 
             <Preloader />
             <Navbar />
-            <BookingModal />
 
             {/* ── HERO — above fold, eager ── */}
             <Hero />

@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
 import { Sparkles, ArrowRight, LayoutGrid, ChevronDown } from 'lucide-react';
 import { useServiceFilter } from '../store/useServiceFilter';
-import { useBookingStore } from '../store/useBookingStore';
+const SQUARE_BOOKING_URL = 'https://app.squareup.com/appointments/book/mfaodungeatf80/L15XQCCP0YC3D/start';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,7 +29,6 @@ const ServicesSection = () => {
     const [showAll, setShowAll] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
-    const { openModal } = useBookingStore();
 
     const filteredServices = useMemo(() => {
         if (activeCategory === 'All Services') return SERVICES;
@@ -182,13 +181,15 @@ const ServicesSection = () => {
                         <p className="text-soft-gray font-sans text-base mb-10 max-w-lg mx-auto">
                             Our specialists will build a personalized treatment plan during a free consultation.
                         </p>
-                        <button
-                            onClick={() => openModal()}
+                        <a
+                            href={SQUARE_BOOKING_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="btn-primary mx-auto group inline-flex"
                         >
                             <span>Book a Free Consultation</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
