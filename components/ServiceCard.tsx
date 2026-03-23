@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Clock, Check, Zap, Star, ShieldCheck, Scissors, Sparkles } from 'lucide-react';
+import { Clock, Check, Zap, Star, ShieldCheck, Scissors, Sparkles, CalendarCheck } from 'lucide-react';
 import { Service } from '../types';
 import { cn } from '../lib/utils';
+
+const SQUARE_BOOKING_URL = 'https://app.squareup.com/appointments/book/mfaodungeatf80/L15XQCCP0YC3D/start';
 
 interface ServiceCardProps {
     service: Service;
@@ -75,7 +77,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                 </p>
 
                 {/* Benefits */}
-                <ul className="flex flex-col gap-1.5">
+                <ul className="flex flex-col gap-1.5 mb-5">
                     {service.benefits.slice(0, 3).map((b, i) => (
                         <li key={i} className="flex items-center gap-2 text-[10.5px] text-charcoal/55 font-sans font-semibold">
                             <Check className="w-3 h-3 flex-shrink-0 stroke-[2.5]" style={{ color: config.accent }} />
@@ -83,6 +85,18 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                         </li>
                     ))}
                 </ul>
+
+                {/* Book button */}
+                <a
+                    href={SQUARE_BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto flex items-center justify-center gap-2 w-full py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 hover:opacity-90 active:scale-95"
+                    style={{ background: config.bg, color: config.accent, border: `1px solid ${config.accent}20` }}
+                >
+                    <CalendarCheck className="w-3.5 h-3.5" />
+                    <span>Book This</span>
+                </a>
             </div>
         </div>
     );

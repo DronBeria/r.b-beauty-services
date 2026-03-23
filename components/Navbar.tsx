@@ -55,7 +55,7 @@ const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; ite
         items: [
             { name: 'Upper Lip', price: '$35', category: 'Laser Hair Removal' },
             { name: 'Full Face', price: '$120', category: 'Laser Hair Removal', badge: 'Popular' },
-            { name: 'Underarm', price: '$45', category: 'Laser Hair Removal' },
+            { name: 'Underarms', price: '$35', category: 'Laser Hair Removal' },
             { name: 'Brazilian', price: '$129', category: 'Laser Hair Removal', badge: 'Bestseller' },
             { name: 'Full Body', price: '$599', category: 'Laser Hair Removal' },
         ],
