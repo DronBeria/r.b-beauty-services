@@ -28,21 +28,25 @@ export const metadata: Metadata = {
     template: "%s | R.D. Beauty & Laser Clinic",
   },
   description:
-    "R.D. Beauty & Laser Clinic in Beaumont, Alberta — advanced laser hair removal, HydraFacials, microneedling, threading, waxing & skin rejuvenation. Book via WhatsApp today.",
+    "R.D. Beauty & Laser Clinic in Beaumont, Alberta — advanced laser hair removal, HydraFacials, microneedling, threading, waxing & skin rejuvenation. Book online today.",
   keywords: [
     "laser hair removal Beaumont",
+    "laser hair removal Beaumont Alberta",
     "beauty clinic Beaumont Alberta",
     "HydraFacial Beaumont",
     "microneedling Beaumont",
     "threading Beaumont",
-    "waxing Beaumont",
+    "waxing Beaumont Alberta",
     "skin treatment Alberta",
     "facial Beaumont",
-    "dermaplaning",
-    "Nufree waxing",
+    "dermaplaning Beaumont",
+    "Nufree waxing Alberta",
     "R.D. Beauty",
     "beauty salon Beaumont",
+    "laser clinic near Edmonton",
     "laser clinic Alberta",
+    "Brazilian laser Beaumont",
+    "book beauty appointment Beaumont",
   ],
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
@@ -168,12 +172,25 @@ export default function RootLayout({
   return (
     <html lang="en-CA" className={`${playfair.variable} ${plusJakarta.variable}`}>
       <head>
-        {/* Preconnect to speed up font & image loading */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/*
+          next/font self-hosts Google Fonts — no need to preconnect to fonts.googleapis.com.
+          Preconnect only to domains that are actually hit at runtime.
+        */}
         <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://app.squareup.com" />
+        <link rel="dns-prefetch" href="//images.unsplash.com" />
+        <link rel="dns-prefetch" href="//app.squareup.com" />
+
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
+
+        {/* Mobile web app */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="R.D. Beauty" />
+        <meta name="format-detection" content="telephone=no" />
+
         {/* JSON-LD structured data */}
         <script
           type="application/ld+json"
