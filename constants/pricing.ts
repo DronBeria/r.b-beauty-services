@@ -24,9 +24,110 @@ export interface PricingSection {
 
 export const PRICING_DATA: PricingCategory[] = [
     {
+        id: 'threading',
+        title: 'Threading',
+        icon: '🪡',
+        image: 'https://images.unsplash.com/photo-1487412840181-b39ce5fa3ac9?w=800&q=85&auto=format&fit=crop',
+        sections: [
+            {
+                items: [
+                    { name: 'Eyebrow Threading',   price: '$4'  },
+                    { name: 'Upper Lip Threading', price: '$3'  },
+                    { name: 'Chin Threading',      price: '$3'  },
+                    { name: 'Forehead Threading',  price: '$3'  },
+                    { name: 'Full Face Threading', price: '$20' },
+                ],
+            },
+        ],
+    },
+    {
+        id: 'waxing',
+        title: 'Waxing',
+        icon: '🌿',
+        image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=85&auto=format&fit=crop',
+        sections: [
+            {
+                subtitle: 'Regular Wax',
+                items: [
+                    { name: 'Eyebrow Wax',    price: '$8'   },
+                    { name: 'Upper Lip Wax',  price: '$4'   },
+                    { name: 'Chin Wax',       price: '$4'   },
+                    { name: 'Face Sides Wax', price: '$8'   },
+                    { name: 'Full Face Wax',  price: '$20'  },
+                    { name: 'Underarms Wax',  price: '$7'   },
+                    { name: 'Half Arms Wax',  price: '$15'  },
+                    { name: 'Full Arms Wax',  price: '$20'  },
+                    { name: 'Half Back Wax',  price: '$15'  },
+                    { name: 'Full Back Wax',  price: '$25'  },
+                    { name: 'Full Front Wax', price: '$15'  },
+                    { name: 'Buttocks Wax',   price: '$10'  },
+                    { name: 'Half Legs Wax',  price: '$20'  },
+                    { name: 'Full Legs Wax',  price: '$30'  },
+                    { name: 'Full Body Wax',  price: '$135' },
+                ],
+            },
+            {
+                subtitle: 'Nufree Organic Wax',
+                items: [
+                    { name: 'Upper Lip Nufree',       price: '$6'   },
+                    { name: 'Chin Nufree',            price: '$6'   },
+                    { name: 'Face Sides Nufree',      price: '$12'  },
+                    { name: 'Full Face Nufree',       price: '$28'  },
+                    { name: 'Underarms Nufree',       price: '$10'  },
+                    { name: 'Half Arms Nufree',       price: '$30'  },
+                    { name: 'Full Arms Nufree',       price: '$40'  },
+                    { name: 'Bikini Line Nufree',     price: '$25'  },
+                    { name: 'Extended Bikini Nufree', price: '$35'  },
+                    { name: 'Brazilian Nufree',       price: '$50'  },
+                    { name: 'Full Legs Nufree',       price: '$60'  },
+                    { name: 'Full Body Nufree',       price: '$299' },
+                ],
+            },
+            {
+                subtitle: "Men's Waxing",
+                items: [
+                    { name: "Men's Half Arms",       price: '$30' },
+                    { name: "Men's Half Lower Legs", price: '$40' },
+                    { name: "Men's Chest Wax",       price: '$45' },
+                    { name: "Men's Full Back Wax",   price: '$45' },
+                ],
+            },
+        ],
+    },
+    {
+        id: 'facial-treatments',
+        title: 'Facial Treatments',
+        icon: '✨',
+        image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85&auto=format&fit=crop',
+        sections: [
+            {
+                subtitle: 'Facials & Glow',
+                items: [
+                    { name: 'Express Deep Cleansing Facial',  price: '$40'  },
+                    { name: "Classic Fernanda's Facial",      price: '$60'  },
+                    { name: 'Korean Glow Facial',             price: '$85'  },
+                    { name: 'Skeyndor Essential Facial',      price: '$75'  },
+                    { name: 'HydraFacial Treatment',          price: '$120' },
+                    { name: 'Dermaplaning Facial',            price: '$75'  },
+                    { name: 'Microdermabrasion Skin Renewal', price: '$85'  },
+                    { name: 'Eyebrow Tint',                   price: '$10'  },
+                ],
+            },
+            {
+                subtitle: 'Advanced Treatments',
+                items: [
+                    { name: 'Radiance Brightening Facial',              price: '$130'         },
+                    { name: 'Exosomes Anti-Aging Facial',               price: '$145'         },
+                    { name: 'Microneedling (Collagen Induction Therapy)', price: 'Price varies' },
+                    { name: 'Skin Consultation',                        price: 'Free'         },
+                ],
+            },
+        ],
+    },
+    {
         id: 'laser-hair-removal',
         title: 'Laser Treatments',
-        icon: '✨',
+        icon: '⚡',
         image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85&auto=format&fit=crop',
         sections: [
             {
@@ -81,68 +182,8 @@ export const PRICING_DATA: PricingCategory[] = [
             {
                 subtitle: 'Popular Packages',
                 items: [
-                    { name: 'Legs + Arms + Underarms',              price: '$899'   },
-                    { name: 'Legs + Arms + Underarms + Brazilian',  price: '$1,199' },
-                ],
-            },
-        ],
-    },
-    {
-        id: 'facial-rituals',
-        title: 'Facial Rituals',
-        icon: '🧴',
-        image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=85&auto=format&fit=crop',
-        sections: [
-            {
-                subtitle: 'Glow & Hydration',
-                items: [
-                    { name: 'Signature HydraFacial',  price: '$195' },
-                    { name: 'Face Cleansing',          price: '$40'  },
-                    { name: 'Microdermabrasion',        price: '$85'  },
-                    { name: 'Dermaplaning',             price: '$75'  },
-                    { name: 'Custom Ritual Facial',    price: '$110' },
-                ],
-            },
-        ],
-    },
-    {
-        id: 'clinical-care',
-        title: 'Clinical Care',
-        icon: '💉',
-        image: 'https://images.unsplash.com/photo-1616391182219-e080b4d1042a?w=800&q=85&auto=format&fit=crop',
-        sections: [
-            {
-                subtitle: 'Advanced Repair',
-                items: [
-                    { name: 'Medical Peel',                    price: '$120' },
-                    { name: 'Micro-Needling (Individual)',     price: '$175' },
-                    { name: 'Micro-Needling (Course of 3)',   price: '$400' },
-                    { name: 'Dermal Rejuvenation',             price: '$250' },
-                ],
-            },
-        ],
-    },
-    {
-        id: 'packages',
-        title: 'Packages',
-        icon: '🎁',
-        image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800&q=85&auto=format&fit=crop',
-        sections: [
-            {
-                columns: ['Curated Pack', 'Per Session', '6-Session Course', 'Savings'],
-                items: [
-                    {
-                        name: 'The Radiance Pack (Face + Neck)',
-                        perSession: '$249.99',
-                        sixSessions: '$1,199.99',
-                        savings: 'Save $300',
-                    },
-                    {
-                        name: 'The Full Transformation',
-                        perSession: '$499.99',
-                        sixSessions: '$2,499.99',
-                        savings: 'Save $500',
-                    },
+                    { name: 'Legs + Arms + Underarms',             price: '$899'   },
+                    { name: 'Legs + Arms + Underarms + Brazilian', price: '$1,199' },
                 ],
             },
         ],
