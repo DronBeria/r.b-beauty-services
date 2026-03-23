@@ -25,15 +25,27 @@ const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; ite
         ],
     },
     {
-        title: 'Waxing & Nufree',
+        title: 'Waxing',
         icon: ShieldCheck,
         color: 'text-emerald-500',
         items: [
-            { name: 'Eyebrow Wax',        price: '$8',  category: 'Waxing' },
-            { name: 'Full Legs Wax',       price: '$30', category: 'Waxing', badge: 'Popular' },
-            { name: 'Brazilian Nufree',    price: '$50', category: 'Nufree Waxing', badge: 'Popular' },
-            { name: 'Full Face Nufree',    price: '$28', category: 'Nufree Waxing', badge: 'Organic' },
-            { name: 'Full Body Wax',       price: '$135',category: 'Waxing', badge: 'Best Value' },
+            { name: 'Eyebrow Wax',    price: '$8',   category: 'Waxing' },
+            { name: 'Underarms Wax',  price: '$7',   category: 'Waxing' },
+            { name: 'Full Legs Wax',  price: '$30',  category: 'Waxing', badge: 'Popular' },
+            { name: 'Full Arms Wax',  price: '$20',  category: 'Waxing' },
+            { name: 'Full Body Wax',  price: '$135', category: 'Waxing', badge: 'Best Value' },
+        ],
+    },
+    {
+        title: 'Nufree Waxing',
+        icon: Sparkles,
+        color: 'text-teal-500',
+        items: [
+            { name: 'Upper Lip Nufree',  price: '$6',   category: 'Nufree Waxing' },
+            { name: 'Full Face Nufree',  price: '$28',  category: 'Nufree Waxing', badge: 'Organic' },
+            { name: 'Brazilian Nufree',  price: '$50',  category: 'Nufree Waxing', badge: 'Popular' },
+            { name: 'Full Legs Nufree',  price: '$60',  category: 'Nufree Waxing' },
+            { name: 'Full Body Nufree',  price: '$299', category: 'Nufree Waxing', badge: 'Premium' },
         ],
     },
     {
@@ -252,7 +264,7 @@ const Navbar = () => {
                         <div className="bg-white rounded-[2.5rem] shadow-[0_24px_80px_rgba(0,0,0,0.18)] border border-black/[0.07] overflow-hidden">
                             <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-deep-rose/40 to-transparent" />
 
-                            <div className="p-8 grid grid-cols-4 gap-8">
+                            <div className="p-8 grid grid-cols-5 gap-6">
                                 {SERVICE_COLS.map((col) => (
                                     <div key={col.title}>
                                         <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-black/[0.05]">
@@ -284,7 +296,7 @@ const Navbar = () => {
 
                             <div className="px-6 py-3 bg-[#fafafa] border-t border-black/[0.04] flex items-center justify-between">
                                 <span className="text-[9px] text-charcoal/30 font-sans font-semibold uppercase tracking-widest">
-                                    Threading · Waxing · Facials · Laser · Edmonton
+                                    Threading · Waxing · Nufree · Facials · Laser · Beaumont, Alberta
                                 </span>
                                 <Link
                                     href="#services"
