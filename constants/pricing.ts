@@ -109,7 +109,7 @@ export const PRICING_DATA: PricingCategory[] = [
                     { name: 'Skeyndor Essential Facial',      price: '$75'  },
                     { name: 'HydraFacial Treatment',          price: '$120' },
                     { name: 'Dermaplaning Facial',            price: '$75'  },
-                    { name: 'Microdermabrasion Skin Renewal', price: '$85'  },
+                    { name: 'Microdermabrasion Skin Renewal', price: '$99'  },
                     { name: 'Eyebrow Tint',                   price: '$10'  },
                 ],
             },
@@ -118,7 +118,7 @@ export const PRICING_DATA: PricingCategory[] = [
                 items: [
                     { name: 'Radiance Brightening Facial',              price: '$130'         },
                     { name: 'Exosomes Anti-Aging Facial',               price: '$145'         },
-                    { name: 'Microneedling (Collagen Induction Therapy)', price: 'Price varies' },
+                    { name: 'Microneedling (Collagen Induction Therapy)', price: '$175 / 3 for $400' },
                     { name: 'Skin Consultation',                        price: 'Free'         },
                 ],
             },
