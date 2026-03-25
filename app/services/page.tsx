@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Navbar from '../../components/Navbar';
-
-const ServicesSection   = dynamic(() => import('../../components/ServicesSection'),   { ssr: false });
-const PricingSection    = dynamic(() => import('../../components/PricingSection'),     { ssr: false });
-const Footer            = dynamic(() => import('../../components/Footer'),             { ssr: false });
+import ServicesSection from '../../components/ServicesSection';
+import PricingSection from '../../components/PricingSection';
+import Footer from '../../components/Footer';
 
 export const metadata: Metadata = {
     title: 'Services & Pricing',

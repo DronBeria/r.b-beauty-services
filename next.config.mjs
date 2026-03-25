@@ -19,7 +19,6 @@ const nextConfig = {
         imageSizes: [16, 32, 48, 64, 96, 128, 256],
     },
 
-    eslint: { ignoreDuringBuilds: true },
     typescript: { ignoreBuildErrors: true },
 
     async headers() {
@@ -42,12 +41,12 @@ const nextConfig = {
                 // All routes — security + performance hints
                 source: '/:path*',
                 headers: [
-                    { key: 'X-Content-Type-Options',   value: 'nosniff' },
-                    { key: 'X-Frame-Options',           value: 'SAMEORIGIN' },
-                    { key: 'Referrer-Policy',           value: 'strict-origin-when-cross-origin' },
-                    { key: 'Permissions-Policy',        value: 'camera=(), microphone=(), geolocation=()' },
-                    { key: 'X-DNS-Prefetch-Control',    value: 'on' },
-                    { key: 'Vary',                      value: 'Accept-Encoding' },
+                    { key: 'X-Content-Type-Options', value: 'nosniff' },
+                    { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+                    { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+                    { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+                    { key: 'X-DNS-Prefetch-Control', value: 'on' },
+                    { key: 'Vary', value: 'Accept-Encoding' },
                 ],
             },
         ];
