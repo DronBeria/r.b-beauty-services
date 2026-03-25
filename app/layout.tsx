@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -10,10 +10,10 @@ const playfair = Playfair_Display({
   preload: true,
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-plus-jakarta",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
   preload: true,
 });
@@ -129,15 +129,15 @@ const localBusinessSchema = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "10:00",
-      closes: "20:00",
+      closes: "19:00",
     },
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: "Saturday",
       opens: "11:00",
-      closes: "18:00",
+      closes: "19:00",
     },
   ],
   hasMap: `https://www.openstreetmap.org/?mlat=53.357&mlon=-113.414#map=15/53.357/-113.414`,
@@ -170,7 +170,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-CA" className={`${playfair.variable} ${plusJakarta.variable}`}>
+    <html lang="en-CA" className={`${playfair.variable} ${inter.variable}`}>
       <head>
         {/*
           next/font self-hosts Google Fonts — no need to preconnect to fonts.googleapis.com.

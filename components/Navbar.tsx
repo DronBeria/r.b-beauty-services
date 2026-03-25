@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X, ArrowRight, CalendarCheck, Zap, Sparkles, ShieldCheck, Package2, ChevronDown } from 'lucide-react';
 import { useServiceFilter } from '../store/useServiceFilter';
@@ -54,7 +55,7 @@ const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; ite
         color: 'text-sky-500',
         items: [
             { name: 'HydraFacial',          price: '$120',        category: 'Facial Treatments', badge: 'Signature' },
-            { name: 'Microneedling',         price: 'Price varies',category: 'Facial Treatments', badge: 'Anti-Aging' },
+            { name: 'Microneedling',         price: '$175 / 3 for $400', category: 'Facial Treatments', badge: 'Anti-Aging' },
             { name: 'Radiance Brightening',  price: '$130',        category: 'Facial Treatments' },
             { name: 'Dermaplaning',          price: '$75',         category: 'Facial Treatments' },
             { name: "Classic Fernanda's",    price: '$60',         category: 'Facial Treatments' },
@@ -83,8 +84,8 @@ const PRICING_LINKS: { name: string; category: Category }[] = [
 ];
 
 const navLinks = [
-    { name: 'Services', href: '#services', menu: 'services' },
-    { name: 'Pricing', href: '#pricing', menu: 'pricing' },
+    { name: 'Services', href: '/services', menu: 'services' },
+    { name: 'Pricing', href: '/services#pricing', menu: 'pricing' },
     { name: 'Gallery', href: '#gallery', menu: '' },
     { name: 'Our Story', href: '#story', menu: '' },
     { name: 'Contact', href: '#contact', menu: '' },
@@ -99,16 +100,21 @@ const Navbar = () => {
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const { setActiveCategory } = useServiceFilter();
     const navRef = useRef<HTMLElement>(null);
+    const router = useRouter();
 
     const goToCategory = (cat: Category) => {
         setActiveCategory(cat);
         setActiveMenu(null);
         setMobileOpen(false);
         setMobileServicesOpen(false);
-        // small delay so state propagates before scroll
-        setTimeout(() => {
-            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
+        // Navigate to services page; if already there, scroll to section
+        if (typeof window !== 'undefined' && window.location.pathname === '/services') {
+            setTimeout(() => {
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+            }, 50);
+        } else {
+            router.push('/services');
+        }
     };
 
     useEffect(() => {
@@ -156,7 +162,7 @@ const Navbar = () => {
                 <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
 
                     {/* Logo */}
-                    <Link href="#home" className="flex flex-col leading-none group shrink-0" onClick={closeMobileMenu}>
+                    <Link href="/" className="flex flex-col leading-none group shrink-0" onClick={closeMobileMenu}>
                         <span className="font-display text-lg md:text-xl font-bold tracking-[0.18em] uppercase transition-colors duration-300"
                             style={{ color: '#131313' }}>
                             R.D. BEAUTY

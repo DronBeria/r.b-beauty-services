@@ -108,9 +108,10 @@ const Footer = () => {
                             <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-warm-gold/60">Intake Schedule</h3>
                             <div className="space-y-5">
                                 {[
-                                    { day: 'Monday – Friday', hours: '10:00 – 20:00' },
-                                    { day: 'Saturday', hours: '11:00 – 18:00' },
-                                    { day: 'Sunday', hours: 'Closed' }
+                                    { day: 'Monday', hours: 'Closed' },
+                                    { day: 'Tuesday – Friday', hours: '10:00 – 19:00' },
+                                    { day: 'Saturday', hours: '11:00 – 19:00' },
+                                    { day: 'Sunday', hours: 'Closed' },
                                 ].map((item) => (
                                     <div key={item.day} className="flex justify-between items-center text-sm font-sans border-b border-white/5 pb-3">
                                         <span className="text-white/40">{item.day}</span>

@@ -23,8 +23,8 @@ module.exports = {
             },
             fontFamily: {
                 display: ['var(--font-playfair)', 'Georgia', 'serif'],
-                body: ['var(--font-plus-jakarta)', 'system-ui', 'sans-serif'],
-                sans: ['var(--font-plus-jakarta)', 'system-ui', 'sans-serif'],
+                body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+                sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
             },
             letterSpacing: {
                 'luxury': '0.02em',

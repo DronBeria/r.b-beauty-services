@@ -187,9 +187,9 @@ const ContactSection = () => {
                                 </div>
                                 <div>
                                     <p className="text-[9px] font-black uppercase tracking-[0.3em] text-charcoal/35 mb-0.5">Hours</p>
-                                    <p className="text-[13px] font-bold text-charcoal leading-snug">Mon–Fri: 10am – 8pm</p>
-                                    <p className="text-[13px] font-bold text-charcoal leading-snug">Sat: 11am – 6pm</p>
-                                    <p className="text-[11px] text-charcoal/40 font-sans mt-0.5">Sunday: Closed</p>
+                                    <p className="text-[13px] font-bold text-charcoal leading-snug">Tue–Fri: 10am – 7pm</p>
+                                    <p className="text-[13px] font-bold text-charcoal leading-snug">Sat: 11am – 7pm</p>
+                                    <p className="text-[11px] text-charcoal/40 font-sans mt-0.5">Mon & Sun: Closed</p>
                                 </div>
                             </div>
                         </div>

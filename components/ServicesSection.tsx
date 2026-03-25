@@ -105,7 +105,7 @@ const ServicesSection = () => {
                         <span className="italic font-light text-gradient">for every</span> need
                     </h2>
                     <p className="services-header-reveal opacity-0 translate-y-10 max-w-xl mx-auto text-soft-gray font-sans text-lg leading-relaxed">
-                        Browse our full menu of threading, waxing, facials, and laser services. Click any service to book instantly via WhatsApp.
+                        Browse our full menu of threading, waxing, facials, and laser services. Click any card to book your appointment instantly.
                     </p>
                 </div>
 
