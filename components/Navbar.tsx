@@ -18,11 +18,11 @@ const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; ite
         icon: Sparkles,
         color: 'text-rose-500',
         items: [
-            { name: 'Eyebrow Threading', price: '$4',  category: 'Threading', badge: 'Popular' },
-            { name: 'Upper Lip',         price: '$3',  category: 'Threading' },
-            { name: 'Chin',              price: '$3',  category: 'Threading' },
-            { name: 'Forehead',          price: '$3',  category: 'Threading' },
-            { name: 'Full Face',         price: '$20', category: 'Threading', badge: 'Best Value' },
+            { name: 'Eyebrow Threading', price: '$4', category: 'Threading', badge: 'Popular' },
+            { name: 'Upper Lip', price: '$3', category: 'Threading' },
+            { name: 'Chin', price: '$3', category: 'Threading' },
+            { name: 'Forehead', price: '$3', category: 'Threading' },
+            { name: 'Full Face', price: '$20', category: 'Threading', badge: 'Best Value' },
         ],
     },
     {
@@ -30,11 +30,11 @@ const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; ite
         icon: ShieldCheck,
         color: 'text-emerald-500',
         items: [
-            { name: 'Eyebrow Wax',    price: '$8',   category: 'Waxing' },
-            { name: 'Underarms Wax',  price: '$7',   category: 'Waxing' },
-            { name: 'Full Legs Wax',  price: '$30',  category: 'Waxing', badge: 'Popular' },
-            { name: 'Full Arms Wax',  price: '$20',  category: 'Waxing' },
-            { name: 'Full Body Wax',  price: '$135', category: 'Waxing', badge: 'Best Value' },
+            { name: 'Eyebrow Wax', price: '$8', category: 'Waxing' },
+            { name: 'Underarms Wax', price: '$7', category: 'Waxing' },
+            { name: 'Full Legs Wax', price: '$30', category: 'Waxing', badge: 'Popular' },
+            { name: 'Full Arms Wax', price: '$20', category: 'Waxing' },
+            { name: 'Full Body Wax', price: '$135', category: 'Waxing', badge: 'Best Value' },
         ],
     },
     {
@@ -42,11 +42,11 @@ const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; ite
         icon: Sparkles,
         color: 'text-teal-500',
         items: [
-            { name: 'Upper Lip Nufree',  price: '$6',   category: 'Nufree Waxing' },
-            { name: 'Full Face Nufree',  price: '$28',  category: 'Nufree Waxing', badge: 'Organic' },
-            { name: 'Brazilian Nufree',  price: '$50',  category: 'Nufree Waxing', badge: 'Popular' },
-            { name: 'Full Legs Nufree',  price: '$60',  category: 'Nufree Waxing' },
-            { name: 'Full Body Nufree',  price: '$299', category: 'Nufree Waxing', badge: 'Premium' },
+            { name: 'Upper Lip Nufree', price: '$6', category: 'Nufree Waxing' },
+            { name: 'Full Face Nufree', price: '$28', category: 'Nufree Waxing', badge: 'Organic' },
+            { name: 'Brazilian Nufree', price: '$50', category: 'Nufree Waxing', badge: 'Popular' },
+            { name: 'Full Legs Nufree', price: '$60', category: 'Nufree Waxing' },
+            { name: 'Full Body Nufree', price: '$299', category: 'Nufree Waxing', badge: 'Premium' },
         ],
     },
     {
@@ -54,11 +54,11 @@ const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; ite
         icon: Zap,
         color: 'text-sky-500',
         items: [
-            { name: 'HydraFacial',          price: '$120',        category: 'Facial Treatments', badge: 'Signature' },
-            { name: 'Microneedling',         price: '$175 / 3 for $400', category: 'Facial Treatments', badge: 'Anti-Aging' },
-            { name: 'Radiance Brightening',  price: '$130',        category: 'Facial Treatments' },
-            { name: 'Dermaplaning',          price: '$75',         category: 'Facial Treatments' },
-            { name: "Classic Fernanda's",    price: '$60',         category: 'Facial Treatments' },
+            { name: 'HydraFacial', price: '$120', category: 'Facial Treatments', badge: 'Signature' },
+            { name: 'Microneedling', price: '$175 / 3 for $400', category: 'Facial Treatments', badge: 'Anti-Aging' },
+            { name: 'Radiance Brightening', price: '$130', category: 'Facial Treatments' },
+            { name: 'Dermaplaning', price: '$75', category: 'Facial Treatments' },
+            { name: "Classic Fernanda's", price: '$60', category: 'Facial Treatments' },
         ],
     },
     {
@@ -86,8 +86,6 @@ const PRICING_LINKS: { name: string; category: Category }[] = [
 const navLinks = [
     { name: 'Services', href: '/services', menu: 'services' },
     { name: 'Pricing', href: '/services#pricing', menu: 'pricing' },
-    { name: 'Gallery', href: '#gallery', menu: '' },
-    { name: 'Our Story', href: '#story', menu: '' },
     { name: 'Contact', href: '#contact', menu: '' },
 ];
 

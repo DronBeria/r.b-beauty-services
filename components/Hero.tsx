@@ -13,13 +13,13 @@ export default function Hero() {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.3 })
-                .fromTo('.h-eyebrow',  { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 })
-                .fromTo('.h-title',    { y: 60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.2 }, '-=0.3')
-                .fromTo('.h-rule',     { scaleX: 0, autoAlpha: 0 }, { scaleX: 1, autoAlpha: 1, duration: 0.8, transformOrigin: 'left center' }, '-=0.4')
-                .fromTo('.h-body',     { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.9 }, '-=0.5')
-                .fromTo('.h-cta',      { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.75 }, '-=0.5')
-                .fromTo('.h-proof',    { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.65 }, '-=0.4')
-                .fromTo('.h-pills',    { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6  }, '-=0.3');
+                .fromTo('.h-eyebrow', { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 })
+                .fromTo('.h-title', { y: 60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.2 }, '-=0.3')
+                .fromTo('.h-rule', { scaleX: 0, autoAlpha: 0 }, { scaleX: 1, autoAlpha: 1, duration: 0.8, transformOrigin: 'left center' }, '-=0.4')
+                .fromTo('.h-body', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.9 }, '-=0.5')
+                .fromTo('.h-cta', { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.75 }, '-=0.5')
+                .fromTo('.h-proof', { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.65 }, '-=0.4')
+                .fromTo('.h-pills', { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6 }, '-=0.3');
         }, sectionRef);
         return () => ctx.revert();
     }, []);
@@ -28,9 +28,17 @@ export default function Hero() {
         <section
             ref={sectionRef}
             id="home"
-            className="relative w-full min-h-[100svh] overflow-hidden flex items-center"
-            style={{ background: 'linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #FAF7F2 100%)' }}
+            className="relative w-full min-h-[100svh] overflow-hidden flex items-center bg-[#FAF7F2]"
         >
+            {/* Background Image with Overlay */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1600&q=80&auto=format&fit=crop"
+                    alt="Clinic Atmosphere"
+                    className="w-full h-full object-cover opacity-[0.14]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FAF7F2] via-transparent to-white/40" />
+            </div>
             {/* Decorative elements */}
             <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
                 {/* Gold orb top-right */}

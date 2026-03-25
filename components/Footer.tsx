@@ -13,7 +13,9 @@ import {
     ShieldCheck,
     CheckCircle2,
     Sparkles,
-    ArrowUpRight
+    ArrowUpRight,
+    Instagram,
+    Facebook
 } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../constants/services';
 
@@ -39,6 +41,23 @@ const Footer = () => {
                             <p className="text-white/50 font-sans text-base leading-relaxed max-w-xs">
                                 Advanced laser and professional skincare treatments for men and women. Clean, comfortable, and results-driven care you can trust.
                             </p>
+                            <div className="flex items-center gap-4">
+                                {[
+                                    { icon: Instagram, href: '#', label: 'Instagram' },
+                                    { icon: Facebook, href: '#', label: 'Facebook' },
+                                ].map((social) => (
+                                    <a
+                                        key={social.label}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-deep-rose hover:border-deep-rose transition-all group"
+                                        aria-label={social.label}
+                                    >
+                                        <social.icon className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+                                    </a>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Curated Pathways */}
@@ -46,17 +65,17 @@ const Footer = () => {
                             <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-warm-gold/60">Therapeutic Rituals</h3>
                             <ul className="space-y-5">
                                 {[
-                                    'Laser Hair Removal',
-                                    'Signature HydraFacial',
-                                    'Dermal Rejuvenation',
-                                    'Medical Peels',
-                                    'Skin Consultation',
-                                    'Specialized Packages'
+                                    { name: 'Laser Hair Removal', href: '/services' },
+                                    { name: 'HydraFacial Treatment', href: '/services' },
+                                    { name: 'Microneedling (CIT)', href: '/services' },
+                                    { name: 'Nufree Organic Waxing', href: '/services' },
+                                    { name: 'Full Face Threading', href: '/services' },
+                                    { name: 'Korean Glow Facial', href: '/services' }
                                 ].map((item) => (
-                                    <li key={item}>
-                                        <Link href="#services" className="text-white/40 hover:text-white transition-all flex items-center gap-3 group text-sm font-sans">
+                                    <li key={item.name}>
+                                        <Link href={item.href} className="text-white/40 hover:text-white transition-all flex items-center gap-3 group text-sm font-sans">
                                             <div className="w-1.5 h-[1px] bg-deep-rose/30 group-hover:w-4 group-hover:bg-deep-rose transition-all duration-500" />
-                                            <span>{item}</span>
+                                            <span>{item.name}</span>
                                         </Link>
                                     </li>
                                 ))}

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -198,6 +199,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-body bg-ivory text-charcoal min-h-screen selection:bg-deep-rose selection:text-white">
+        <WhatsAppButton />
         {children}
       </body>
     </html>
