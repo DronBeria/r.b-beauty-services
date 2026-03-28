@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ArrowRight, CalendarCheck, Zap, Sparkles, ShieldCheck, Package2, ChevronDown } from 'lucide-react';
 import { useServiceFilter } from '../store/useServiceFilter';
 import { cn } from '../lib/utils';
@@ -160,15 +161,15 @@ const Navbar = () => {
                 <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
 
                     {/* Logo */}
-                    <Link href="/" className="flex flex-col leading-none group shrink-0" onClick={closeMobileMenu}>
-                        <span className="font-display text-lg md:text-xl font-bold tracking-[0.18em] uppercase transition-colors duration-300"
-                            style={{ color: '#131313' }}>
-                            R.D. BEAUTY
-                        </span>
-                        <span className="text-[7px] font-black uppercase tracking-[0.5em] font-sans"
-                            style={{ color: 'rgba(19,19,19,0.28)' }}>
-                            & Laser Clinic
-                        </span>
+                    <Link href="/" className="flex items-center shrink-0 group" onClick={closeMobileMenu}>
+                        <Image
+                            src="/logo.png"
+                            alt="R.D. Beauty & Laser Clinic"
+                            width={160}
+                            height={160}
+                            className="h-11 md:h-13 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                            priority
+                        />
                     </Link>
 
                     {/* Desktop nav */}

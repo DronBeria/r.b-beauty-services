@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
     MapPin,
     PhoneCall,
@@ -34,9 +35,15 @@ const Footer = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-16 mb-14 md:mb-20 lg:mb-24">
                         {/* Brand Identity Area */}
                         <div className="space-y-10">
-                            <Link href="#home" className="flex flex-col group max-w-fit">
-                                <span className="font-display text-3xl md:text-5xl font-bold tracking-tighter text-gradient transition-all group-hover:scale-105 origin-left duration-500">R.D. BEAUTY</span>
-                                <span className="text-[10px] uppercase tracking-[0.6em] font-sans text-white/40 -mt-1 group-hover:translate-x-2 transition-transform duration-500">& Laser Clinic</span>
+                            <Link href="/" className="group inline-block">
+                                <Image
+                                    src="/logo.png"
+                                    alt="R.D. Beauty & Laser Clinic"
+                                    width={160}
+                                    height={160}
+                                    className="h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                                    style={{ filter: 'brightness(0) invert(1) opacity(0.85)' }}
+                                />
                             </Link>
                             <p className="text-white/50 font-sans text-base leading-relaxed max-w-xs">
                                 Advanced laser and professional skincare treatments for men and women. Clean, comfortable, and results-driven care you can trust.
