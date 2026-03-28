@@ -204,24 +204,44 @@ const Footer = () => {
             </footer>
 
             {/* Sub-footer — Arc WebWorks */}
-            <div className="bg-[#07070A] border-t border-white/[0.05] py-4 px-6">
-                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-                    <span className="text-[8.5px] font-sans text-white/18 uppercase tracking-[0.45em]">Developed & managed by</span>
-                    <div className="flex items-center gap-2">
-                        <div className="w-4 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(168,136,60,0.4))' }} />
+            <div style={{ background: '#050508', borderTop: '1px solid rgba(168,136,60,0.08)' }} className="py-5 px-6">
+                <div className="max-w-7xl mx-auto flex items-center justify-center gap-5">
+                    <div className="h-px flex-1 max-w-[80px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(168,136,60,0.2))' }} />
+                    <div className="flex flex-col items-center gap-1.5">
+                        <span style={{
+                            fontFamily: 'var(--font-inter)',
+                            fontSize: '7px',
+                            fontWeight: 500,
+                            color: 'rgba(255,255,255,0.2)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5em',
+                        }}>Designed &amp; Developed by</span>
                         <a
                             href="https://arcwebworks.in"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[9px] font-semibold uppercase tracking-[0.45em] transition-all duration-300"
-                            style={{ color: 'rgba(168,136,60,0.55)' }}
-                            onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = 'rgba(196,160,80,0.9)'}
-                            onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(168,136,60,0.55)'}
+                            className="transition-all duration-400 group flex items-center gap-2"
+                            style={{ textDecoration: 'none' }}
+                            onMouseEnter={e => {
+                                const el = e.currentTarget.querySelector('span') as HTMLElement;
+                                if (el) el.style.color = 'rgba(196,160,80,1)';
+                            }}
+                            onMouseLeave={e => {
+                                const el = e.currentTarget.querySelector('span') as HTMLElement;
+                                if (el) el.style.color = 'rgba(168,136,60,0.7)';
+                            }}
                         >
-                            Arc WebWorks
+                            <span style={{
+                                fontFamily: 'var(--font-playfair)',
+                                fontSize: '13px',
+                                fontWeight: 700,
+                                color: 'rgba(168,136,60,0.7)',
+                                letterSpacing: '0.06em',
+                                transition: 'color 0.3s ease',
+                            }}>Arc WebWorks</span>
                         </a>
-                        <div className="w-4 h-px" style={{ background: 'linear-gradient(90deg, rgba(168,136,60,0.4), transparent)' }} />
                     </div>
+                    <div className="h-px flex-1 max-w-[80px]" style={{ background: 'linear-gradient(90deg, rgba(168,136,60,0.2), transparent)' }} />
                 </div>
             </div>
         </>
