@@ -39,10 +39,14 @@ const Footer = () => {
                                 <Image
                                     src="/logo.png"
                                     alt="R.D. Beauty & Laser Clinic"
-                                    width={160}
-                                    height={160}
-                                    className="h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105"
-                                    style={{ filter: 'brightness(0) invert(1) opacity(0.85)' }}
+                                    width={280}
+                                    height={280}
+                                    className="w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                                    style={{
+                                        height: '140px',
+                                        filter: 'brightness(0) invert(1)',
+                                        opacity: 0.88,
+                                    }}
                                 />
                             </Link>
                             <p className="text-white/50 font-sans text-base leading-relaxed max-w-xs">

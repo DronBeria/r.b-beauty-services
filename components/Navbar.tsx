@@ -165,10 +165,15 @@ const Navbar = () => {
                         <Image
                             src="/logo.png"
                             alt="R.D. Beauty & Laser Clinic"
-                            width={160}
-                            height={160}
-                            className="h-11 md:h-13 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                            width={220}
+                            height={220}
                             priority
+                            className="w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                            style={{
+                                height: scrolled ? '52px' : '62px',
+                                mixBlendMode: 'multiply',
+                                transition: 'height 0.3s ease, transform 0.3s ease',
+                            }}
                         />
                     </Link>
 
