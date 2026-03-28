@@ -31,7 +31,7 @@ const Preloader = () => {
         <div
             className="fixed inset-0 z-[300] flex flex-col items-center justify-center overflow-hidden"
             style={{
-                background: 'linear-gradient(150deg, #100D08 0%, #1A1410 50%, #100D08 100%)',
+                background: 'linear-gradient(150deg, #FAF7F2 0%, #F2EBE0 50%, #FAF7F2 100%)',
                 opacity: fading ? 0 : 1,
                 transition: 'opacity 0.9s cubic-bezier(0.77, 0, 0.175, 1)',
                 pointerEvents: fading ? 'none' : 'all',
@@ -39,12 +39,12 @@ const Preloader = () => {
         >
             {/* Ambient orbs */}
             <div className="absolute top-[-20%] left-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
-                style={{ background: 'rgba(160,19,77,0.1)', filter: 'blur(160px)' }} />
+                style={{ background: 'rgba(160,19,77,0.06)', filter: 'blur(160px)' }} />
             <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full pointer-events-none"
-                style={{ background: 'rgba(168,136,60,0.07)', filter: 'blur(180px)' }} />
+                style={{ background: 'rgba(168,136,60,0.08)', filter: 'blur(180px)' }} />
 
             {/* Content */}
-            <div className="relative z-10 flex flex-col items-center gap-8 w-full max-w-[340px] px-8">
+            <div className="relative z-10 flex flex-col items-center gap-8 w-full max-w-[380px] px-8">
 
                 {/* Logo */}
                 <div className="flex flex-col items-center gap-5">
@@ -52,14 +52,13 @@ const Preloader = () => {
                         <Image
                             src="/logo.png"
                             alt="R.D. Beauty & Laser Clinic"
-                            width={280}
-                            height={280}
+                            width={320}
+                            height={320}
                             priority
                             className="w-auto object-contain"
                             style={{
-                                height: '160px',
-                                filter: 'brightness(0) invert(1)',
-                                opacity: 0.92,
+                                height: '210px',
+                                mixBlendMode: 'multiply',
                             }}
                         />
                     </div>
@@ -72,7 +71,7 @@ const Preloader = () => {
                     </div>
 
                     <p style={{
-                        color: 'rgba(255,255,255,0.22)',
+                        color: 'rgba(26,22,16,0.35)',
                         fontSize: '8.5px',
                         fontWeight: 500,
                         textTransform: 'uppercase',
@@ -87,20 +86,20 @@ const Preloader = () => {
                 {/* Progress bar */}
                 <div className="w-full space-y-3">
                     <div className="w-full rounded-full overflow-hidden"
-                        style={{ height: '1px', background: 'rgba(255,255,255,0.07)' }}>
+                        style={{ height: '1px', background: 'rgba(26,22,16,0.1)' }}>
                         <div
                             className="h-full rounded-full"
                             style={{
                                 width: `${Math.min(progress, 100)}%`,
                                 background: 'linear-gradient(90deg, #A8883C, #C4A050)',
                                 transition: 'width 0.15s ease-out',
-                                boxShadow: '0 0 10px rgba(168,136,60,0.5)',
+                                boxShadow: '0 0 10px rgba(168,136,60,0.4)',
                             }}
                         />
                     </div>
                     <div className="flex justify-between items-center">
                         <span style={{
-                            color: 'rgba(255,255,255,0.18)',
+                            color: 'rgba(26,22,16,0.25)',
                             fontSize: '8px',
                             fontWeight: 500,
                             textTransform: 'uppercase',
@@ -112,7 +111,7 @@ const Preloader = () => {
                         <span style={{
                             fontFamily: 'var(--font-playfair)',
                             fontSize: '1rem',
-                            color: 'rgba(168,136,60,0.6)',
+                            color: 'rgba(168,136,60,0.7)',
                         }}>
                             {Math.min(Math.round(progress), 100)}%
                         </span>
@@ -121,14 +120,14 @@ const Preloader = () => {
 
                 {/* Pulsing dot */}
                 <div className="flex items-center gap-3">
-                    <div className="w-6 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
+                    <div className="w-6 h-px" style={{ background: 'rgba(26,22,16,0.08)' }} />
                     <div style={{
                         width: 5, height: 5, borderRadius: '50%',
                         background: 'rgba(168,136,60,0.8)',
-                        boxShadow: '0 0 8px rgba(168,136,60,0.6)',
+                        boxShadow: '0 0 8px rgba(168,136,60,0.5)',
                         animation: 'preloader-pulse 1.4s ease-in-out infinite',
                     }} />
-                    <div className="w-6 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
+                    <div className="w-6 h-px" style={{ background: 'rgba(26,22,16,0.08)' }} />
                 </div>
             </div>
 
