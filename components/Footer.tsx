@@ -36,18 +36,25 @@ const Footer = () => {
                         {/* Brand Identity Area */}
                         <div className="space-y-8">
                             <Link href="/" className="group flex flex-col items-start gap-4">
-                                <Image
-                                    src="/logo.png"
-                                    alt="R.D. Beauty & Laser Clinic"
-                                    width={340}
-                                    height={340}
-                                    className="w-auto object-contain transition-all duration-500 group-hover:scale-105"
+                                <div
+                                    className="transition-all duration-500 group-hover:scale-105"
                                     style={{
-                                        height: '190px',
-                                        filter: 'brightness(0) invert(1)',
-                                        opacity: 0.9,
+                                        background: 'rgba(250,247,242,0.95)',
+                                        borderRadius: '50%',
+                                        padding: '10px',
+                                        display: 'inline-flex',
+                                        boxShadow: '0 0 40px rgba(168,136,60,0.12), 0 0 0 1px rgba(168,136,60,0.15)',
                                     }}
-                                />
+                                >
+                                    <Image
+                                        src="/logo.png"
+                                        alt="R.D. Beauty & Laser Clinic"
+                                        width={340}
+                                        height={340}
+                                        className="w-auto object-contain"
+                                        style={{ height: '160px' }}
+                                    />
+                                </div>
                                 <div className="flex flex-col gap-1">
                                     <span style={{
                                         fontFamily: 'var(--font-playfair)',
