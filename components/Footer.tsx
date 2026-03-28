@@ -34,20 +34,37 @@ const Footer = () => {
                 <div className="container-custom relative z-10">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-16 mb-14 md:mb-20 lg:mb-24">
                         {/* Brand Identity Area */}
-                        <div className="space-y-10">
-                            <Link href="/" className="group inline-block">
+                        <div className="space-y-8">
+                            <Link href="/" className="group flex flex-col items-start gap-4">
                                 <Image
                                     src="/logo.png"
                                     alt="R.D. Beauty & Laser Clinic"
-                                    width={280}
-                                    height={280}
+                                    width={340}
+                                    height={340}
                                     className="w-auto object-contain transition-all duration-500 group-hover:scale-105"
                                     style={{
-                                        height: '140px',
+                                        height: '190px',
                                         filter: 'brightness(0) invert(1)',
-                                        opacity: 0.88,
+                                        opacity: 0.9,
                                     }}
                                 />
+                                <div className="flex flex-col gap-1">
+                                    <span style={{
+                                        fontFamily: 'var(--font-playfair)',
+                                        fontSize: '1.15rem',
+                                        fontWeight: 700,
+                                        color: 'rgba(255,255,255,0.88)',
+                                        letterSpacing: '0.02em',
+                                    }}>R.D. Beauty & Laser Clinic</span>
+                                    <span style={{
+                                        fontFamily: 'var(--font-inter)',
+                                        fontSize: '8px',
+                                        fontWeight: 600,
+                                        color: 'rgba(168,136,60,0.65)',
+                                        letterSpacing: '0.4em',
+                                        textTransform: 'uppercase',
+                                    }}>Beaumont · Alberta</span>
+                                </div>
                             </Link>
                             <p className="text-white/50 font-sans text-base leading-relaxed max-w-xs">
                                 Advanced laser and professional skincare treatments for men and women. Clean, comfortable, and results-driven care you can trust.
