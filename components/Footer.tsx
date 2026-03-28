@@ -31,7 +31,7 @@ const Footer = () => {
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-warm-gold/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/3 pointer-events-none" />
 
                 <div className="container-custom relative z-10">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-24 mb-14 md:mb-24 lg:mb-32">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-16 mb-14 md:mb-20 lg:mb-24">
                         {/* Brand Identity Area */}
                         <div className="space-y-10">
                             <Link href="#home" className="flex flex-col group max-w-fit">
@@ -169,16 +169,25 @@ const Footer = () => {
             </footer>
 
             {/* Sub-footer — Arc WebWorks */}
-            <div className="bg-[#0A0A0C] border-t border-white/[0.04] py-3 px-6 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3">
-                <span className="text-[9px] font-sans text-white/20 uppercase tracking-[0.4em]">Developed & managed by</span>
-                <a
-                    href="https://arcwebworks.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[9px] font-black uppercase tracking-[0.4em] text-white/40 hover:text-warm-gold transition-colors duration-300"
-                >
-                    Arc WebWorks
-                </a>
+            <div className="bg-[#07070A] border-t border-white/[0.05] py-4 px-6">
+                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+                    <span className="text-[8.5px] font-sans text-white/18 uppercase tracking-[0.45em]">Developed & managed by</span>
+                    <div className="flex items-center gap-2">
+                        <div className="w-4 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(168,136,60,0.4))' }} />
+                        <a
+                            href="https://arcwebworks.in"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[9px] font-semibold uppercase tracking-[0.45em] transition-all duration-300"
+                            style={{ color: 'rgba(168,136,60,0.55)' }}
+                            onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = 'rgba(196,160,80,0.9)'}
+                            onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(168,136,60,0.55)'}
+                        >
+                            Arc WebWorks
+                        </a>
+                        <div className="w-4 h-px" style={{ background: 'linear-gradient(90deg, rgba(168,136,60,0.4), transparent)' }} />
+                    </div>
+                </div>
             </div>
         </>
     );

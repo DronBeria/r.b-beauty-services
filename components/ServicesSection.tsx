@@ -116,7 +116,7 @@ const ServicesSection = () => {
                             <LayoutGrid className="w-4 h-4" />
                             <span>Filter by Category</span>
                         </div>
-                        <div className="flex flex-wrap justify-center bg-ivory/80 backdrop-blur-xl p-2 rounded-[2.5rem] border border-charcoal/5 shadow-premium gap-1.5 max-w-full">
+                        <div className="flex flex-nowrap sm:flex-wrap justify-start sm:justify-center bg-ivory/80 backdrop-blur-xl p-2 rounded-[2.5rem] border border-charcoal/5 shadow-premium gap-1.5 max-w-full overflow-x-auto scrollbar-hide">
                             {CATEGORIES.map((cat) => (
                                 <button
                                     key={cat}
@@ -145,7 +145,7 @@ const ServicesSection = () => {
                 {/* Services Grid */}
                 <div
                     ref={gridRef}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8"
                 >
                     {visibleServices.map((service, index) => (
                         <ServiceCard key={service.id} service={service} index={index} />

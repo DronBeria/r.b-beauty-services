@@ -235,8 +235,11 @@ const Navbar = () => {
                             href={SQUARE_BOOKING_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-300 shadow-sm active:scale-95 hover:opacity-80"
-                            style={{ background: '#131313' }}
+                            className="hidden md:inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 active:scale-95 hover:opacity-90"
+                            style={{
+                                background: 'linear-gradient(135deg, #A8883C, #C4A050)',
+                                boxShadow: '0 6px 20px rgba(168,136,60,0.35)',
+                            }}
                         >
                             <CalendarCheck className="w-3.5 h-3.5" />
                             <span>Book Now</span>
@@ -303,9 +306,9 @@ const Navbar = () => {
                                     Threading · Waxing · Nufree · Facials · Laser · Beaumont, Alberta
                                 </span>
                                 <Link
-                                    href="#services"
+                                    href="/services"
                                     onClick={() => setActiveMenu(null)}
-                                    className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.2em] text-deep-rose hover:text-charcoal transition-colors"
+                                    className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-warm-gold hover:text-charcoal transition-colors"
                                 >
                                     View All Services <ArrowRight className="w-3 h-3" />
                                 </Link>
@@ -421,7 +424,11 @@ const Navbar = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={closeMobileMenu}
-                            className="w-full flex items-center justify-center gap-2 bg-charcoal text-white py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:opacity-90 transition-all shadow-md"
+                            className="w-full flex items-center justify-center gap-2 text-white py-3.5 rounded-2xl text-[10px] font-semibold uppercase tracking-widest hover:opacity-90 transition-all"
+                            style={{
+                                background: 'linear-gradient(135deg, #A8883C, #C4A050)',
+                                boxShadow: '0 8px 24px rgba(168,136,60,0.35)',
+                            }}
                         >
                             <CalendarCheck className="w-3.5 h-3.5" />
                             <span>Book Now</span>

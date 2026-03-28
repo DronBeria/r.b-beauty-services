@@ -53,19 +53,22 @@ const PricingSection = () => {
                 </div>
 
                 {/* Horizontal Category Tabs */}
-                <div className="pricing-header-reveal flex justify-center mb-10">
-                    <div className="flex gap-1.5 p-1.5 bg-white border border-black/[0.06] rounded-full shadow-sm overflow-x-auto max-w-full">
+                <div className="pricing-header-reveal flex justify-center mb-10 px-1">
+                    <div className="flex gap-1.5 p-1.5 bg-white border border-black/[0.06] rounded-full shadow-sm overflow-x-auto scrollbar-hide max-w-full">
                         {PRICING_DATA.map((cat) => (
                             <button
                                 key={cat.id}
                                 onClick={() => setActiveCategory(cat)}
                                 className={cn(
                                     'flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap',
-                                    'text-[10px] font-black uppercase tracking-widest font-sans',
+                                    'text-[10px] font-semibold uppercase tracking-widest font-sans',
                                     activeCategory.id === cat.id
-                                        ? 'bg-charcoal text-white shadow-sm'
+                                        ? 'text-white shadow-sm'
                                         : 'text-charcoal/40 hover:text-charcoal hover:bg-black/[0.03]'
                                 )}
+                                style={activeCategory.id === cat.id ? {
+                                    background: 'linear-gradient(135deg, #A8883C, #C4A050)',
+                                } : {}}
                             >
                                 <span>{cat.icon}</span>
                                 <span>{cat.title}</span>
@@ -76,7 +79,7 @@ const PricingSection = () => {
 
                 {/* Pricing Card */}
                 <div ref={contentRef} className="max-w-3xl mx-auto">
-                    <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-black/[0.05]">
+                    <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-5 sm:p-8 md:p-12 shadow-sm border border-black/[0.05]">
 
                         {activeCategory.sections.map((section, idx) => {
                             const isColumnLayout = section.items.some(i => i.perSession);
