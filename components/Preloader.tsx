@@ -31,56 +31,64 @@ const Preloader = () => {
         <div
             className="fixed inset-0 z-[300] flex flex-col items-center justify-center overflow-hidden"
             style={{
-                background: 'linear-gradient(150deg, #FAF7F2 0%, #F2EBE0 50%, #FAF7F2 100%)',
+                background: 'linear-gradient(160deg, #FAF7F2 0%, #F5EDE0 45%, #FAF7F2 100%)',
                 opacity: fading ? 0 : 1,
                 transition: 'opacity 0.9s cubic-bezier(0.77, 0, 0.175, 1)',
                 pointerEvents: fading ? 'none' : 'all',
             }}
         >
             {/* Ambient orbs */}
-            <div className="absolute top-[-20%] left-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
-                style={{ background: 'rgba(160,19,77,0.06)', filter: 'blur(160px)' }} />
-            <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full pointer-events-none"
-                style={{ background: 'rgba(168,136,60,0.08)', filter: 'blur(180px)' }} />
+            <div className="absolute top-[-15%] left-[-10%] w-[600px] h-[600px] rounded-full pointer-events-none"
+                style={{ background: 'rgba(160,19,77,0.05)', filter: 'blur(140px)' }} />
+            <div className="absolute bottom-[-15%] right-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
+                style={{ background: 'rgba(168,136,60,0.07)', filter: 'blur(150px)' }} />
 
-            {/* Content */}
-            <div className="relative z-10 flex flex-col items-center gap-8 w-full max-w-[380px] px-8">
+            {/* Main content */}
+            <div className="relative z-10 flex flex-col items-center w-full max-w-[460px] px-10">
 
-                {/* Logo */}
-                <div className="flex flex-col items-center gap-5">
-                    <div style={{ animation: 'preloader-float 3s ease-in-out infinite' }}>
-                        <Image
-                            src="/logo.png"
-                            alt="R.D. Beauty & Laser Clinic"
-                            width={320}
-                            height={320}
-                            priority
-                            className="w-auto object-contain"
-                            style={{
-                                height: '210px',
-                                mixBlendMode: 'multiply',
-                            }}
-                        />
-                    </div>
+                {/* Logo mark */}
+                <div style={{ animation: 'preloader-float 3.5s ease-in-out infinite', marginBottom: '20px' }}>
+                    <Image
+                        src="/logo.png"
+                        alt="R.D. Beauty & Laser Clinic"
+                        width={380}
+                        height={380}
+                        priority
+                        className="w-auto object-contain"
+                        style={{
+                            height: '260px',
+                            mixBlendMode: 'multiply',
+                        }}
+                    />
+                </div>
 
-                    {/* Gold separator */}
-                    <div className="flex items-center gap-3 w-full justify-center">
-                        <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(168,136,60,0.4))' }} />
-                        <span style={{ color: 'rgba(168,136,60,0.6)', fontSize: '8px' }}>✦</span>
-                        <div className="flex-1 h-px" style={{ background: 'linear-gradient(90deg, rgba(168,136,60,0.4), transparent)' }} />
-                    </div>
-
-                    <p style={{
-                        color: 'rgba(26,22,16,0.35)',
-                        fontSize: '8.5px',
-                        fontWeight: 500,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.55em',
-                        fontFamily: 'var(--font-inter)',
+                {/* Clinic name */}
+                <div className="flex flex-col items-center gap-1 mb-8">
+                    <h1 style={{
+                        fontFamily: 'var(--font-playfair)',
+                        fontSize: 'clamp(1.25rem, 4vw, 1.65rem)',
+                        fontWeight: 700,
+                        color: '#1A1610',
+                        letterSpacing: '0.04em',
                         textAlign: 'center',
+                        lineHeight: 1.2,
                     }}>
-                        Beaumont · Alberta
-                    </p>
+                        R.D. Beauty & Laser Clinic
+                    </h1>
+                    <div className="flex items-center gap-3 mt-2">
+                        <div className="w-8 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(168,136,60,0.45))' }} />
+                        <span style={{
+                            fontFamily: 'var(--font-inter)',
+                            fontSize: '7.5px',
+                            fontWeight: 600,
+                            color: 'rgba(168,136,60,0.7)',
+                            letterSpacing: '0.5em',
+                            textTransform: 'uppercase',
+                        }}>
+                            Beaumont · Alberta
+                        </span>
+                        <div className="w-8 h-px" style={{ background: 'linear-gradient(90deg, rgba(168,136,60,0.45), transparent)' }} />
+                    </div>
                 </div>
 
                 {/* Progress bar */}
@@ -93,52 +101,37 @@ const Preloader = () => {
                                 width: `${Math.min(progress, 100)}%`,
                                 background: 'linear-gradient(90deg, #A8883C, #C4A050)',
                                 transition: 'width 0.15s ease-out',
-                                boxShadow: '0 0 10px rgba(168,136,60,0.4)',
+                                boxShadow: '0 0 8px rgba(168,136,60,0.35)',
                             }}
                         />
                     </div>
                     <div className="flex justify-between items-center">
                         <span style={{
-                            color: 'rgba(26,22,16,0.25)',
+                            fontFamily: 'var(--font-inter)',
                             fontSize: '8px',
-                            fontWeight: 500,
+                            fontWeight: 600,
+                            color: 'rgba(26,22,16,0.25)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.4em',
-                            fontFamily: 'var(--font-inter)',
                         }}>
                             Loading
                         </span>
                         <span style={{
                             fontFamily: 'var(--font-playfair)',
                             fontSize: '1rem',
-                            color: 'rgba(168,136,60,0.7)',
+                            fontWeight: 700,
+                            color: 'rgba(168,136,60,0.65)',
                         }}>
                             {Math.min(Math.round(progress), 100)}%
                         </span>
                     </div>
                 </div>
-
-                {/* Pulsing dot */}
-                <div className="flex items-center gap-3">
-                    <div className="w-6 h-px" style={{ background: 'rgba(26,22,16,0.08)' }} />
-                    <div style={{
-                        width: 5, height: 5, borderRadius: '50%',
-                        background: 'rgba(168,136,60,0.8)',
-                        boxShadow: '0 0 8px rgba(168,136,60,0.5)',
-                        animation: 'preloader-pulse 1.4s ease-in-out infinite',
-                    }} />
-                    <div className="w-6 h-px" style={{ background: 'rgba(26,22,16,0.08)' }} />
-                </div>
             </div>
 
             <style>{`
-                @keyframes preloader-pulse {
-                    0%, 100% { opacity: 0.4; transform: scale(1); }
-                    50%       { opacity: 1;   transform: scale(1.6); }
-                }
                 @keyframes preloader-float {
                     0%, 100% { transform: translateY(0px); }
-                    50%      { transform: translateY(-8px); }
+                    50%      { transform: translateY(-10px); }
                 }
             `}</style>
         </div>

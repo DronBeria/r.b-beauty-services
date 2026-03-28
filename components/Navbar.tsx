@@ -161,20 +161,40 @@ const Navbar = () => {
                 <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
 
                     {/* Logo */}
-                    <Link href="/" className="flex items-center shrink-0 group" onClick={closeMobileMenu}>
+                    <Link href="/" className="flex items-center gap-3 shrink-0 group" onClick={closeMobileMenu}>
                         <Image
                             src="/logo.png"
                             alt="R.D. Beauty & Laser Clinic"
                             width={220}
                             height={220}
                             priority
-                            className="w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                            className="w-auto object-contain flex-shrink-0"
                             style={{
-                                height: scrolled ? '52px' : '62px',
+                                height: scrolled ? '48px' : '56px',
                                 mixBlendMode: 'multiply',
-                                transition: 'height 0.3s ease, transform 0.3s ease',
+                                transition: 'height 0.3s ease',
                             }}
                         />
+                        <div className="flex flex-col leading-none">
+                            <span style={{
+                                fontFamily: 'var(--font-playfair)',
+                                fontSize: scrolled ? '13px' : '14.5px',
+                                fontWeight: 700,
+                                color: '#1A1610',
+                                letterSpacing: '0.02em',
+                                transition: 'font-size 0.3s ease',
+                                whiteSpace: 'nowrap',
+                            }}>R.D. Beauty & Laser</span>
+                            <span style={{
+                                fontFamily: 'var(--font-inter)',
+                                fontSize: '7.5px',
+                                fontWeight: 600,
+                                color: 'rgba(168,136,60,0.75)',
+                                letterSpacing: '0.35em',
+                                textTransform: 'uppercase',
+                                marginTop: '3px',
+                            }}>Clinic · Beaumont</span>
+                        </div>
                     </Link>
 
                     {/* Desktop nav */}
