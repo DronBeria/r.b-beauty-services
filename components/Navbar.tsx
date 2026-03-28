@@ -170,7 +170,7 @@ const Navbar = () => {
                             priority
                             className="w-auto object-contain flex-shrink-0"
                             style={{
-                                height: scrolled ? '58px' : '68px',
+                                height: scrolled ? '75px' : '88px',
                                 mixBlendMode: 'multiply',
                                 transition: 'height 0.3s ease',
                             }}
