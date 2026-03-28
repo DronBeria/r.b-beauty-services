@@ -29,7 +29,7 @@ export default function Hero() {
             ref={sectionRef}
             id="home"
             className="relative w-full min-h-[100svh] overflow-hidden flex items-center"
-            style={{ background: 'linear-gradient(150deg, #FAF7F2 0%, #F5EDE0 55%, #FAF7F2 100%)' }}
+            style={{ background: 'linear-gradient(140deg, #FAF7F2 0%, #F5EDE0 40%, #F8F0E6 70%, #FAF7F2 100%)' }}
         >
             {/* Subtle background texture image */}
             <div className="absolute inset-0 z-0" aria-hidden="true">
@@ -37,31 +37,51 @@ export default function Hero() {
                     src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1600&q=70&auto=format&fit=crop"
                     alt=""
                     className="w-full h-full object-cover"
-                    style={{ opacity: 0.07 }}
+                    style={{ opacity: 0.06 }}
                 />
                 <div className="absolute inset-0" style={{
-                    background: 'linear-gradient(150deg, #FAF7F2 0%, rgba(250,247,242,0.6) 40%, rgba(250,247,242,0.9) 100%)'
+                    background: 'linear-gradient(140deg, #FAF7F2 0%, rgba(250,247,242,0.55) 45%, rgba(245,237,224,0.85) 100%)'
                 }} />
             </div>
 
-            {/* Decorative orbs & rings */}
+            {/* Rich decorative background */}
             <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+                {/* Large atmospheric orbs */}
                 <div style={{
-                    position: 'absolute', top: '-8%', right: '-4%',
-                    width: 560, height: 560, borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(196,160,80,0.14) 0%, transparent 70%)',
+                    position: 'absolute', top: '-10%', right: '-5%',
+                    width: 700, height: 700, borderRadius: '50%',
+                    background: 'radial-gradient(circle, rgba(196,160,80,0.18) 0%, rgba(168,136,60,0.06) 45%, transparent 70%)',
                 }} />
                 <div style={{
-                    position: 'absolute', bottom: '-12%', left: '-6%',
-                    width: 460, height: 460, borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(160,19,77,0.055) 0%, transparent 70%)',
+                    position: 'absolute', bottom: '-15%', left: '-8%',
+                    width: 580, height: 580, borderRadius: '50%',
+                    background: 'radial-gradient(circle, rgba(160,19,77,0.07) 0%, transparent 65%)',
                 }} />
+                <div style={{
+                    position: 'absolute', top: '35%', right: '28%',
+                    width: 280, height: 280, borderRadius: '50%',
+                    background: 'radial-gradient(circle, rgba(196,160,80,0.09) 0%, transparent 70%)',
+                }} />
+
+                {/* Gold vertical rule on far right — desktop only */}
+                <div className="hidden lg:block" style={{
+                    position: 'absolute', right: '7%', top: '18%', bottom: '18%',
+                    width: '1px',
+                    background: 'linear-gradient(180deg, transparent, rgba(168,136,60,0.2) 30%, rgba(196,160,80,0.35) 60%, transparent)',
+                }} />
+
                 {/* Spinning rings */}
                 <div style={{
-                    position: 'absolute', bottom: '14%', right: '7%',
-                    width: 110, height: 110, borderRadius: '50%',
-                    border: '1px dashed rgba(168,136,60,0.22)',
+                    position: 'absolute', bottom: '14%', right: '8%',
+                    width: 130, height: 130, borderRadius: '50%',
+                    border: '1px dashed rgba(168,136,60,0.25)',
                     animation: 'spin-slow 32s linear infinite',
+                }} />
+                <div style={{
+                    position: 'absolute', bottom: '13%', right: '8.7%',
+                    width: 96, height: 96, borderRadius: '50%',
+                    border: '1px solid rgba(168,136,60,0.1)',
+                    animation: 'spin-slow 20s linear infinite reverse',
                 }} />
                 <div style={{
                     position: 'absolute', top: '22%', left: '54%',
@@ -69,10 +89,24 @@ export default function Hero() {
                     border: '1px solid rgba(168,136,60,0.14)',
                     animation: 'spin-slow 18s linear infinite reverse',
                 }} />
-                {/* Sparkle accents */}
-                <div style={{ position: 'absolute', top: '17%', right: '21%', fontSize: '11px', color: 'rgba(168,136,60,0.35)', animation: 'pulse-soft 4s ease-in-out infinite' }}>✦</div>
+
+                {/* Sparkle cluster */}
+                <div style={{ position: 'absolute', top: '17%', right: '21%', fontSize: '13px', color: 'rgba(168,136,60,0.4)', animation: 'pulse-soft 4s ease-in-out infinite' }}>✦</div>
+                <div style={{ position: 'absolute', top: '24%', right: '17%', fontSize: '7px', color: 'rgba(168,136,60,0.22)', animation: 'pulse-soft 5s ease-in-out infinite 0.8s' }}>✦</div>
                 <div style={{ position: 'absolute', bottom: '30%', left: '47%', fontSize: '8px', color: 'rgba(168,136,60,0.22)', animation: 'pulse-soft 5.5s ease-in-out infinite 1.5s' }}>✦</div>
-                <div style={{ position: 'absolute', top: '42%', right: '4%', width: 5, height: 5, borderRadius: '50%', background: 'rgba(168,136,60,0.28)', animation: 'float 8s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: '55%', right: '12%', fontSize: '10px', color: 'rgba(168,136,60,0.18)', animation: 'pulse-soft 6s ease-in-out infinite 2s' }}>✦</div>
+
+                {/* Floating dots */}
+                <div style={{ position: 'absolute', top: '42%', right: '4.5%', width: 6, height: 6, borderRadius: '50%', background: 'rgba(168,136,60,0.3)', animation: 'float 8s ease-in-out infinite' }} />
+                <div style={{ position: 'absolute', top: '62%', right: '6%', width: 4, height: 4, borderRadius: '50%', background: 'rgba(196,160,80,0.22)', animation: 'float 11s ease-in-out infinite 2s' }} />
+                <div style={{ position: 'absolute', top: '28%', left: '48%', width: 3, height: 3, borderRadius: '50%', background: 'rgba(168,136,60,0.28)', animation: 'float 9s ease-in-out infinite 1s' }} />
+
+                {/* Diagonal gold stripe — subtle */}
+                <div className="hidden lg:block" style={{
+                    position: 'absolute', top: 0, right: 0,
+                    width: '38%', height: '100%',
+                    background: 'linear-gradient(135deg, transparent 60%, rgba(196,160,80,0.04) 100%)',
+                }} />
             </div>
 
             {/* Large watermark word */}
@@ -82,7 +116,7 @@ export default function Hero() {
                 style={{
                     fontSize: 'clamp(12rem, 20vw, 26rem)',
                     color: 'transparent',
-                    WebkitTextStroke: '1px rgba(168,136,60,0.07)',
+                    WebkitTextStroke: '1px rgba(168,136,60,0.08)',
                     letterSpacing: '-0.05em',
                     lineHeight: 1,
                 }}>
@@ -197,14 +231,17 @@ export default function Hero() {
                             style={{
                                 border: '1px solid rgba(168,136,60,0.2)',
                                 color: 'rgba(44,32,16,0.42)',
+                                background: 'rgba(255,255,255,0.5)',
                             }}
                             onMouseEnter={e => {
-                                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(168,136,60,0.45)';
+                                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(168,136,60,0.5)';
                                 (e.currentTarget as HTMLElement).style.color = 'rgba(168,136,60,0.9)';
+                                (e.currentTarget as HTMLElement).style.background = 'rgba(168,136,60,0.06)';
                             }}
                             onMouseLeave={e => {
                                 (e.currentTarget as HTMLElement).style.borderColor = 'rgba(168,136,60,0.2)';
                                 (e.currentTarget as HTMLElement).style.color = 'rgba(44,32,16,0.42)';
+                                (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.5)';
                             }}>
                             {s}
                         </Link>
