@@ -47,7 +47,7 @@ const Footer = () => {
                                     }}
                                 >
                                     <Image
-                                        src="/logo-v2.png"
+                                        src="/logo-v3.png"
                                         alt="R.D. Beauty & Laser Clinic"
                                         width={340}
                                         height={340}

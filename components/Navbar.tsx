@@ -176,7 +176,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 shrink-0 group" onClick={closeMobileMenu}>
                         <Image
-                            src="/logo-v2.png"
+                            src="/logo-v3.png"
                             alt="R.D. Beauty & Laser Clinic"
                             width={220}
                             height={220}
@@ -184,7 +184,6 @@ const Navbar = () => {
                             className="w-auto object-contain flex-shrink-0"
                             style={{
                                 height: scrolled ? '75px' : '88px',
-                                mixBlendMode: 'multiply',
                                 transition: 'height 0.3s ease',
                             }}
                         />
