@@ -112,7 +112,7 @@ const localBusinessSchema = {
     "Advanced laser hair removal, HydraFacials, microneedling, threading, and waxing services in Beaumont, Alberta.",
   url: SITE_URL,
   telephone: "+16478904871",
-  email: "info@rbbeauty.ca",
+  email: "rdbeautyservices@yahoo.com",
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",

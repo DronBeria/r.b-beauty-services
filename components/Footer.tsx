@@ -139,9 +139,9 @@ const Footer = () => {
                                         <PhoneCall className="w-4 h-4" />
                                         <span>+1 (647) 890-4871</span>
                                     </a>
-                                    <a href="mailto:info@rbbeauty.ca" className="flex items-center gap-4 text-white/40 hover:text-warm-gold transition-colors text-sm font-sans italic">
+                                    <a href="mailto:rdbeautyservices@yahoo.com" className="flex items-center gap-4 text-white/40 hover:text-warm-gold transition-colors text-sm font-sans italic">
                                         <Mail className="w-4 h-4" />
-                                        <span>info@rbbeauty.ca</span>
+                                        <span>rdbeautyservices@yahoo.com</span>
                                     </a>
                                 </div>
 

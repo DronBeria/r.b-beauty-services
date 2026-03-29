@@ -96,7 +96,7 @@ export const PRICING_DATA: PricingCategory[] = [
     },
     {
         id: 'facial-treatments',
-        title: 'Facial Treatments',
+        title: 'Facial Treatments — Men & Women',
         icon: '✨',
         image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85&auto=format&fit=crop',
         sections: [
@@ -126,7 +126,7 @@ export const PRICING_DATA: PricingCategory[] = [
     },
     {
         id: 'laser-hair-removal',
-        title: 'Laser Treatments',
+        title: 'Laser Treatments — Men & Women',
         icon: '⚡',
         image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=85&auto=format&fit=crop',
         sections: [
@@ -184,6 +184,50 @@ export const PRICING_DATA: PricingCategory[] = [
                 items: [
                     { name: 'Legs + Arms + Underarms',             price: '$899'   },
                     { name: 'Legs + Arms + Underarms + Brazilian', price: '$1,199' },
+                ],
+            },
+        ],
+    },
+    {
+        id: 'mens-services',
+        title: "Men's Services",
+        icon: '🧔',
+        image: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=800&q=85&auto=format&fit=crop',
+        sections: [
+            {
+                subtitle: "Men's Waxing",
+                items: [
+                    { name: "Men's Half Arms Wax",       price: '$30' },
+                    { name: "Men's Half Lower Legs Wax", price: '$40' },
+                    { name: "Men's Chest Wax",           price: '$45' },
+                    { name: "Men's Full Back Wax",       price: '$45' },
+                ],
+            },
+            {
+                subtitle: "Facial Treatments — Men & Women",
+                items: [
+                    { name: 'Express Deep Cleansing Facial',              price: '$40'              },
+                    { name: "Classic Fernanda's Facial",                  price: '$60'              },
+                    { name: 'HydraFacial Treatment',                      price: '$120'             },
+                    { name: 'Dermaplaning Facial',                        price: '$75'              },
+                    { name: 'Microdermabrasion Skin Renewal',             price: '$99'              },
+                    { name: 'Microneedling (Collagen Induction Therapy)', price: '$175 / 3 for $400'},
+                    { name: 'Radiance Brightening Facial',                price: '$130'             },
+                    { name: 'Exosomes Anti-Aging Facial',                 price: '$145'             },
+                ],
+            },
+            {
+                subtitle: "Laser Hair Removal — Men & Women",
+                columns: ['Treatment', 'Per Session', '6-Session', 'Savings'],
+                items: [
+                    { name: 'Full Face',   perSession: '$120',  sixSessions: '$499',  savings: 'Save $221'  },
+                    { name: 'Chest',       perSession: '$149',  sixSessions: '$599',  savings: 'Save $295'  },
+                    { name: 'Full Back',   perSession: '$149',  sixSessions: '$599',  savings: 'Save $295'  },
+                    { name: 'Shoulders',   perSession: '$99',   sixSessions: '$399',  savings: 'Save $195'  },
+                    { name: 'Full Arms',   perSession: '$99',   sixSessions: '$349',  savings: 'Save $245'  },
+                    { name: 'Underarms',   perSession: '$35',   sixSessions: '$149',  savings: 'Save $61'   },
+                    { name: 'Full Legs',   perSession: '$159',  sixSessions: '$599',  savings: 'Save $355'  },
+                    { name: 'Full Body',   perSession: '$599',  sixSessions: '$1,999',savings: 'Save $1,595'},
                 ],
             },
         ],

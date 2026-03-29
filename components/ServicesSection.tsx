@@ -20,6 +20,7 @@ const CATEGORIES: Category[] = [
     'Nufree Waxing',
     'Facial Treatments',
     'Laser Hair Removal',
+    "Men's Services",
 ];
 
 const INITIAL_VISIBLE = 6;

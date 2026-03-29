@@ -74,6 +74,18 @@ const SERVICE_COLS: { title: string; icon: React.ElementType; color: string; ite
             { name: 'Full Body', price: '$599', category: 'Laser Hair Removal' },
         ],
     },
+    {
+        title: "Men's Services",
+        icon: Sparkles,
+        color: 'text-blue-500',
+        items: [
+            { name: "Chest Wax", price: '$45', category: "Men's Services" },
+            { name: "Full Back Wax", price: '$45', category: "Men's Services" },
+            { name: "Half Arms Wax", price: '$30', category: "Men's Services" },
+            { name: "Facial Treatments", price: 'From $40', category: "Men's Services", badge: 'Men & Women' },
+            { name: "Laser Hair Removal", price: 'From $35', category: "Men's Services", badge: 'Men & Women' },
+        ],
+    },
 ];
 
 const PRICING_LINKS: { name: string; category: Category }[] = [
@@ -82,6 +94,7 @@ const PRICING_LINKS: { name: string; category: Category }[] = [
     { name: 'Nufree Waxing', category: 'Nufree Waxing' },
     { name: 'Facial Treatments', category: 'Facial Treatments' },
     { name: 'Laser Hair Removal', category: 'Laser Hair Removal' },
+    { name: "Men's Services", category: "Men's Services" },
 ];
 
 const navLinks = [
@@ -297,7 +310,7 @@ const Navbar = () => {
                         <div className="bg-white rounded-[2.5rem] shadow-[0_24px_80px_rgba(0,0,0,0.18)] border border-black/[0.07] overflow-hidden">
                             <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-deep-rose/40 to-transparent" />
 
-                            <div className="p-8 grid grid-cols-5 gap-6">
+                            <div className="p-8 grid grid-cols-6 gap-5">
                                 {SERVICE_COLS.map((col) => (
                                     <div key={col.title}>
                                         <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-black/[0.05]">
