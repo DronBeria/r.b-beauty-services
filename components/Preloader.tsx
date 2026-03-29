@@ -49,7 +49,7 @@ const Preloader = () => {
                 {/* Logo mark */}
                 <div style={{ animation: 'preloader-float 3.5s ease-in-out infinite', marginBottom: '20px' }}>
                     <Image
-                        src="/logo.png"
+                        src="/logo-v2.png"
                         alt="R.D. Beauty & Laser Clinic"
                         width={380}
                         height={380}
